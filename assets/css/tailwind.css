@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Mohave:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .rainbow-text {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-warning-100 to-yellow-500;
+}
+
+.rainbow-bg {
+  @apply bg-gradient-to-r from-warning-100 to-yellow-500;
+} */
+
+@layer base {
+  html,
+  body,
+  #__nuxt {
+    @apply min-h-screen transition duration-150 bg-white;
+  }
+
+  img {
+    @apply block w-full;
+  }
+
+  h1 {
+    @apply text-4xl leading-3 md:text-6xl xl:text-7xl;
+  }
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-6xl;
+  }
+  h3 {
+    @apply text-xl md:text-2xl lg:text-5xl;
+  }
+  h4 {
+    @apply text-lg md:text-xl lg:text-xl;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-bold leading-tight tracking-wide;
+  }
+
+  p,
+  li {
+    @apply text-base leading-snug tracking-wide xl:text-lg;
+  }
+}
+
+@layer utilities {
+  .site-padding {
+    @apply max-w-screen-xl px-4 mx-auto sm:px-6 md:px-8 xl:px-12 xl:max-w-screen-2xl;
+  }
+}
