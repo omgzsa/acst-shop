@@ -22,11 +22,11 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     public: {
-      directusUrl: 'https://thule.provisionlab.hu',
+      directusUrl: process.env.DIRECTUS_URL,
     },
   },
   directus: {
-    url: 'https://thule.provisionlab.hu',
+    url: process.env.DIRECTUS_URL,
     devtools: true,
   },
   pinia: {
