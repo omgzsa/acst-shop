@@ -26,49 +26,6 @@ await fetchFeaturedCategories();
 //     fields: ['id', 'termekNev', 'termekAr', 'termekLeiras', 'termekKep'],
 //   })
 // );
-
-const slides = ref([
-  {
-    id: 1,
-    title: 'Kerékpártartók',
-    img: 'kerekpartartok.webp',
-  },
-  {
-    id: 2,
-    title: 'Tetőboxok',
-    img: 'tetocsomagtartok.webp',
-  },
-  {
-    id: 3,
-    title: 'Csomagtartó boxok és kosarak',
-    img: 'csomagtarto-boxok.webp',
-  },
-  {
-    id: 4,
-    title: 'Bőröndök és utazótáskák',
-    img: 'borondok-es-utazotaskak.webp',
-  },
-  {
-    id: 5,
-    title: 'Kerékpártartók',
-    img: 'kerekpartartok.webp',
-  },
-  {
-    id: 6,
-    title: 'Tetőboxok',
-    img: 'tetocsomagtartok.webp',
-  },
-  {
-    id: 7,
-    title: 'Csomagtartó boxok és kosarak',
-    img: 'csomagtarto-boxok.webp',
-  },
-  {
-    id: 8,
-    title: 'Bőröndök és utazótáskák',
-    img: 'borondok-es-utazotaskak.webp',
-  },
-]);
 </script>
 
 <template>
