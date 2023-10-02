@@ -45,7 +45,7 @@ const nepszeruKategoriak = computed(() => {
 </script>
 
 <template>
-  <div class="space-y-12">
+  <div class="space-y-12 ">
     <div class="site-padding">
       <h2>Népszerű kategóriák</h2>
     </div>
