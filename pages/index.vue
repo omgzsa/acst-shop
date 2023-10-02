@@ -21,7 +21,7 @@ await fetchFeaturedCategories();
 </script>
 
 <template>
-  <section class="grid gap-y-32">
+  <section class="grid bg-white gap-y-32">
     <HomeHero title="Maximális kényelem a szabadban" />
     <section>
       <HomeCategories />
