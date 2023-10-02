@@ -16,7 +16,7 @@
   html,
   body,
   #__nuxt {
-    @apply min-h-screen transition duration-150 bg-white;
+    @apply min-h-screen bg-accent-100;
   }
 
   img {
