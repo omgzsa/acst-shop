@@ -18,14 +18,6 @@ const fetchFeaturedCategories = async () => {
 };
 
 await fetchFeaturedCategories();
-
-// const { getItems } = useDirectusItems();
-// const { data } = await useAsyncData('termekek', () =>
-//   getItems({
-//     collection: 'termekek',
-//     fields: ['id', 'termekNev', 'termekAr', 'termekLeiras', 'termekKep'],
-//   })
-// );
 </script>
 
 <template>
