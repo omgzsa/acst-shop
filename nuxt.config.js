@@ -4,6 +4,14 @@ export default defineNuxtConfig({
   //   pageTransition: { name: 'page', mode: 'out-in' },
   // },
   // devtools: true,
+  vite: {
+    server: {
+      hmr: {
+        protocol: 'ws',
+        host: 'localhost'
+      }
+    }
+  },
   head: {
     title: 'Autocsomagtarto | THULE retailer',
     htmlAttrs: {
@@ -22,18 +30,19 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     public: {
-      directusUrl: process.env.DIRECTUS_URL,
+      directusUrl: process.env.NUXT_DIRECTUS_URL,
     },
   },
   directus: {
-    url: process.env.DIRECTUS_URL,
+    url: process.env.NUXT_DIRECTUS_URL,
     devtools: true,
   },
   pinia: {
     autoImports: ['defineStore', 'acceptHMRUpdate'],
   },
   imports: {
-    dirs: ['./stores'],
+    // not working for some reason
+    // dirs: ['./stores'],
   },
   tailwindcss: {
     cssPath: '~/assets/css/tailwind.css',
