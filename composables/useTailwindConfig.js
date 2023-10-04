@@ -1,5 +1,5 @@
 export const useTailwindConfig = () => {
   return {
-    defaultTransition: 'transition ease-in-out duration-250',
+    defaultTransition: 'transition-all ease-in-out duration-250',
   };
 };
