@@ -19,10 +19,10 @@ const { data: kerekpartartokAlKategoriak } = await useAsyncData(
 </script>
 
 <template>
-  <div class="w-screen bg-gray-100">
-    <div class="flex flex-row py-10 gap-x-4">
+  <div class="bg-gray-100">
+    <div class="flex flex-row w-[98vw] gap-x-4">
       <div
-        class="flex flex-row px-1 mx-auto overflow-x-scroll overflow-y-hidden 2xl:overflow-x-hidden gap-x-4"
+        class="flex flex-row px-1 py-10 overflow-x-scroll overflow-y-hidden 2xl:site-padding 2xl:overflow-x-hidden gap-x-4"
       >
         <CategoryNavbarItem
           title="Összes kerékpártartó"
