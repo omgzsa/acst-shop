@@ -1,39 +1,43 @@
 <script setup>
 const { getItems } = useDirectusItems();
 
-const { data } = await useAsyncData('alKategoriak', () => 
-  getItems({
-    collection: 'termekAlKategoria',
-    fields: ['id', 'termekAlKategoriaNev', 'termekAlKategoriaKep'],
-    params: {
-      filter: {  kapcsolodoKategoria: { _eq: "1" }  }
-    }
-  })
-);
+const { path, params } = useRoute();
 
-// console.log(alKategoriak.value);
+const allBikeRacksThumbnail = '59cb511b-7e6e-4263-83d8-49091f9bcb03';
+
+const { data: kerekpartartokAlKategoriak } = await useAsyncData(
+  'alKategoriak',
+  () =>
+    getItems({
+      collection: 'termekAlKategoria',
+      fields: ['id', 'termekAlKategoriaNev', 'termekAlKategoriaKep', 'slug'],
+      params: {
+        filter: { kapcsolodoKategoria: { _eq: '1' } },
+      },
+    })
+);
 </script>
 
 <template>
-  <div class="bg-gray-100 ">
-    <div class="flex flex-row py-10 gap-x-4 site-padding">
-      <div class="flex flex-row gap-x-4">
-        <div class="w-60 md:w-72">
-          <NuxtLink to="/kerekpartartok">
-            <NuxtImg 
-              src="/tetocsomagtartok-thumb-nav.webp"
-              alt="Összes kerékpártartó"
-              height="170px"
-              width="295px"
-            />
-            <p class="h-20 p-4 bg-dark-100 text-accent-100">Összes kerékpártartó</p>
-          </NuxtLink>
-        </div>
+  <div class="w-screen bg-gray-100">
+    <div class="flex flex-row py-10 gap-x-4">
+      <div
+        class="flex flex-row px-1 mx-auto overflow-x-scroll overflow-y-hidden 2xl:overflow-x-hidden gap-x-4"
+      >
         <CategoryNavbarItem
-          v-for="thumb in data" :key="thumb.id"
-          :title="thumb.termekAlKategoriaNev" 
-          :image="thumb.termekAlKategoriaKep" 
-          :to="`/kerekpartartok`"
+          title="Összes kerékpártartó"
+          :image="allBikeRacksThumbnail"
+          to="/kerekpartartok"
+          :is-active="path === `/kerekpartartok`"
+        />
+        <CategoryNavbarItem
+          v-for="thumb in kerekpartartokAlKategoriak"
+          :key="thumb.id"
+          :id="thumb.id"
+          :title="thumb.termekAlKategoriaNev"
+          :image="thumb.termekAlKategoriaKep"
+          :to="`/kerekpartartok/${thumb.slug}`"
+          :is-active="path === `/kerekpartartok/${thumb.slug}`"
         />
       </div>
     </div>
