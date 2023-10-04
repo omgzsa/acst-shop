@@ -1,17 +1,22 @@
 <script setup>
 const { getItems } = useDirectusItems();
 
-const { data } = await useAsyncData('id', () =>
+const { data } = await useAsyncData('termekek', () =>
   getItems({
     collection: 'termekek',
-    fields: ['id', 'termekNev', 'termekAr'],
-    // params: {
-    //   filter: { kapcsolodoKategoria: { _eq: '1' } },
-    // },
+    fields: [
+      'id',
+      'termekNev',
+      'termekAr',
+      'termekKategoria.termekKategoria_id',
+    ],
+    params: {
+      filter: { termekKategoria: { termekKategoria_id: { _eq: '1' } } },
+    },
   })
 );
 
-console.log(data.value);
+// console.log(data.value);
 </script>
 
 <template>
@@ -26,11 +31,16 @@ console.log(data.value);
           a jelenlegi KRESZ előírásoknak!
         </template>
       </AppHeader>
+
+      <!-- product filters section -->
+      <ProductFilters />
+
+      <!-- product archive -->
       <div>
-        <!-- <div v-for="item in data" :key="item.id">
+        <div v-for="item in data" :key="item.id">
           <h3>{{ item.termekNev }}</h3>
           <p>{{ item.termekAr }}</p>
-        </div> -->
+        </div>
       </div>
     </div>
   </div>
