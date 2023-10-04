@@ -1,11 +1,9 @@
 <script setup>
 const { path, params } = useRoute();
-// console.log(path === `/kerekpartartok/${params.category}`);
 </script>
 
 <template>
   <div class="bg-white">
-    {{ params.category }}
     <CategoryNavbar />
     <div class="space-y-12 site-padding">
       <AppHeader>
