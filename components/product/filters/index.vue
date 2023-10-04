@@ -4,19 +4,19 @@ const { defaultTransition } = useTailwindConfig();
 
 <template>
   <div class="space-y-10">
-    <div class="grid grid-cols-12 py-3 border-t-2 border-b-2 border-dark-200">
-      <details class="max-w-5xl col-span-11">
+    <div class="grid grid-cols-6 py-3 border-t-2 border-b-2 border-dark-200">
+      <details class="col-span-4">
         <summary
-          class="flex items-center justify-between list-none cursor-pointer hover:font-semibold"
+          class="flex items-center justify-between list-none cursor-pointer"
         >
-          <div>
-            <Icon name="mdi:filter-variant" size="20" class="mb-0.5 mr-2" />
+          <div class="flex items-center hover:font-semibold">
+            <Icon name="mdi:filter-variant" size="22" class="mb-0.5 mr-2" />
             <span>Szűrés</span>
           </div>
         </summary>
-        <div class="flex pt-4">FILTERS</div>
+        <div class="pt-4">FILTERS</div>
       </details>
-      <span class="col-span-1 ml-auto">168 termék</span>
+      <span class="col-span-2 ml-auto">168 termék</span>
     </div>
 
     <!-- TEST FIELD -->
