@@ -11,9 +11,6 @@
     <nav class="space-x-4 font-semibold site-padding">
       <NuxtLink to="/">Home</NuxtLink>
       <NuxtLink to="/kerekpartartok">Tetőboxok és csomagtartók</NuxtLink>
-      <NuxtLink to="/">Sport és utazótáskák</NuxtLink>
-      <NuxtLink to="/">Tetősátrak</NuxtLink>
-      <NuxtLink to="/">Babakocsik és hordozók</NuxtLink>
     </nav>
   </div>
 </template>
