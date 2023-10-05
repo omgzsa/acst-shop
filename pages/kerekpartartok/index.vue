@@ -1,7 +1,7 @@
 <script setup>
 const { getItems } = useDirectusItems();
 
-const { data } = await useAsyncData('termekek', () =>
+const { data: termekekKerekpartartok } = await useAsyncData('termekek', () =>
   getItems({
     collection: 'termekek',
     fields: [
@@ -36,12 +36,7 @@ const { data } = await useAsyncData('termekek', () =>
       <ProductFilters />
 
       <!-- product archive -->
-      <div>
-        <div v-for="item in data" :key="item.id">
-          <h3>{{ item.termekNev }}</h3>
-          <p>{{ item.termekAr }}</p>
-        </div>
-      </div>
+      <ProductList :items="termekekKerekpartartok" />
     </div>
   </div>
 </template>
