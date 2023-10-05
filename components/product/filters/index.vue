@@ -14,12 +14,9 @@ const { defaultTransition } = useTailwindConfig();
             <span>Szűrés</span>
           </div>
         </summary>
-        <div class="pt-4">FILTERS</div>
+        <p class="pt-4">FILTERS</p>
       </details>
       <span class="col-span-2 ml-auto sm:col-span-1">168 termék</span>
     </div>
-
-    <!-- TEST FIELD -->
-    <div>TEST FIELD 001</div>
   </div>
 </template>
