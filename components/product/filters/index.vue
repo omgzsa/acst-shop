@@ -5,7 +5,7 @@ const { defaultTransition } = useTailwindConfig();
 <template>
   <div class="space-y-10">
     <div class="grid grid-cols-6 py-3 border-t-2 border-b-2 border-dark-200">
-      <details class="col-span-4">
+      <details class="col-span-4 sm:col-span-5">
         <summary
           class="flex items-center justify-between list-none cursor-pointer"
         >
@@ -16,7 +16,7 @@ const { defaultTransition } = useTailwindConfig();
         </summary>
         <div class="pt-4">FILTERS</div>
       </details>
-      <span class="col-span-2 ml-auto">168 termék</span>
+      <span class="col-span-2 ml-auto sm:col-span-1">168 termék</span>
     </div>
 
     <!-- TEST FIELD -->
