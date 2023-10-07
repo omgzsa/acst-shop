@@ -3,7 +3,7 @@ const { defaultTransition } = useTailwindConfig();
 </script>
 
 <template>
-  <div class="space-y-10">
+  <div class="">
     <div class="grid grid-cols-6 py-3 border-t-2 border-b-2 border-dark-200">
       <details class="col-span-4 sm:col-span-5">
         <summary
