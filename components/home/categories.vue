@@ -35,17 +35,27 @@ const { getItems } = useDirectusItems();
 const { data: kategoriak } = await useAsyncData('termekKategoria', () =>
   getItems({
     collection: 'termekKategoria',
-    fields: ['id', 'termekKategoriaNev', 'termekKategoriaKep'],
+    params: {
+      fields: [
+        'id',
+        'termekKategoriaNev',
+        'termekKategoriaKep',
+        'nepszeruKategoria',
+        'slug',
+      ],
+    },
   })
 );
 
 const nepszeruKategoriak = computed(() => {
-  return kategoriak.value.filter((kat) => kat.nepszeruKategoria === true);
+  return kategoriak.value.filter((item) => item.nepszeruKategoria === true);
 });
+
+// console.log(nepszeruKategoriak.value);
 </script>
 
 <template>
-  <div class="space-y-12 ">
+  <div class="space-y-12">
     <div class="site-padding">
       <h2>Népszerű kategóriák</h2>
     </div>
@@ -68,56 +78,14 @@ const nepszeruKategoriak = computed(() => {
 </template>
 
 <style>
-/* .swiper {
-  overflow: hidden;
-} */
-
 .swiper-cards {
   @apply max-w-full overflow-hidden pl-4 sm:pl-6 md:pl-8 xl:pl-12;
-  /* max-width: 100vw;
-  overflow: hidden; */
 }
 
 .swiper-wrapper {
   max-width: 310px;
   overflow: visible;
 }
-/* 
-@media screen and (min-width: 420px) {
-  .swiper-wrapper {
-    max-width: 400px;
-  }
-}
-
-@media screen and (min-width: 640px) {
-  .swiper-wrapper {
-    max-width: 600px;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .swiper-wrapper {
-    max-width: 718px;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .swiper-wrapper {
-    max-width: 976px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .swiper-wrapper {
-    max-width: 1210px;
-  }
-}
-
-@media screen and (min-width: 1540px) {
-  .swiper-wrapper {
-    max-width: 1440px;
-  }
-} */
 
 .swiper-slide {
   display: flex;
@@ -134,12 +102,6 @@ const nepszeruKategoriak = computed(() => {
   margin-right: auto;
   display: flex;
 }
-
-/* .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
-.swiper-pagination-horizontal.swiper-pagination-bullets
-  .swiper-pagination-bullet {
-  margin: 0;
-} */
 
 .swiper-pagination-bullet {
   width: 1.75rem;
