@@ -1,5 +1,12 @@
 <script setup>
-const { defaultTransition } = useTailwindConfig();
+// const { defaultTransition } = useTailwindConfig();
+
+defineProps({
+  quantity: {
+    type: Number,
+    required: true,
+  },
+});
 </script>
 
 <template>
@@ -16,7 +23,9 @@ const { defaultTransition } = useTailwindConfig();
         </summary>
         <p class="pt-4">FILTERS</p>
       </details>
-      <span class="col-span-2 ml-auto sm:col-span-1">168 termék</span>
+      <span class="col-span-2 ml-auto sm:col-span-1"
+        >{{ quantity }} termék</span
+      >
     </div>
   </div>
 </template>

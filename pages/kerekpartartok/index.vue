@@ -23,7 +23,13 @@ const {
   })
 );
 
-// console.log(termekekKerekpartartok);
+const quantity = ref(0);
+
+const productQuantity = computed(() => {
+  return (quantity.value = termekekKerekpartartok.value.length);
+});
+
+console.log(quantity.value);
 </script>
 
 <template>
@@ -40,7 +46,7 @@ const {
       </AppHeader>
 
       <!-- product filters section -->
-      <ProductFilters />
+      <ProductFilters :quantity="productQuantity" />
 
       <!-- product archive -->
       <ProductList :items="termekekKerekpartartok" />
