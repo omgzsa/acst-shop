@@ -1,22 +1,29 @@
 <script setup>
 const { getItems } = useDirectusItems();
 
-const { data: termekekKerekpartartok } = await useAsyncData('termekek', () =>
+const {
+  data: termekekKerekpartartok,
+  pending,
+  error,
+} = await useAsyncData('termekek', () =>
   getItems({
     collection: 'termekek',
-    fields: [
-      'id',
-      'termekNev',
-      'termekAr',
-      'termekKategoria.termekKategoria_id',
-    ],
     params: {
-      filter: { termekKategoria: { termekKategoria_id: { _eq: '1' } } },
+      fields: [
+        'id',
+        'termekNev',
+        'termekAr',
+        'termekKep',
+        'termekLeiras',
+        'kapcsolodoKategoria.slug',
+        'kapcsolodoAlKategoria.slug',
+      ],
+      filter: { kapcsolodoKategoria: { id: { _eq: '1' } } },
     },
   })
 );
 
-// console.log(data.value);
+// console.log(termekekKerekpartartok);
 </script>
 
 <template>
