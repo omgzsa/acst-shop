@@ -1,32 +1,13 @@
 <script setup>
+const { defaultTransition } = useTailwindConfig();
+
 defineProps({
-  id: {
-    type: Number,
-    required: true,
-  },
-  name: {
-    type: String,
-    // required: true,
-  },
-  price: {
-    type: Number,
-    // required: true,
-  },
-  img: {
-    type: String,
-    // required: true,
-  },
-  description: {
-    type: String,
-    // required: false,
-  },
-  categorySlug: {
-    type: String,
-  },
-  subCategorySlug: {
-    type: String,
-    // required: false,
-  },
+  id: Number,
+  name: String,
+  img: String,
+  description: String,
+  categorySlug: String,
+  subCategorySlug: String,
 });
 </script>
 
@@ -41,8 +22,12 @@ defineProps({
         class="object-contain object-bottom py-6 bg-dark-200"
       />
       <div class="px-1 space-y-2">
-        <h4>{{ name }}</h4>
-        <p class="text-sm text-dark-300">{{ description.slice(0, 40) }}...</p>
+        <h4>
+          {{ name }}
+        </h4>
+        <p class="text-xs sm:text-sm md:text-base text-dark-300">
+          {{ description.slice(0, 40) }}...
+        </p>
       </div>
     </div>
   </NuxtLink>
