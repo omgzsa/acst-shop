@@ -12,7 +12,6 @@ const {
       fields: [
         'id',
         'termekNev',
-        'termekAr',
         'termekKep',
         'termekLeiras',
         'kapcsolodoKategoria.slug',
@@ -29,7 +28,7 @@ const productQuantity = computed(() => {
   return (quantity.value = termekekKerekpartartok.value.length);
 });
 
-console.log(quantity.value);
+// console.log(quantity.value);
 </script>
 
 <template>
