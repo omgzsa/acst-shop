@@ -1,16 +1,16 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  // app: {
-  //   pageTransition: { name: 'page', mode: 'out-in' },
-  // },
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
+  },
   // devtools: true,
   vite: {
     server: {
       hmr: {
         protocol: 'ws',
-        host: 'localhost'
-      }
-    }
+        host: 'localhost',
+      },
+    },
   },
   head: {
     title: 'Autocsomagtarto | THULE retailer',
