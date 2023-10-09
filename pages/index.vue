@@ -29,7 +29,7 @@ await fetchFeaturedCategories();
     <section>
       <HomeCta title="Emeld a következő szintre szabadtéri élményeid" />
     </section>
-    <section class="">
+    <section>
       <h2 class="site-padding">Népszerű termékek</h2>
       <div class="bg-gray-400 h-80"></div>
     </section>

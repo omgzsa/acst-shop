@@ -32,7 +32,7 @@ const breakpoints = ref({
 
 const { getItems } = useDirectusItems();
 
-const { data: kategoriak } = await useAsyncData('termekKategoria', () =>
+const { data: nepszeruKategoriak } = await useAsyncData('termekKategoria', () =>
   getItems({
     collection: 'termekKategoria',
     params: {
@@ -43,13 +43,18 @@ const { data: kategoriak } = await useAsyncData('termekKategoria', () =>
         'nepszeruKategoria',
         'slug',
       ],
+      filter: {
+        nepszeruKategoria: {
+          _eq: 'true',
+        },
+      },
     },
   })
 );
 
-const nepszeruKategoriak = computed(() => {
-  return kategoriak.value.filter((item) => item.nepszeruKategoria === true);
-});
+// const nepszeruKategoriak = computed(() => {
+//   return kategoriak.value.filter((item) => item.nepszeruKategoria === true);
+// });
 
 // console.log(nepszeruKategoriak.value);
 </script>
