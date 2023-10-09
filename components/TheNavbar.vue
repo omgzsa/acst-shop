@@ -10,7 +10,8 @@
   <div class="bg-accent-100 text-dark-100">
     <nav class="space-x-4 font-semibold site-padding">
       <NuxtLink to="/">Home</NuxtLink>
-      <NuxtLink to="/kerekpartartok">Tetőboxok és csomagtartók</NuxtLink>
+      <NuxtLink to="/kerekpartartok">Kerékpártartók</NuxtLink>
+      <NuxtLink to="/tetocsomagtartok">Tetőcsomagtartok</NuxtLink>
     </nav>
   </div>
 </template>
