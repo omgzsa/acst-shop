@@ -1,4 +1,8 @@
 <script setup>
+// definePageMeta({
+//   layout: 'archive',
+// });
+
 const { getItems } = useDirectusItems();
 
 const {
@@ -22,13 +26,9 @@ const {
   })
 );
 
-const quantity = ref(0);
-
 const productQuantity = computed(() => {
-  return (quantity.value = termekekKerekpartartok.value.length);
+  return termekekKerekpartartok.value.length;
 });
-
-// console.log(quantity.value);
 </script>
 
 <template>
