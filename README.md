@@ -1,5 +1,10 @@
 # local e-commerce app
 
+## Stack
+
+- Directus
+- Nuxt 3
+
 ## Setup
 
 Make sure to install the dependencies:
