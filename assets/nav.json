@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Tetőboxok és csomagtartók",
+    "categories": [
+      {
+        "id": 1,
+        "name": "Kerékpártartók",
+        "link": "/kerekpartartok",
+        "subCategories": [
+          {
+            "id": 1,
+            "name": "Vonóhorogra szerelhető kerékpártartók",
+            "link": "/kerekpartartok/vonohorogra-szerelheto-kerekpartartok"
+          },
+          {
+            "id": 2,
+            "name": "Tetőre szerelhető kerékpártartók",
+            "link": "/kerekpartartok/tetore-szerelheto-kerekpartartok"
+          },
+          {
+            "id": 3,
+            "name": "Csomagtartóra szerelhető kerékpártartók",
+            "link": "/kerekpartartok/csomagtartora-szerelheto-kerekpartartok"
+          },
+          {
+            "id": 4,
+            "name": "Kerékpártartó kiegészítők",
+            "link": "/kerekpartartok/kerekpartarto-kiegeszitok"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Sport és utazótáskák",
+    "categories": []
+  },
+  {
+    "id": 3,
+    "name": "Tetősátrak",
+    "categories": []
+  },
+  {
+    "id": 4,
+    "name": "Babakocsik és hordozók",
+    "categories": []
+  }
+]
