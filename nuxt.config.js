@@ -52,6 +52,10 @@ export default defineNuxtConfig({
     families: {
       Poppins: [300, 400, 500, 600],
     },
+    prefetch: false,
+    preconnect: false,
+    preload: false,
+    download: true,
   },
   swiper: {
     modules: ['pagination'],
