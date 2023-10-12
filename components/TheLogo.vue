@@ -3,7 +3,7 @@ const { defaultTransition } = useTailwindConfig();
 </script>
 
 <template>
-  <NuxtLink to="/" class="inline-flex items-center mr-auto group nav__logo">
+  <NuxtLink to="/" class="inline-flex items-center font-semibold group">
     <div
       class="flex flex-row items-center justify-center space-x-1 text-3xl group-hover:font-bold"
     >
@@ -20,7 +20,7 @@ const { defaultTransition } = useTailwindConfig();
       </span>
 
       <span
-        class="logo text-dark-100 group-hover:text-dark-100 group-hover:underline group-hover:underline-offset-4 group-hover:decoration-accent-100"
+        class="logo text-dark-100 decoration-accent-100 group-hover:underline group-hover:underline-offset-4 group-hover:decoration-accent-100"
         :class="defaultTransition"
       >
         ACST
