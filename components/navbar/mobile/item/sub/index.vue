@@ -25,7 +25,7 @@ const props = defineProps({
       >
         <NuxtLink
           :to="`${sub.link}`"
-          class="px-2 py-1 transition-colors duration-300 rounded hover:text-dark-100 hover:bg-accent-100 hover:font-semibold"
+          class="px-2 py-1 transition-colors duration-200 rounded hover:text-dark-100 hover:bg-accent-100 hover:font-semibold"
         >
           {{ sub.name }}
         </NuxtLink>
