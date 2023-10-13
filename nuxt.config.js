@@ -22,6 +22,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/google-fonts',
     '@vueuse/nuxt',
+    '@vueuse/motion/nuxt',
     '@nuxt/image',
     'nuxt-icon',
     'nuxt-swiper',
@@ -40,10 +41,24 @@ export default defineNuxtConfig({
   pinia: {
     autoImports: ['defineStore', 'acceptHMRUpdate'],
   },
-  imports: {
-    // not working for some reason
-    // dirs: ['./stores'],
-  },
+  // public: {
+  //   motion: {
+  //     directives: {
+  //       'pop-bottom': {
+  //         initial: {
+  //           scale: 0,
+  //           opacity: 0,
+  //           y: 100,
+  //         },
+  //         visible: {
+  //           scale: 1,
+  //           opacity: 1,
+  //           y: 0,
+  //         },
+  //       },
+  //     },
+  //   },
+  // },
   tailwindcss: {
     cssPath: '~/assets/css/tailwind.css',
     configPath: '~/tailwind.config.js',
