@@ -17,7 +17,9 @@ const { data, pending, error } = await useAsyncData(path, () => {
         'termekNev',
         'termekKep',
         'termekLeiras',
+        'termekReszletek',
         'termekAr',
+        'eredetiThuleGarancia',
         'termekGaleria.id',
         'termekGaleria.directus_files_id',
       ],
@@ -32,6 +34,7 @@ product.value = data.value;
 
 <template>
   <div class="bg-white">
+    <TheBreadCrumbs />
     <div
       v-if="pending"
       class="flex items-center justify-center h-12 text-xl font-bold text-white bg-red-500"
@@ -48,6 +51,8 @@ product.value = data.value;
         :description="product.termekLeiras"
         :price="product.termekAr"
         :gallery="product.termekGaleria"
+        :details="product.termekReszletek"
+        :has-varranty="product.eredetiThuleGarancia"
       />
     </div>
   </div>
