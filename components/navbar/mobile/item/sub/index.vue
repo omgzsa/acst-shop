@@ -2,10 +2,10 @@
 const props = defineProps({
   name: String,
   link: String,
-  subCategories: Array,
+  subCategories: Object,
 });
 
-console.log(props.subCategories);
+// console.log(props.subCategories);
 </script>
 
 <template>
