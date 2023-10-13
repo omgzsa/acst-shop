@@ -9,12 +9,12 @@ const props = defineProps({
 </script>
 
 <template>
-  <div>
+  <ul>
     <li
       class="px-2 py-1 text-sm rounded-md hover:bg-accent-100 hover:font-bold"
       :class="defaultTransition"
     >
-      <NuxtLink class="w-full font-semibold" :to="link">{{ name }}</NuxtLink>
+      <NuxtLink class="font-semibold" :to="link">{{ name }}</NuxtLink>
     </li>
     <li
       v-for="sub in props.subCategories"
@@ -22,7 +22,7 @@ const props = defineProps({
       class="px-2 py-1 text-sm rounded-md hover:bg-accent-100 hover:font-bold"
       :class="defaultTransition"
     >
-      <NuxtLink class="w-full" :to="sub.link">{{ sub.name }}</NuxtLink>
+      <NuxtLink :to="sub.link">{{ sub.name }}</NuxtLink>
     </li>
-  </div>
+  </ul>
 </template>

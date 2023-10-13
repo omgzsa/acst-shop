@@ -15,7 +15,7 @@ const menuLeave = () => {
 </script>
 
 <template>
-  <ul class="relative hidden space-x-6 font-medium menu-main lg:flex">
+  <ul class="hidden space-x-6 font-medium menu-main lg:flex">
     <NavbarDesktopItem
       v-for="category in navItems"
       :key="category.id"
