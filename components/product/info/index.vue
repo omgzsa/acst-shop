@@ -36,7 +36,7 @@ const props = defineProps({
     <div class="flex flex-col pt-4 pb-10 space-y-6 border-b site-padding">
       <h1>{{ props.name }}</h1>
       <p>{{ props.description }}</p>
-      <div>
+      <div class="tracking-wide">
         <span class="block text-xs sm:text-sm">Online ár:</span>
         <div class="space-x-1">
           <p class="inline text-2xl font-bold lg:text-3xl">
@@ -46,7 +46,7 @@ const props = defineProps({
         </div>
       </div>
       <button
-        class="flex items-center justify-center px-4 py-2 space-x-2 font-semibold shadow-md duration-400 bg-accent-100 text-dark-100 hover:bg-dark-100 hover:text-accent-100 hover:transition-all hover:rounded-lg hover:shadow-lg"
+        class="flex items-center justify-center px-4 py-2 space-x-2 font-semibold border rounded-md shadow-md border-accent-100 duration-400 bg-accent-100 text-dark-100 hover:bg-dark-100 hover:text-white hover:shadow-lg"
         :class="defaultTransition"
       >
         <Icon name="mdi:cart-outline" class="mb-1 text-lg" />
