@@ -71,64 +71,6 @@ watch(
           >
 
           <NavbarMobile :nav-items="nav" />
-          <!-- <details>
-            <summary
-              class="flex items-center justify-between list-none cursor-pointer"
-            >
-              <div
-                class="text-2xl font-semibold transition-colors duration-300 cursor-pointer text-dark-100 hover:text-dark-300"
-              >
-                TETŐBOXOK ÉS CSOMAGTARTÓK
-                <Icon name="mdi:chevron-down" />
-              </div>
-            </summary>
-
-            <div class="grid py-4 gap-y-6">
-              <div class="grid gap-y-2">
-                <span
-                  ><NuxtLink
-                    to="/kerekpartartok"
-                    class="px-2 py-1 text-base font-semibold leading-snug tracking-wide transition-colors duration-300 rounded xl:text-lg hover:text-dark-100 hover:bg-accent-100 hover:font-bold"
-                    >Összes kerékpártartó</NuxtLink
-                  ></span
-                >
-                <ul class="grid gap-y-2">
-                  <li class="text-sm rounded-md hover:font-bold">
-                    <NuxtLink
-                      to="/kerekpartartok/vonohorogra-szerelheto-kerekpartartok"
-                      class="px-2 py-1 transition-colors duration-300 rounded hover:text-dark-100 hover:bg-accent-100 hover:font-semibold"
-                    >
-                      Vonóhorogra szerelhető kerékpártartók
-                    </NuxtLink>
-                  </li>
-                  <li class="text-sm rounded-md hover:font-bold">
-                    <NuxtLink
-                      to="/kerekpartartok/tetore-szerelheto-kerekpartartok"
-                      class="px-2 py-1 transition-colors duration-300 rounded hover:text-dark-100 hover:bg-accent-100 hover:font-semibold"
-                    >
-                      Tetőre szerelhető kerékpártartók
-                    </NuxtLink>
-                  </li>
-                  <li class="text-sm rounded-md hover:font-bold">
-                    <NuxtLink
-                      to="/kerekpartartok/csomagtartora-szerelheto-kerekpartartok"
-                      class="px-2 py-1 transition-colors duration-300 rounded hover:text-dark-100 hover:bg-accent-100 hover:font-semibold"
-                    >
-                      Csomagtartóra szerelhető kerékpártartók
-                    </NuxtLink>
-                  </li>
-                  <li class="text-sm rounded-md hover:font-bold">
-                    <NuxtLink
-                      to="/kerekpartartok/kerekpartarto-kiegeszitok"
-                      class="px-2 py-1 transition-colors duration-300 rounded hover:text-dark-100 hover:bg-accent-100 hover:font-semibold"
-                    >
-                      Kerékpártartó kiegészítők
-                    </NuxtLink>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </details> -->
         </div>
       </div>
     </nav>
