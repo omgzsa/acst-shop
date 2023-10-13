@@ -12,10 +12,10 @@ const { defaultTransition } = useTailwindConfig();
         :class="defaultTransition"
       >
         <div class="block group-hover:hidden">
-          <Icon name="ph:activity-bold" />
+          <Icon name="ph:activity-bold" class="mb-1" />
         </div>
         <div class="hidden group-hover:block">
-          <Icon name="mdi:music-accidental-sharp" />
+          <Icon name="mdi:music-accidental-sharp" class="mb-1" />
         </div>
       </span>
 
