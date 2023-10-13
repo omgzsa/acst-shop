@@ -1,8 +1,4 @@
 <script setup>
-// definePageMeta({
-//   layout: 'archive',
-// });
-
 const { getItems } = useDirectusItems();
 
 const {
