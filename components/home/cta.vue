@@ -1,4 +1,6 @@
 <script setup>
+const { defaultTransition } = useTailwindConfig();
+
 defineProps({
   title: {
     type: String,
@@ -20,7 +22,8 @@ defineProps({
           legyenek és megbízható és kényelmes szállást biztosítsanak bárhol.
         </p>
         <button
-          class="px-4 py-2 font-semibold shadow-md hover:shadow-lg duration-400 bg-accent-100 text-dark-100 hover:bg-accent-200 hover:transition-all hover:rounded-lg"
+          class="px-4 py-2 font-semibold border rounded-md shadow-md hover:shadow-lg duration-400 bg-accent-100 text-dark-100 hover:bg-dark-100 hover:text-white border-accent-100"
+          :class="defaultTransition"
         >
           <NuxtLink to="/">
             <span class="text-base leading-snug tracking-wide xl:text-lg">
