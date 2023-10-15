@@ -1,11 +1,7 @@
 <script setup>
-const config = useRuntimeConfig();
-const baseUrl = config.public.directusUrl;
-
 const { defaultTransition } = useTailwindConfig();
 
 const props = defineProps({
-  img: String,
   gallery: Array,
   name: String,
   description: String,
@@ -17,21 +13,6 @@ const props = defineProps({
 
 <template>
   <div class="pb-10 space-y-4">
-    <!-- PRODUCT IMAGE GALLERY -->
-    <div>
-      <!-- <NuxtImg
-        :src="props.img"
-        :alt="props.description"
-        class="object-contain h-96 bg-dark-200"
-      /> -->
-      <div class="grid grid-cols-6 gap-x-1">
-        <NuxtImg
-          v-for="img in gallery"
-          :key="img.id"
-          :src="`${baseUrl}/assets/${img.directus_files_id}`"
-        />
-      </div>
-    </div>
     <!-- PRODUCT IMPORTANT INFOS -->
     <div class="flex flex-col pt-4 pb-10 space-y-6 border-b site-padding">
       <h1>{{ props.name }}</h1>
@@ -72,27 +53,6 @@ const props = defineProps({
       <p>
         {{ props.details }}
       </p>
-    </div>
-
-    <!-- PRODUCT TECHNICAL SPECIFICATIONS -->
-    <div class="pt-4 pb-8 space-y-4 border-b site-padding">
-      <h2>Technikai adatok</h2>
-      <div class="grid grid-cols-2 gap-4">
-        <ul class="space-y-2">
-          <li>Termék jellemző 1</li>
-          <li>Termék jellemző 2</li>
-          <li>Termék jellemző 3</li>
-          <li>Termék jellemző 4</li>
-          <li>Termék jellemző 5</li>
-        </ul>
-        <ul class="space-y-2">
-          <li>Termék jellemző 1</li>
-          <li>Termék jellemző 2</li>
-          <li>Termék jellemző 3</li>
-          <li>Termék jellemző 4</li>
-          <li>Termék jellemző 5</li>
-        </ul>
-      </div>
     </div>
   </div>
 </template>
