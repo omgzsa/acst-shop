@@ -22,6 +22,7 @@ const { data, pending, error } = await useAsyncData(path, () => {
         'eredetiThuleGarancia',
         'termekGaleria.id',
         'termekGaleria.directus_files_id',
+        'vonohorograKerekpartartoTechSpec',
       ],
       // filter: { kapcsolodoKategoria: { id: { _eq: '1' } } },
     },
@@ -45,15 +46,15 @@ product.value = data.value;
       {{ error.message }}
     </div>
     <div v-else>
+      <ProductGallery :gallery="product.termekGaleria" />
       <ProductInfo
-        :img="`${baseUrl}/assets/${product.termekKep}`"
         :name="product.termekNev"
         :description="product.termekLeiras"
         :price="product.termekAr"
-        :gallery="product.termekGaleria"
         :details="product.termekReszletek"
         :has-varranty="product.eredetiThuleGarancia"
       />
+      <ProductTechSpec />
     </div>
   </div>
 </template>
