@@ -5,8 +5,9 @@ const props = defineProps({
 });
 
 const detailsRef = ref(null);
-const isOpen = ref(null);
+const isOpen = ref(true);
 
+// doesn't work well, something with open state management
 const toggleDetails = () => {
   const details = detailsRef.value;
   const detailsList = details.parentElement.children;
@@ -30,22 +31,34 @@ const toggleDetails = () => {
       >
         {{ props.name }}
         <Icon v-if="!isOpen" name="mdi:chevron-down" class="mb-1" />
-        <Icon v-if="isOpen" name="mdi:chevron-left" class="mb-1" />
+        <Icon v-else name="mdi:chevron-left" class="mb-1" />
       </div>
     </summary>
 
-    <!-- <Transition name="fade" mode="out-in"> -->
-    <div class="grid py-4 rounded gap-y-6 bg-dark-200">
-      <NavbarMobileItemSub
-        v-for="category in props.categories"
-        :key="category.id"
-        :name="category.name"
-        :link="category.link"
-        :sub-categories="category.subCategories"
-      />
-    </div>
-    <!-- </Transition> -->
+    <Transition name="fade" mode="out-in">
+      <div
+        class="grid py-4 transition-all duration-300 rounded opacity-0 gap-y-6 bg-dark-200"
+        :class="{ 'opacity-100 pointer-events-auto': isOpen }"
+      >
+        <NavbarMobileItemSub
+          v-for="category in props.categories"
+          :key="category.id"
+          :name="category.name"
+          :link="category.link"
+          :sub-categories="category.subCategories"
+        />
+      </div>
+    </Transition>
   </details>
 </template>
 
-<style></style>
+<style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
+
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0;
+}
+</style>
