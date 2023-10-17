@@ -1,6 +1,6 @@
 <script setup>
-const config = useRuntimeConfig();
-const baseUrl = config.public.directusUrl;
+// const config = useRuntimeConfig();
+// const baseUrl = config.public.directusUrl;
 
 const { getItemById } = useDirectusItems();
 const { params, path } = useRoute();
@@ -22,15 +22,43 @@ const { data, pending, error } = await useAsyncData(path, () => {
         'eredetiThuleGarancia',
         'termekGaleria.id',
         'termekGaleria.directus_files_id',
-        'vonohorograKerekpartartoTechSpec',
+        'vonohorograKerekpartartoTechSpec.vonohorograKerekpartartoTechSpec_id',
+        'tetoreKerekpartartoTechSpec.tetoreKerekpartartoTechSpec_id',
+        'csomagtartoraKerekpartartoTechSpec.csomagtartoraKerekpartartoTechSpec_id',
+        'kerekparKiegeszitoTechSpec.kerekparKiegeszitoTechSpec_id',
       ],
-      // filter: { kapcsolodoKategoria: { id: { _eq: '1' } } },
     },
   });
 });
 
-console.log(data.value);
+if (!data.value) {
+  throw createError({
+    statusCode: 404,
+    message: 'Nem találjuk a terméket 💥💥',
+    // fatal: true,
+  });
+}
+
 product.value = data.value;
+
+// return ONLY the techSpec array from product that's length is > 0
+const availableTechSpec = computed(() => {
+  return Object.entries(product.value).filter(([key, value]) => {
+    if (key.includes('TechSpec')) {
+      return value.length > 0;
+    }
+  });
+});
+
+// corresponding techSpec key and value
+const [specKey, [specValue]] = availableTechSpec.value[0];
+
+// corresponding techSpec id
+const specId = computed(() => {
+  return Object.values(specValue)[0];
+});
+
+// console.log(params);
 </script>
 
 <template>
@@ -54,7 +82,7 @@ product.value = data.value;
         :details="product.termekReszletek"
         :has-varranty="product.eredetiThuleGarancia"
       />
-      <ProductTechSpec />
+      <ProductTechSpec :spec-key="specKey" :spec-id="specId" />
     </div>
   </div>
 </template>
