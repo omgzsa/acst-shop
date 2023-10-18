@@ -12,9 +12,9 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="pb-10 space-y-4">
+  <div class="pb-10 space-y-4 lg:col-span-1">
     <!-- PRODUCT IMPORTANT INFOS -->
-    <div class="flex flex-col pt-4 pb-10 space-y-6 border-b site-padding">
+    <div class="flex flex-col pt-4 pb-10 space-y-6 border-b">
       <h1>{{ props.name }}</h1>
       <p>{{ props.description }}</p>
       <div class="tracking-wide">
@@ -38,7 +38,7 @@ const props = defineProps({
     <!-- PRODUCT HASVARRANTY BOOL -->
     <div
       v-if="hasVarranty"
-      class="flex items-center pt-4 pb-8 space-x-2 border-b site-padding"
+      class="flex items-center pt-4 pb-8 space-x-2 border-b"
     >
       <Icon
         name="mdi:check"
@@ -48,7 +48,7 @@ const props = defineProps({
     </div>
 
     <!-- PRODUCT LONG DESCRIPTION -->
-    <div class="pt-4 pb-8 space-y-4 border-b site-padding">
+    <div class="pt-4 pb-8 space-y-4 border-b lg:border-b-0">
       <h2>Termék leírása</h2>
       <p>
         {{ props.details }}
