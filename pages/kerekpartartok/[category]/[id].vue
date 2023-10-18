@@ -63,26 +63,30 @@ const specId = computed(() => {
 
 <template>
   <div class="bg-white">
-    <TheBreadCrumbs />
-    <div
-      v-if="pending"
-      class="flex items-center justify-center h-12 text-xl font-bold text-white bg-red-500"
-    >
-      LOADING ...
+    <div class="site-padding">
+      <TheBreadCrumbs />
+      <div
+        v-if="pending"
+        class="flex items-center justify-center h-12 text-xl font-bold text-white bg-red-500"
+      >
+        LOADING ...
+      </div>
+      <div v-if="error" class="h-12 mx-auto my-auto bg-red-400">
+        {{ error.message }}
+      </div>
     </div>
-    <div v-if="error" class="h-12 mx-auto my-auto bg-red-400">
-      {{ error.message }}
-    </div>
-    <div v-else>
-      <ProductGallery :gallery="product.termekGaleria" />
-      <ProductInfo
-        :name="product.termekNev"
-        :description="product.termekLeiras"
-        :price="product.termekAr"
-        :details="product.termekReszletek"
-        :has-varranty="product.eredetiThuleGarancia"
-      />
-      <ProductTechSpec :spec-key="specKey" :spec-id="specId" />
+    <div v-if="product">
+      <div class="grid lg:grid-cols-3 gap-x-6 gap-y-10 site-padding">
+        <ProductGallery :gallery="product.termekGaleria" />
+        <ProductInfo
+          :name="product.termekNev"
+          :description="product.termekLeiras"
+          :price="product.termekAr"
+          :details="product.termekReszletek"
+          :has-varranty="product.eredetiThuleGarancia"
+        />
+        <ProductTechSpec :spec-key="specKey" :spec-id="specId" />
+      </div>
     </div>
   </div>
 </template>
