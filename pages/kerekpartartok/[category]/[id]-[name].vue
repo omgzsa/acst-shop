@@ -35,7 +35,7 @@ if (!data.value) {
   throw createError({
     statusCode: 404,
     message: 'Nem találjuk a terméket 💥💥',
-    // fatal: true,
+    fatal: true,
   });
 }
 
@@ -65,7 +65,7 @@ const specId = computed(() => {
   <div class="bg-white">
     <div class="site-padding">
       <TheBreadCrumbs />
-      <div
+      <!-- <div
         v-if="pending"
         class="flex items-center justify-center h-12 text-xl font-bold text-white bg-red-500"
       >
@@ -73,7 +73,7 @@ const specId = computed(() => {
       </div>
       <div v-if="error" class="h-12 mx-auto my-auto bg-red-400">
         {{ error.message }}
-      </div>
+      </div> -->
     </div>
     <div v-if="product">
       <div class="grid lg:grid-cols-3 gap-x-6 gap-y-10 site-padding">
