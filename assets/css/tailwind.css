@@ -69,9 +69,25 @@
     @apply font-bold leading-tight tracking-wide;
   }
 
+  a,
   p,
   li {
     @apply text-base leading-snug tracking-wide xl:text-lg;
+  }
+
+  .footer-link {
+    cursor: pointer;
+  }
+
+  .footer-link:after {
+    display: block;
+    content: '';
+    border-bottom: solid 1px #d2ff52;
+    transform: scaleX(0);
+    transition: transform 100ms ease-in-out;
+  }
+  .footer-link:hover:after {
+    transform: scaleX(1);
   }
 }
 
