@@ -1,7 +1,7 @@
 <script setup>
 const { defaultTransition } = useTailwindConfig();
 
-defineProps({
+const props = defineProps({
   id: Number,
   name: String,
   img: String,
@@ -9,11 +9,18 @@ defineProps({
   categorySlug: String,
   subCategorySlug: String,
 });
+
+const slugName = computed(() => {
+  return props.name
+    .toLowerCase()
+    .replace(/ /g, '-')
+    .replace(/[^\w-]+/g, '');
+});
 </script>
 
 <template>
   <NuxtLink
-    :to="`/${categorySlug}/${subCategorySlug}/${id}`"
+    :to="`/${categorySlug}/${subCategorySlug}/${id}-${slugName}`"
     class="block overflow-hidden group"
   >
     <div class="space-y-4">
