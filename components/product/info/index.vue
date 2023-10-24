@@ -49,7 +49,7 @@ const props = defineProps({
 
     <!-- PRODUCT LONG DESCRIPTION -->
     <div class="pt-4 pb-8 space-y-4 border-b lg:border-b-0">
-      <h2>Termék leírása</h2>
+      <h3>Termék leírása</h3>
       <p>
         {{ props.details }}
       </p>
