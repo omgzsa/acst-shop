@@ -93,6 +93,7 @@ const clearAllFilters = () => {
             </label>
           </div>
         </details>
+
         <!-- E-BIKE COMPATIBLE FILTER -->
         <details
           class="overflow-hidden rounded [&_summary::-webkit-details-marker]:hidden group"
