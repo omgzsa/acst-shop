@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div class="relative z-10 px-1 space-y-16">
+  <div class="relative z-10 px-1 pb-16 space-y-16">
     <!-- THULE garancia -->
     <div class="z-0 grid items-center gap-6 site-padding sm:grid-cols-2">
       <div class="relative img-container-first sm:order-2">
