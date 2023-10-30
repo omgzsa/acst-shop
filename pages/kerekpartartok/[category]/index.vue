@@ -2,7 +2,27 @@
 const { path, params } = useRoute();
 const { getItems } = useDirectusItems();
 
-const { data, pending, error } = await useAsyncData('termekek', () =>
+const kerekpartartok = ref([]);
+const bikeFilters = ref([]);
+const eBikeCompatible = ref(null);
+
+const filter = {
+  kapcsolodoAlKategoria: { slug: { _eq: params.category } },
+};
+
+if (bikeFilters.value.length > 0) {
+  filter.kerekpartartoTechSpec = {
+    szallithato_kerekparok: { _in: bikeFilters.value },
+  };
+}
+
+if (eBikeCompatible.value) {
+  filter.kerekpartartoTechSpec = {
+    eBike_kompatibilis: { _eq: eBikeCompatible.value },
+  };
+}
+
+const { data } = await useAsyncData('termekek', () =>
   getItems({
     collection: 'termekek',
     params: {
@@ -12,15 +32,13 @@ const { data, pending, error } = await useAsyncData('termekek', () =>
         'termekKep',
         'termekLeiras',
         'kapcsolodoKategoria.slug',
-        'kapcsolodoAlKategoria.termekAlKategoriaNev',
         'kapcsolodoAlKategoria.slug',
+        'kapcsolodoAlKategoria.termekAlKategoriaNev',
         'kapcsolodoAlKategoria.termekAlKategoriaLeiras',
+        'kerekpartartoTechSpec.szallithato_kerekparok',
+        'kerekpartartoTechSpec.eBike_kompatibilis',
       ],
-      filter: {
-        kapcsolodoAlKategoria: {
-          slug: { _eq: params.category },
-        },
-      },
+      filter, // Use the predefined filter
     },
   })
 );
@@ -33,11 +51,36 @@ const pageDescription = computed(() => {
   return data.value[0].kapcsolodoAlKategoria.termekAlKategoriaLeiras;
 });
 
-const productQuantity = computed(() => {
-  return data.value.length;
+const filteredProducts = computed(() => {
+  if (bikeFilters.value.length === 0 && eBikeCompatible.value === null) {
+    // No filters applied, return all products
+    return kerekpartartok.value;
+  }
+
+  return kerekpartartok.value.filter((product) => {
+    // Filter based on bikeFilters
+    const bikeFilterMatch =
+      bikeFilters.value.length === 0 ||
+      bikeFilters.value.includes(
+        product.kerekpartartoTechSpec[0].szallithato_kerekparok
+      );
+
+    // Filter based on eBikeCompatible
+    const eBikeCompatibleMatch =
+      eBikeCompatible.value === null ||
+      product.kerekpartartoTechSpec[0].eBike_kompatibilis ===
+        eBikeCompatible.value;
+
+    // Return products that match both filters
+    return bikeFilterMatch && eBikeCompatibleMatch;
+  });
 });
 
-// console.log(data.value);
+const productQuantity = computed(() => {
+  return filteredProducts.value.length;
+});
+
+kerekpartartok.value = data.value;
 </script>
 
 <template>
@@ -52,10 +95,14 @@ const productQuantity = computed(() => {
       </AppHeader>
 
       <!-- product filters section -->
-      <ProductFilters :quantity="productQuantity" />
+      <ProductFiltersKerekpartartok
+        :quantity="productQuantity"
+        v-model:model-value="bikeFilters"
+        v-model:e-bike-filter="eBikeCompatible"
+      />
 
       <!-- product archive -->
-      <ProductList :items="data" />
+      <ProductList :items="filteredProducts" />
     </div>
   </div>
 </template>
