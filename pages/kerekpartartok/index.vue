@@ -1,11 +1,20 @@
 <script setup>
 const { getItems } = useDirectusItems();
 
-const {
-  data: termekekKerekpartartok,
-  pending,
-  error,
-} = await useAsyncData('termekek', () =>
+const bikeFilters = ref([]);
+const kerekpartartok = ref([]);
+
+const filter = {
+  kapcsolodoKategoria: { id: { _eq: '1' } },
+};
+
+if (bikeFilters.value.length > 0) {
+  filter.kerekpartartoTechSpec = {
+    szallithato_kerekparok: { _in: bikeFilters.value },
+  };
+}
+
+const { data } = await useAsyncData('termekek', () =>
   getItems({
     collection: 'termekek',
     params: {
@@ -16,15 +25,34 @@ const {
         'termekLeiras',
         'kapcsolodoKategoria.slug',
         'kapcsolodoAlKategoria.slug',
+        'kerekpartartoTechSpec.szallithato_kerekparok',
       ],
-      filter: { kapcsolodoKategoria: { id: { _eq: '1' } } },
+      filter, // Use the predefined filter
     },
   })
 );
 
-const productQuantity = computed(() => {
-  return termekekKerekpartartok.value.length;
+const filteredProducts = computed(() => {
+  if (bikeFilters.value.length === 0) {
+    return kerekpartartok.value;
+  }
+  return kerekpartartok.value.filter((product) =>
+    bikeFilters.value.includes(
+      product.kerekpartartoTechSpec[0].szallithato_kerekparok
+    )
+  );
 });
+
+const productQuantity = computed(() => {
+  return filteredProducts.value.length;
+});
+
+// Function to clear filters
+const clearFilters = () => {
+  bikeFilters.value = [];
+};
+
+kerekpartartok.value = data.value;
 </script>
 
 <template>
@@ -41,10 +69,14 @@ const productQuantity = computed(() => {
       </AppHeader>
 
       <!-- product filters section -->
-      <ProductFilters :quantity="productQuantity" />
+      <ProductFilters
+        :quantity="productQuantity"
+        v-model="bikeFilters"
+        @update:modelValue="bikeFilters = $event"
+      />
 
       <!-- product archive -->
-      <ProductList :items="termekekKerekpartartok" />
+      <ProductList :items="filteredProducts" />
     </div>
   </div>
 </template>
