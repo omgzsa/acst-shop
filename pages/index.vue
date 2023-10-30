@@ -36,8 +36,8 @@ await fetchFeaturedCategories();
     <section>
       <HomeFeatured />
     </section>
-    <section class="grid items-center justify-center h-48">
+    <!-- <section class="grid items-center justify-center h-48">
       ... MORE CONTENT TO COME
-    </section>
+    </section> -->
   </section>
 </template>

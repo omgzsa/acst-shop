@@ -16,6 +16,8 @@ const { data: kerekpartartokAlKategoriak } = await useAsyncData(
       },
     })
 );
+
+// console.log(kerekpartartokAlKategoriak.value);
 </script>
 
 <template>
