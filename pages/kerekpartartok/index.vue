@@ -86,7 +86,7 @@ kerekpartartok.value = data.value;
       </AppHeader>
 
       <!-- product filters section -->
-      <ProductFilters
+      <ProductFiltersKerekpartartok
         :quantity="productQuantity"
         v-model:model-value="bikeFilters"
         v-model:e-bike-filter="eBikeCompatible"
