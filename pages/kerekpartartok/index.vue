@@ -1,8 +1,9 @@
 <script setup>
 const { getItems } = useDirectusItems();
 
-const bikeFilters = ref([]);
 const kerekpartartok = ref([]);
+const bikeFilters = ref([]);
+const eBikeCompatible = ref(null);
 
 const filter = {
   kapcsolodoKategoria: { id: { _eq: '1' } },
@@ -11,6 +12,12 @@ const filter = {
 if (bikeFilters.value.length > 0) {
   filter.kerekpartartoTechSpec = {
     szallithato_kerekparok: { _in: bikeFilters.value },
+  };
+}
+
+if (eBikeCompatible.value) {
+  filter.kerekpartartoTechSpec = {
+    eBike_kompatibilis: { _eq: eBikeCompatible.value },
   };
 }
 
@@ -26,6 +33,7 @@ const { data } = await useAsyncData('termekek', () =>
         'kapcsolodoKategoria.slug',
         'kapcsolodoAlKategoria.slug',
         'kerekpartartoTechSpec.szallithato_kerekparok',
+        'kerekpartartoTechSpec.eBike_kompatibilis',
       ],
       filter, // Use the predefined filter
     },
@@ -33,14 +41,28 @@ const { data } = await useAsyncData('termekek', () =>
 );
 
 const filteredProducts = computed(() => {
-  if (bikeFilters.value.length === 0) {
+  if (bikeFilters.value.length === 0 && eBikeCompatible.value === null) {
+    // No filters applied, return all products
     return kerekpartartok.value;
   }
-  return kerekpartartok.value.filter((product) =>
-    bikeFilters.value.includes(
-      product.kerekpartartoTechSpec[0].szallithato_kerekparok
-    )
-  );
+
+  return kerekpartartok.value.filter((product) => {
+    // Filter based on bikeFilters
+    const bikeFilterMatch =
+      bikeFilters.value.length === 0 ||
+      bikeFilters.value.includes(
+        product.kerekpartartoTechSpec[0].szallithato_kerekparok
+      );
+
+    // Filter based on eBikeCompatible
+    const eBikeCompatibleMatch =
+      eBikeCompatible.value === null ||
+      product.kerekpartartoTechSpec[0].eBike_kompatibilis ===
+        eBikeCompatible.value;
+
+    // Return products that match both filters
+    return bikeFilterMatch && eBikeCompatibleMatch;
+  });
 });
 
 const productQuantity = computed(() => {
@@ -50,6 +72,7 @@ const productQuantity = computed(() => {
 // Function to clear filters
 const clearFilters = () => {
   bikeFilters.value = [];
+  eBikeCompatible.value = null;
 };
 
 kerekpartartok.value = data.value;
@@ -71,8 +94,8 @@ kerekpartartok.value = data.value;
       <!-- product filters section -->
       <ProductFilters
         :quantity="productQuantity"
-        v-model="bikeFilters"
-        @update:modelValue="bikeFilters = $event"
+        v-model:model-value="bikeFilters"
+        v-model:e-bike-filter="eBikeCompatible"
       />
 
       <!-- product archive -->
