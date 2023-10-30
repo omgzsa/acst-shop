@@ -20,6 +20,7 @@ export default defineNuxtConfig({
   },
   modules: [
     '@nuxtjs/tailwindcss',
+    '@tailwindcss/forms',
     '@nuxtjs/google-fonts',
     '@vueuse/nuxt',
     '@vueuse/motion/nuxt',
@@ -62,6 +63,7 @@ export default defineNuxtConfig({
   tailwindcss: {
     cssPath: '~/assets/css/tailwind.css',
     configPath: '~/tailwind.config.js',
+    plugins: ['@tailwindcss/forms'],
   },
   googleFonts: {
     families: {
