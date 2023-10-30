@@ -22,10 +22,7 @@ const { data, pending, error } = await useAsyncData(path, () => {
         'eredetiThuleGarancia',
         'termekGaleria.id',
         'termekGaleria.directus_files_id',
-        'vonohorograKerekpartartoTechSpec.vonohorograKerekpartartoTechSpec_id',
-        'tetoreKerekpartartoTechSpec.tetoreKerekpartartoTechSpec_id',
-        'csomagtartoraKerekpartartoTechSpec.csomagtartoraKerekpartartoTechSpec_id',
-        'kerekparKiegeszitoTechSpec.kerekparKiegeszitoTechSpec_id',
+        'kerekpartartoTechSpec.*',
       ],
     },
   });
@@ -41,24 +38,7 @@ if (!data.value) {
 
 product.value = data.value;
 
-// return ONLY the techSpec array from product that's length is > 0
-const availableTechSpec = computed(() => {
-  return Object.entries(product.value).filter(([key, value]) => {
-    if (key.includes('TechSpec')) {
-      return value.length > 0;
-    }
-  });
-});
-
-// corresponding techSpec key and value
-const [specKey, [specValue]] = availableTechSpec.value[0];
-
-// corresponding techSpec id
-const specId = computed(() => {
-  return Object.values(specValue)[0];
-});
-
-// console.log(params);
+// console.log(product.value);
 </script>
 
 <template>
@@ -85,7 +65,10 @@ const specId = computed(() => {
           :details="product.termekReszletek"
           :has-varranty="product.eredetiThuleGarancia"
         />
-        <ProductTechSpec :spec-key="specKey" :spec-id="specId" />
+        <ProductTechSpec
+          spec-key="kerekpartartoTechSpec"
+          :spec-id="product.kerekpartartoTechSpec[0].id"
+        />
       </div>
     </div>
   </div>

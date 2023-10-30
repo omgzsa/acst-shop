@@ -10,16 +10,8 @@ const { data: techSpec } = await useAsyncData('techSpec', () => {
   return getItemById({
     collection: `${props.specKey}`,
     id: `${props.specId}`,
-    // params: {
-    //   fields: ['.*', `${props.specKey}`],
-    // },
   });
 });
-
-// return true if key exists in techSpec
-const renderIfKeyExists = (key) => {
-  return Object.keys(techSpec.value).includes(key);
-};
 </script>
 
 <template>
@@ -30,181 +22,181 @@ const renderIfKeyExists = (key) => {
       class="gap-4 space-y-4 sm:space-y-0 sm:grid sm:grid-cols-2 lg:grid-cols-3"
     >
       <ProductTechSpecItemNumber
-        v-if="renderIfKeyExists('szallithato_kerekparok')"
+        v-if="techSpec.szallithato_kerekparok !== null"
         name="Szállítható kerékpárok"
         :value="techSpec.szallithato_kerekparok"
       />
 
       <ProductTechSpecItemString
-        v-if="techSpec.terhelhetoseg"
+        v-if="techSpec.terhelhetoseg !== null"
         name="Terhelhetőség"
         :value="techSpec.terhelhetoseg"
       />
 
-      <ProductTechSpecItemString
-        v-if="techSpec.egy_kerekpar_max_sulya"
+      <ProductTechSpecItemNumber
+        v-if="techSpec.egy_kerekpar_max_sulya !== null"
         name="1db kerékpár max súlya"
         :value="techSpec.egy_kerekpar_max_sulya"
       />
 
       <ProductTechSpecItemString
-        v-if="techSpec.meret_h_sz_m"
+        v-if="techSpec.meret_HxSZxM !== null"
         name="Méret (HxSZxM)"
-        :value="techSpec.meret_h_sz_m"
+        :value="techSpec.meret_HxSZxM"
       />
 
       <ProductTechSpecItemString
-        v-if="techSpec.meret_osszehajtva"
+        v-if="techSpec.meret_osszehajtva !== null"
         name="Méret összehajtva"
         :value="techSpec.meret_osszehajtva"
       />
 
-      <ProductTechSpecItemString
-        v-if="techSpec.suly"
+      <ProductTechSpecItemNumber
+        v-if="techSpec.suly !== null"
         name="Súly"
         :value="techSpec.suly"
       />
 
       <ProductTechSpecItemString
-        v-if="techSpec.kerekparvaz_meret_kompatibilitas"
+        v-if="techSpec.kerekparvaz_meret_kompatibilitas !== null"
         name="Kerékpárváz méret kompatibilitás"
         :value="techSpec.kerekparvaz_meret_kompatibilitas"
       />
 
       <ProductTechSpecItemString
-        v-if="techSpec.kerek_kerekparvaz_meret"
+        v-if="techSpec.kerek_kerekparvaz_meret !== null"
         name="Kerek kerékpárváz méret"
         :value="techSpec.kerek_kerekparvaz_meret"
       />
 
       <ProductTechSpecItemString
-        v-if="techSpec.ovalis_kerekparvaz_meret"
+        v-if="techSpec.ovalis_kerekparvaz_meret !== null"
         name="Ovális kerékpárváz méret"
         :value="techSpec.ovalis_kerekparvaz_meret"
       />
 
       <ProductTechSpecItemNumber
-        v-if="techSpec.max_gumiabroncs_szelesseg"
+        v-if="techSpec.max_gumiabroncs_szelesseg !== null"
         name="Max. gumiabroncs szélesség"
         :value="techSpec.max_gumiabroncs_szelesseg"
       />
 
       <ProductTechSpecItemString
-        v-if="techSpec.max_szallithato_kerekmeret"
+        v-if="techSpec.max_szallithato_kerekmeret !== null"
         name="Max. szállítható kerékméret"
         :value="techSpec.max_szallithato_kerekmeret"
       />
 
-      <ProductTechSpecItemString
-        v-if="techSpec.max_tengelytav"
+      <ProductTechSpecItemNumber
+        v-if="techSpec.max_tengelytav !== null"
         name="Max. tengelytávolság"
         :value="techSpec.max_tengelytav"
       />
 
-      <ProductTechSpecItemString
-        v-if="techSpec.kerekparok_kozotti_tavolsag"
+      <ProductTechSpecItemNumber
+        v-if="techSpec.kerekparok_kozotti_tavolsag !== null"
         name="Kerékpárok közötti távolság"
         :value="techSpec.kerekparok_kozotti_tavolsag"
       />
 
       <ProductTechSpecItemBool
-        v-if="renderIfKeyExists('hatso_lampak_rendszamtabla_lathato')"
+        v-if="techSpec.hatso_lampak_rendszamtabla_lathato !== null"
         name="Hátsó lámpák és rendszámtábla látható kerékpárokkal szerelve"
         :is-true="!techSpec.hatso_lampak_rendszamtabla_lathato"
       />
 
       <ProductTechSpecItemBool
-        v-if="renderIfKeyExists('karbonvaz_kompatibilis')"
+        v-if="techSpec.karbonvaz_kompatibilis !== null"
         name="Karbonváz kompatibilis"
         :is-true="!techSpec.karbonvaz_kompatibilis"
       />
 
       <ProductTechSpecItemBool
-        v-if="renderIfKeyExists('THULE_SquareBar_rudra_szerelheto')"
+        v-if="techSpec.THULE_SquareBar_rudra_szerelheto !== null"
         name="THULE SquareBar rúdra szerelhető"
         :is-true="!techSpec.THULE_SquareBar_rudra_szerelheto"
       />
 
       <ProductTechSpecItemBool
-        v-if="renderIfKeyExists('THULE_WingBar_EVO_rudra_szerelheto')"
+        v-if="techSpec.THULE_WingBar_EVO_rudra_szerelheto !== null"
         name="THULE WingBar EVO rúdra szerelhető"
         :is-true="!techSpec.THULE_WingBar_EVO_rudra_szerelheto"
       />
 
       <ProductTechSpecItemBool
-        v-if="renderIfKeyExists('THULE_WingBar_Edge_rudra_szerelheto')"
+        v-if="techSpec.THULE_WingBar_Egde_rudra_szerelheto !== null"
         name="THULE WingBar Edge rúdra szerelhető"
-        :is-true="!techSpec.THULE_WingBar_Edge_rudra_szerelheto"
+        :is-true="!techSpec.THULE_WingBar_Egde_rudra_szerelheto"
       />
 
       <ProductTechSpecItemBool
-        v-if="renderIfKeyExists('THULE_WingBar_rudra_szerelheto')"
+        v-if="techSpec.THULE_WingBar_rudra_szerelheto !== null"
         name="THULE WingBar rúdra szerelhető"
         :is-true="!techSpec.THULE_WingBar_rudra_szerelheto"
       />
 
       <ProductTechSpecItemBool
-        v-if="renderIfKeyExists('THULE_ProBar_rudra_szerelheto')"
+        v-if="techSpec.THULE_ProBar_rudra_szerelheto !== null"
         name="THULE ProBar rúdra szerelhető"
         :is-true="!techSpec.THULE_ProBar_rudra_szerelheto"
       />
 
       <ProductTechSpecItemBool
-        v-if="renderIfKeyExists('THULE_SlideBar_rudra_szerelheto')"
+        v-if="techSpec.THULE_SlideBar_rudra_szerelheto !== null"
         name="THULE SlideBar rúdra szerelhető"
         :is-true="!techSpec.THULE_SlideBar_rudra_szerelheto"
       />
 
       <ProductTechSpecItemBool
-        v-if="renderIfKeyExists('osszecsukhato')"
+        v-if="techSpec.osszecsukhato !== null"
         name="Összecsukható"
         :is-true="!techSpec.osszecsukhato"
       />
 
       <ProductTechSpecItemBool
-        v-if="renderIfKeyExists('dontheto')"
+        v-if="techSpec.dontheto !== null"
         name="Dönthető"
         :is-true="!techSpec.dontheto"
       />
 
-      <ProductTechSpecItemString
-        v-if="techSpec.elektromos_csatlakozas"
+      <ProductTechSpecItemBool
+        v-if="techSpec.elektromos_csatlakozas !== null"
         name="Elektromos csatlakozás"
         :value="techSpec.elektromos_csatlakozas"
       />
 
       <ProductTechSpecItemString
-        v-if="techSpec.szin"
+        v-if="techSpec.szin !== null"
         name="Szín"
         :value="techSpec.szin"
       />
 
       <ProductTechSpecItemNumber
-        v-if="techSpec.tipusszam"
+        v-if="techSpec.tipusszam !== null"
         name="Típusszám"
         :value="techSpec.tipusszam"
       />
 
       <ProductTechSpecItemBool
-        v-if="renderIfKeyExists('kiegeszito_lampatest')"
+        v-if="techSpec.kiegeszito_lampatest !== null"
         name="Kiegészítő lámpatest"
         :is-true="!techSpec.kiegeszito_lampatest"
       />
 
       <ProductTechSpecItemBool
-        v-if="renderIfKeyExists('eBike_kompatibilis')"
+        v-if="techSpec.eBike_kompatibilis !== null"
         name="E-bike kompatibilis"
         :is-true="!techSpec.eBike_kompatibilis"
       />
 
       <ProductTechSpecItemBool
-        v-if="renderIfKeyExists('rendszamtabla_tarto')"
+        v-if="techSpec.rendszamtabla_tarto !== null"
         name="Rendszámtábla tartó"
         :is-true="!techSpec.rendszamtabla_tarto"
       />
 
       <ProductTechSpecItemBool
-        v-if="renderIfKeyExists('one_key_system_kompatibilis')"
+        v-if="techSpec.one_key_system_kompatibilis !== null"
         name="One Key System kompatibilis"
         :is-true="!techSpec.one_key_system_kompatibilis"
       />
