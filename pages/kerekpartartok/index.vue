@@ -69,12 +69,6 @@ const productQuantity = computed(() => {
   return filteredProducts.value.length;
 });
 
-// Function to clear filters
-const clearFilters = () => {
-  bikeFilters.value = [];
-  eBikeCompatible.value = null;
-};
-
 kerekpartartok.value = data.value;
 </script>
 
