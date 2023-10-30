@@ -36,7 +36,8 @@ const { data: techSpec } = await useAsyncData('techSpec', () => {
       <ProductTechSpecItemNumber
         v-if="techSpec.egy_kerekpar_max_sulya !== null"
         name="1db kerékpár max súlya"
-        :value="techSpec.egy_kerekpar_max_sulya + ' kg'"
+        :value="techSpec.egy_kerekpar_max_sulya"
+        measure="kg"
       />
 
       <ProductTechSpecItemString
@@ -54,7 +55,8 @@ const { data: techSpec } = await useAsyncData('techSpec', () => {
       <ProductTechSpecItemNumber
         v-if="techSpec.suly !== null"
         name="Súly"
-        :value="techSpec.suly + ' kg'"
+        :value="techSpec.suly"
+        measure="kg"
       />
 
       <ProductTechSpecItemString
@@ -78,7 +80,8 @@ const { data: techSpec } = await useAsyncData('techSpec', () => {
       <ProductTechSpecItemNumber
         v-if="techSpec.max_gumiabroncs_szelesseg !== null"
         name="Max. gumiabroncs szélesség"
-        :value="techSpec.max_gumiabroncs_szelesseg + ' mm'"
+        :value="techSpec.max_gumiabroncs_szelesseg"
+        measure="”"
       />
 
       <ProductTechSpecItemString
@@ -90,13 +93,15 @@ const { data: techSpec } = await useAsyncData('techSpec', () => {
       <ProductTechSpecItemNumber
         v-if="techSpec.max_tengelytav !== null"
         name="Max. tengelytávolság"
-        :value="techSpec.max_tengelytav + ' mm'"
+        :value="techSpec.max_tengelytav"
+        measure="mm"
       />
 
       <ProductTechSpecItemNumber
         v-if="techSpec.kerekparok_kozotti_tavolsag !== null"
         name="Kerékpárok közötti távolság"
-        :value="techSpec.kerekparok_kozotti_tavolsag + ' cm'"
+        :value="techSpec.kerekparok_kozotti_tavolsag"
+        measure="cm"
       />
 
       <ProductTechSpecItemBool
