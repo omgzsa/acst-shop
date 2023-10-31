@@ -1,62 +1,34 @@
 <script setup>
-//
+import { useCartStore } from '@/stores/cart';
+
+const cartStore = useCartStore();
 </script>
 
 <template>
   <section>
-    <div class="max-w-screen-xl px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8">
+    <div class="py-10 site-padding">
       <div class="max-w-3xl mx-auto">
         <header class="text-center">
-          <h1 class="text-xl font-bold text-gray-900 sm:text-3xl">Your Cart</h1>
+          <h1 class="text-xl font-bold text-gray-900 sm:text-3xl">Kosár</h1>
         </header>
 
         <div class="mt-8">
-          <ul class="space-y-4">
-            <li class="flex items-center gap-4">
-              <img
-                src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80"
-                alt=""
-                class="object-cover w-16 h-16 rounded"
-              />
-
-              <div>
-                <h3 class="text-sm text-gray-900">Basic Tee 6-Pack</h3>
-
-                <dl class="mt-0.5 space-y-px text-[10px] text-gray-600">
-                  <div>
-                    <dt class="inline">Size:</dt>
-                    <dd class="inline">XXS</dd>
-                  </div>
-
-                  <div>
-                    <dt class="inline">Color:</dt>
-                    <dd class="inline">White</dd>
-                  </div>
-                </dl>
-              </div>
-
-              <div class="flex items-center justify-end flex-1 gap-2">
-                <form>
-                  <label for="Line1Qty" class="sr-only"> Quantity </label>
-
-                  <input
-                    type="number"
-                    min="1"
-                    value="1"
-                    id="Line1Qty"
-                    class="h-8 w-12 rounded border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
-                  />
-                </form>
-
-                <button class="text-gray-600 transition hover:text-red-600">
-                  <span class="sr-only">Remove item</span>
-                  <Icon name="mdi:trash-can-outline" size="18" />
-                </button>
-              </div>
-            </li>
+          <ul v-if="!cartStore.isEmpty" class="space-y-4">
+            <AppCartItem
+              v-for="item in cartStore.items"
+              :key="item.id"
+              :id="item.id"
+              :name="item.name"
+              :img="item.img"
+            />
           </ul>
 
-          <div class="flex justify-end pt-8 mt-8 border-t border-gray-100">
+          <div v-else>
+            <em>A kosár üres.</em>
+          </div>
+
+          <!-- SUMMERY  -->
+          <!-- <div class="flex justify-end pt-8 mt-8 border-t border-gray-100">
             <div class="w-screen max-w-lg space-y-4">
               <dl class="space-y-0.5 text-sm text-gray-700">
                 <div class="flex justify-between">
@@ -112,7 +84,7 @@
                 </a>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
