@@ -13,13 +13,9 @@ export const useProductStore = defineStore('productStore', () => {
   }
 
   // getters = computed
-  const productIdOne = computed(() => {
-    return products.value.filter((product) => product.id === 1);
-  });
 
   return {
     products,
-    productIdOne,
     fetchProducts,
   };
 });
