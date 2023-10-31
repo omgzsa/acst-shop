@@ -1,23 +1,10 @@
 <script setup>
-const data = ref([]);
-const { getItems } = useDirectusItems();
+import { useProductStore } from '@/stores/products';
+const productStore = useProductStore();
 
-const fetchFeaturedCategories = async () => {
-  try {
-    const filters = { nepszeruKategoria: { _eq: 'true' } };
-    data.value = await getItems({
-      collection: 'termekKategoria',
-      params: {
-        filter: filters,
-      },
-    });
-    // console.log(data.value);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-await fetchFeaturedCategories();
+onMounted(() => {
+  productStore.fetchProducts();
+});
 </script>
 
 <template>
@@ -36,8 +23,12 @@ await fetchFeaturedCategories();
     <section>
       <HomeFeatured />
     </section>
-    <!-- <section class="grid items-center justify-center h-48">
+    <section class="grid">
       ... MORE CONTENT TO COME
-    </section> -->
+
+      <!-- <div v-for="item in productStore.products" :key="item.id">
+        {{ item }}
+      </div> -->
+    </section>
   </section>
 </template>
