@@ -58,7 +58,7 @@ const clearAllFilters = () => {
           <span>Szűrés</span>
         </div>
       </summary>
-      <div class="items-start pt-4 sm:flex gap-x-6">
+      <div class="items-start pt-4 space-y-2 sm:space-y-0 sm:flex gap-x-6">
         <!-- MAX BIKE NUMBER FILTER -->
         <details
           class="overflow-hidden rounded [&_summary::-webkit-details-marker]:hidden group"
@@ -78,7 +78,7 @@ const clearAllFilters = () => {
             <label
               v-for="(option, index) in availableBikeFilter"
               :key="option"
-              class="flex items-center"
+              class="flex items-center pl-1"
               :for="'filterMaxBikeNumber-' + index"
             >
               <input
@@ -87,7 +87,7 @@ const clearAllFilters = () => {
                 :value="option"
                 @change="filterByBikeNumber"
                 v-model="selectedBikeNumbers"
-                class="w-5 h-5 mb-1 shadow checked:shadow-xl"
+                class="w-5 h-5 mb-1 shadow text-dark-100 focus:ring-accent-100"
               />
               <span class="ml-2">{{ option }}</span>
             </label>
@@ -110,12 +110,12 @@ const clearAllFilters = () => {
             </span>
           </summary>
           <div class="py-2 space-y-1">
-            <label class="flex items-center" for="eBikeCompatible">
+            <label class="flex items-center pl-1" for="eBikeCompatible">
               <input
                 id="eBikeCompatible"
                 type="checkbox"
                 :value="eBikeFilter"
-                class="w-5 h-5 shadow checked:shadow-xl"
+                class="w-5 h-5 shadow text-dark-100 focus:ring-accent-100"
                 @change="filterByEBikeCompatible"
                 v-model="eBikeChecked"
               />
