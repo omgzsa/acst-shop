@@ -1,5 +1,5 @@
 <script setup>
-console.log('kosar');
+// console.log('kosar');
 </script>
 
 <template>
