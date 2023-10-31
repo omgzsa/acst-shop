@@ -2,13 +2,25 @@
 const { defaultTransition } = useTailwindConfig();
 
 const props = defineProps({
-  gallery: Array,
+  id: Number,
+  img: String,
   name: String,
   description: String,
   details: String,
   price: Number,
   hasVarranty: Boolean,
 });
+
+const emit = defineEmits(['add-to-cart']);
+
+const addProductToCart = () => {
+  emit('add-to-cart', {
+    id: props.id,
+    name: props.name,
+    price: props.price,
+    img: props.img,
+  });
+};
 </script>
 
 <template>
@@ -29,6 +41,7 @@ const props = defineProps({
       <button
         class="flex items-center justify-center px-4 py-2 space-x-2 font-semibold border rounded-md shadow-md border-accent-100 duration-400 bg-accent-100 text-dark-100 hover:bg-dark-100 hover:text-white hover:shadow-lg"
         :class="defaultTransition"
+        @click="addProductToCart"
       >
         <Icon name="mdi:cart-outline" class="mb-1 text-lg" />
         <span class="text-base tracking-wide">Kosárba rakom</span>

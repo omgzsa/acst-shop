@@ -1,11 +1,10 @@
 <script setup>
-// const config = useRuntimeConfig();
-// const baseUrl = config.public.directusUrl;
-
+import { useCartStore } from '@/stores/cart';
 const { getItemById } = useDirectusItems();
 const { params, path } = useRoute();
 
 const product = ref({});
+const cartStore = useCartStore();
 
 const { data, pending, error } = await useAsyncData(path, () => {
   return getItemById({
@@ -37,8 +36,6 @@ if (!data.value) {
 }
 
 product.value = data.value;
-
-// console.log(product.value);
 </script>
 
 <template>
@@ -59,11 +56,14 @@ product.value = data.value;
       <div class="grid lg:grid-cols-3 gap-x-6 gap-y-10 site-padding">
         <ProductGallery :gallery="product.termekGaleria" />
         <ProductInfo
+          :id="product.id"
           :name="product.termekNev"
+          :img="product.termekGaleria[0].directus_files_id"
           :description="product.termekLeiras"
           :price="product.termekAr"
           :details="product.termekReszletek"
           :has-varranty="product.eredetiThuleGarancia"
+          @add-to-cart="cartStore.addItems($event)"
         />
         <ProductTechSpec
           spec-key="kerekpartartoTechSpec"
