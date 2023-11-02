@@ -2,19 +2,14 @@
 const config = useRuntimeConfig();
 const baseUrl = config.public.directusUrl;
 
-const quantity = ref(props.quantity);
-
 const props = defineProps({
   name: String,
   img: String,
   price: Number,
   quantity: Number,
-  // item: Object,
-  // count: Number,
 });
 
-// const emit = defineEmits(['removeItem'])
-// console.log(props.item);
+const emit = defineEmits(['clearItem']);
 </script>
 
 <template>
@@ -31,7 +26,9 @@ const props = defineProps({
       <dl class="mt-0.5 space-y-px text-[12px] text-gray-600">
         <div class="space-x-1">
           <dt class="inline">Ár:</dt>
-          <dd class="inline">{{ price * quantity }} Ft</dd>
+          <dd class="inline font-medium tracking-wider">
+            {{ price * quantity }} Ft
+          </dd>
         </div>
       </dl>
     </div>
@@ -47,6 +44,7 @@ const props = defineProps({
       <button
         class="p-1 text-gray-600 transition rounded-md hover:text-red-600 hover:bg-dark-200"
         title="Törlés"
+        @click="emit('clearItem')"
       >
         <span class="sr-only">Remove item</span>
         <Icon name="mdi:trash-can-outline" size="18" />
