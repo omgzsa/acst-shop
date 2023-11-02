@@ -24,7 +24,7 @@ const addProductToCart = () => {
 </script>
 
 <template>
-  <div class="pb-10 space-y-4 lg:col-span-1">
+  <div class="space-y-4 lg:col-span-1">
     <!-- PRODUCT IMPORTANT INFOS -->
     <div class="flex flex-col pt-4 pb-10 space-y-6 border-b">
       <h1>{{ props.name }}</h1>
@@ -32,7 +32,7 @@ const addProductToCart = () => {
       <div class="tracking-wide">
         <span class="block text-xs sm:text-sm">Online ár:</span>
         <div class="space-x-1">
-          <p class="inline text-2xl font-bold lg:text-3xl">
+          <p class="inline text-3xl font-bold lg:text-4xl">
             {{ props.price }} Ft
           </p>
           <span>(ÁFA-val)</span>
