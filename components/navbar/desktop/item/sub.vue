@@ -10,7 +10,7 @@ const props = defineProps({
 
 <template>
   <ul>
-    <li class="mb-2 tracking-wider border-b rounded-md hover:font-semibold">
+    <li class="mb-2 tracking-wider rounded-md hover:font-semibold">
       <NuxtLink
         class="block px-3 py-1.5 text-sm font-bold text-gray-600 rounded-md hover:bg-accent-100/70 hover:text-dark-100"
         :to="link"
