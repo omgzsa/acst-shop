@@ -2,51 +2,52 @@
 const config = useRuntimeConfig();
 const baseUrl = config.public.directusUrl;
 
+const quantity = ref(props.quantity);
+
 const props = defineProps({
-  id: Number,
   name: String,
   img: String,
+  price: Number,
+  quantity: Number,
+  // item: Object,
+  // count: Number,
 });
+
+// const emit = defineEmits(['removeItem'])
+// console.log(props.item);
 </script>
 
 <template>
-  <li class="flex items-center gap-4">
+  <li class="flex items-center gap-4 py-2 border-b">
     <NuxtImg
       :src="`${baseUrl}/assets/${img}`"
       alt=""
-      class="object-cover w-16 h-16 rounded"
+      class="object-cover w-16 h-16 p-0.5 rounded bg-dark-200"
     />
 
     <div>
-      <h3 class="text-sm text-gray-900">{{ name }}</h3>
+      <h3 class="text-base text-gray-900">{{ name }}</h3>
 
-      <!-- <dl class="mt-0.5 space-y-px text-[10px] text-gray-600">
-            <div>
-              <dt class="inline">Size:</dt>
-              <dd class="inline">XXS</dd>
-            </div>
-
-            <div>
-              <dt class="inline">Color:</dt>
-              <dd class="inline">White</dd>
-            </div>
-          </dl> -->
+      <dl class="mt-0.5 space-y-px text-[12px] text-gray-600">
+        <div class="space-x-1">
+          <dt class="inline">Ár:</dt>
+          <dd class="inline">{{ price * quantity }} Ft</dd>
+        </div>
+      </dl>
     </div>
 
-    <div class="flex items-center justify-end flex-1 gap-2">
-      <form>
-        <label for="Line1Qty" class="sr-only"> darab </label>
+    <div class="flex items-center justify-end flex-1 gap-x-2">
+      <!-- <AppCartInput
+        class="w-12"
+        v-model="quantity"
+        @update:model-value="quantity = $event.value"
+      /> -->
+      <p class="pt-1">x{{ quantity }}</p>
 
-        <input
-          type="number"
-          min="1"
-          value="1"
-          id="Line1Qty"
-          class="h-8 w-12 rounded border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
-        />
-      </form>
-
-      <button class="text-gray-600 transition hover:text-red-600">
+      <button
+        class="p-1 text-gray-600 transition rounded-md hover:text-red-600 hover:bg-dark-200"
+        title="Törlés"
+      >
         <span class="sr-only">Remove item</span>
         <Icon name="mdi:trash-can-outline" size="18" />
       </button>
