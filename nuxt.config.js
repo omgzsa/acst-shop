@@ -29,6 +29,7 @@ export default defineNuxtConfig({
     'nuxt-swiper',
     '@pinia/nuxt',
     'nuxt-directus',
+    'nuxt-lodash',
   ],
   runtimeConfig: {
     public: {
