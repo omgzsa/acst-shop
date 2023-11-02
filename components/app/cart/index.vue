@@ -8,7 +8,7 @@ const cartStore = useCartStore();
 <template>
   <section>
     <div class="min-h-[80vh] py-6 lg:py-10 site-padding">
-      <div class="max-w-xl mx-auto">
+      <div class="max-w-2xl mx-auto">
         <header class="space-y-2">
           <h1 class="">Kosár</h1>
           <p class="inline-block mr-1">Valami még kimaradt?</p>
@@ -24,6 +24,7 @@ const cartStore = useCartStore();
               :img="item.img"
               :price="item.price"
               :quantity="item.quantity"
+              @clearItem="cartStore.clearItem(item.name)"
             />
             <!-- <AppCartItem
               v-for="(items, name) in cartStore.grouped"
@@ -41,21 +42,16 @@ const cartStore = useCartStore();
             <div class="w-full max-w-sm space-y-4">
               <dl class="space-y-0.5 text-sm text-gray-700">
                 <div class="flex justify-between">
-                  <dt>Subtotal</dt>
-                  <dd>£250</dd>
+                  <dt>Részösszeg (ÁFA-val)</dt>
+                  <dd>{{ cartStore.cartTotal }} Ft</dd>
                 </div>
 
                 <div class="flex justify-between">
-                  <dt>VAT</dt>
-                  <dd>£25</dd>
+                  <dt>Házhozszállítás:</dt>
+                  <dd class="text-dark-300">A következő lépésben számítva</dd>
                 </div>
 
-                <div class="flex justify-between">
-                  <dt>Discount</dt>
-                  <dd>-£20</dd>
-                </div>
-
-                <div class="flex justify-between !text-base font-medium">
+                <div class="flex justify-between text-2xl font-bold">
                   <dt>Teljes összeg:</dt>
                   <dd>{{ cartStore.cartTotal }} Ft</dd>
                 </div>
@@ -71,7 +67,7 @@ const cartStore = useCartStore();
                     Kosár kiürítése
                   </span>
                 </button>
-                <AppButton label="Fizetés" to="/" />
+                <AppButton label="Szállítás & Fizetés" to="/" />
               </div>
             </div>
           </div>
