@@ -17,6 +17,17 @@ export const useCartStore = defineStore('cartStore', () => {
     }
   }
 
+  function clearItem(itemName) {
+    // if quantity > 1, decrease quantity by 1, else remove item from array
+    const index = items.value.findIndex((i) => i.name === itemName);
+    if (index === -1) return;
+    if (items.value[index].quantity > 1) {
+      items.value[index].quantity--;
+    } else {
+      items.value.splice(index, 1);
+    }
+  }
+
   function $reset() {
     items.value = [];
   }
@@ -24,6 +35,10 @@ export const useCartStore = defineStore('cartStore', () => {
   // Getters
   const itemCount = computed(() => items.value.length);
   const isEmpty = computed(() => itemCount.value === 0);
+  const itemQuantity = computed((name) => {
+    const index = items.value.findIndex((i) => i.name === name);
+    return index === -1 ? 0 : items.value[index].quantity;
+  });
   // const grouped = computed(() => groupBy(items.value, (item) => item.name));
   // const groupCount = computed((name) => items.value[name].length);
   const cartTotal = computed(() =>
@@ -35,8 +50,8 @@ export const useCartStore = defineStore('cartStore', () => {
     itemCount,
     isEmpty,
     cartTotal,
-    // grouped,
-    // groupCount,
+    itemQuantity,
+    clearItem,
     $reset,
     addItems,
   };
