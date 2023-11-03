@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+//
+</script>
 
 <template>
   <div class="relative z-10 px-1 pb-16 space-y-16">
