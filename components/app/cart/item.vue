@@ -2,6 +2,8 @@
 const config = useRuntimeConfig();
 const baseUrl = config.public.directusUrl;
 
+// const count = ref(0);
+
 const props = defineProps({
   name: String,
   img: String,
@@ -34,11 +36,8 @@ const emit = defineEmits(['clearItem']);
     </div>
 
     <div class="flex items-center justify-end flex-1 gap-x-2">
-      <!-- <AppCartInput
-        class="w-12"
-        v-model="quantity"
-        @update:model-value="quantity = $event.value"
-      /> -->
+      <!-- <AppCartInput class="w-12" v-model="count" />
+      {{ count }} -->
       <p class="pt-1">x{{ quantity }}</p>
 
       <button
