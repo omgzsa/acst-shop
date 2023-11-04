@@ -9,7 +9,7 @@ const openingHours = {
 };
 </script>
 <template>
-  <div class="py-10 text-white bg-dark-100">
+  <div class="py-10 text-white bg-black">
     <div class="site-padding">
       <div class="flex flex-col items-center space-y-8">
         <!-- THULE LOGO -->
