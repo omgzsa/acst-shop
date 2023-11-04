@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
   },
+  ssr: true,
   // devtools: true,
   vite: {
     server: {
@@ -43,24 +44,6 @@ export default defineNuxtConfig({
   pinia: {
     autoImports: ['defineStore', 'acceptHMRUpdate'],
   },
-  // public: {
-  //   motion: {
-  //     directives: {
-  //       'pop-bottom': {
-  //         initial: {
-  //           scale: 0,
-  //           opacity: 0,
-  //           y: 100,
-  //         },
-  //         visible: {
-  //           scale: 1,
-  //           opacity: 1,
-  //           y: 0,
-  //         },
-  //       },
-  //     },
-  //   },
-  // },
   tailwindcss: {
     cssPath: '~/assets/css/tailwind.css',
     configPath: '~/tailwind.config.js',
