@@ -1,40 +1,28 @@
-# local e-commerce app
+# THULE Retailer E-commerce Site Documentation
 
-## Stack
+**DOCUMENTATION UNDER CONSTRUCTION !!**
 
-- Directus
-- Nuxt 3
+## Table of Contents
 
-## Setup
+### Overview
 
-Make sure to install the dependencies:
+- Introduction to the e-commerce site.
+- Key features and benefits of using the- site.
+- Mission statement or the purpose of the site.
 
-```bash
-# npm
-npm install
-```
+### Usage
 
-## Development Server
+- How to navigate and use the e-commerce site.
+- How to browse and view product listings and details.
+- How to use the shopping cart and complete the checkout process.
+- User account management features.
+- How to view order history and track orders.
+- Brief mention of administrative features for managing products and orders.
 
-Start the development server on `http://localhost:3000`:
+### Contact
 
-```bash
-# npm
-npm run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-```
+- How users can get in touch with the development team.
+- Information on available support channels for users and contributors.
+- Version History
+- Changelog with release notes and updates specific to the e-commerce site.
+- This concise documentation will provide your users with the necessary information to use your e-commerce site effectively while excluding any confidential or technical details that are not relevant to the general public.
