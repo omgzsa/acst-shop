@@ -30,7 +30,11 @@ const toggleDetails = () => {
 </script>
 
 <template>
-  <details @click="toggleDetails" ref="detailsRef">
+  <details
+    @click="toggleDetails"
+    ref="detailsRef"
+    class="overflow-hidden rounded [&_summary::-webkit-details-marker]:hidden"
+  >
     <summary class="flex items-center justify-between list-none cursor-pointer">
       <div
         class="text-2xl font-semibold uppercase transition-colors duration-300 cursor-pointer text-dark-100 hover:text-dark-300"

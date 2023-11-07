@@ -49,7 +49,9 @@ const clearAllFilters = () => {
   <div
     class="relative grid grid-cols-6 py-4 border-t-2 border-b-2 border-dark-200"
   >
-    <details class="col-span-6">
+    <details
+      class="col-span-6 overflow-hidden rounded [&_summary::-webkit-details-marker]:hidden"
+    >
       <summary
         class="flex items-center justify-between list-none cursor-pointer"
       >
