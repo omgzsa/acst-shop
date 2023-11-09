@@ -6,7 +6,7 @@ const cartStore = useCartStore();
 </script>
 
 <template>
-  <NuxtLink to="/kosar">
+  <NuxtLink to="/kosar" title="Kosár">
     <div class="relative">
       <Icon
         name="mdi:cart-outline"

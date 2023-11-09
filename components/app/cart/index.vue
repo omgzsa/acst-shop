@@ -67,7 +67,10 @@ const cartStore = useCartStore();
                     Kosár kiürítése
                   </span>
                 </button>
-                <AppButton label="Szállítás & Fizetés" to="/" />
+                <AppButton
+                  label="Szállítás & Fizetés"
+                  to="/szallitas-es-fizetes"
+                />
               </div>
             </div>
           </div>
