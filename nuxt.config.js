@@ -1,8 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  // app: {
-  //   pageTransition: { name: 'page', mode: 'out-in' },
-  // },
   ssr: true,
   // devtools: true,
   vite: {
@@ -31,7 +28,6 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     'nuxt-directus',
     'nuxt-lodash',
-    '@vee-validate/nuxt',
   ],
   runtimeConfig: {
     public: {
@@ -60,16 +56,5 @@ export default defineNuxtConfig({
   },
   swiper: {
     modules: ['pagination'],
-  },
-  veeValidate: {
-    // disable or enable auto imports
-    autoImports: true,
-    // Use different names for components
-    // componentNames: {
-    //   Form: 'VeeForm',
-    //   Field: 'VeeField',
-    //   FieldArray: 'VeeFieldArray',
-    //   ErrorMessage: 'VeeErrorMessage',
-    // },
   },
 });
