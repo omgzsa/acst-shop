@@ -28,6 +28,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     'nuxt-directus',
     'nuxt-lodash',
+    '@formkit/nuxt',
   ],
   runtimeConfig: {
     public: {
@@ -56,5 +57,8 @@ export default defineNuxtConfig({
   },
   swiper: {
     modules: ['pagination'],
+  },
+  formkit: {
+    configFile: './formkit.config.js',
   },
 });
