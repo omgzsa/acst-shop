@@ -1,8 +1,20 @@
 <script setup>
+const { createItems } = useDirectusItems();
 const { defaultTransition } = useTailwindConfig();
 import { useCartStore } from '@/stores/cart';
 
 const cartStore = useCartStore();
+
+// const checkout = async () => {
+//   try {
+//     const items = cartStore.items;
+
+//     await createItems({ collection: 'session', items });
+//   } catch (e) {
+//     // Handle errors if needed
+//     console.error('Error creating orders:', e);
+//   }
+// };
 </script>
 
 <template>
@@ -71,6 +83,15 @@ const cartStore = useCartStore();
                   label="Szállítás & Fizetés"
                   to="/szallitas-es-fizetes"
                 />
+                <!-- <button
+                  class="px-4 py-2 space-x-2 font-semibold border rounded-md shadow-md border-accent-100 duration-400 bg-accent-100 text-dark-100 hover:bg-dark-100 hover:text-white hover:shadow-lg"
+                  :class="defaultTransition"
+                  @click="checkout"
+                >
+                  <span class="text-base leading-snug tracking-wide xl:text-lg">
+                    Fizetés
+                  </span>
+                </button> -->
               </div>
             </div>
           </div>
