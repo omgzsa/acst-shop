@@ -4,7 +4,8 @@ import { defineStore } from 'pinia';
 // State
 export const useCartStore = defineStore('cartStore', () => {
   const items = ref([]);
-  // const AFA = 1.27;
+  const GLS = 1800;
+  const MPL = 2500;
 
   // Actions
   // push item to array, or increase quantity.value if already exists
@@ -35,12 +36,6 @@ export const useCartStore = defineStore('cartStore', () => {
   // Getters
   const itemCount = computed(() => items.value.length);
   const isEmpty = computed(() => itemCount.value === 0);
-  const itemQuantity = computed((name) => {
-    const index = items.value.findIndex((i) => i.name === name);
-    return index === -1 ? 0 : items.value[index].quantity;
-  });
-  // const grouped = computed(() => groupBy(items.value, (item) => item.name));
-  // const groupCount = computed((name) => items.value[name].length);
   const cartTotal = computed(() =>
     items.value.reduce((acc, item) => acc + item.price * item.quantity, 0)
   );
@@ -50,7 +45,6 @@ export const useCartStore = defineStore('cartStore', () => {
     itemCount,
     isEmpty,
     cartTotal,
-    itemQuantity,
     clearItem,
     $reset,
     addItems,
