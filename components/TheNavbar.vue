@@ -61,6 +61,11 @@ watch(
         class="absolute left-0 w-full h-[calc(100vh-3.5rem)] lg:hidden overflow-auto transition-all duration-300 opacity-0 pointer-events-none bg-white top-14"
         :class="{ 'opacity-100 pointer-events-auto': showMenu }"
       >
+        <div class="flex justify-end gap-4 site-padding">
+          <AppCartButton />
+
+          <AppUserButton />
+        </div>
         <div class="grid pt-10 gap-y-4 site-padding">
           <NuxtLink
             class="w-full text-2xl font-semibold transition-colors duration-300 text-dark-100 hover:text-dark-300"
