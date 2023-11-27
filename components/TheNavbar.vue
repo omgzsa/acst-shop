@@ -66,7 +66,7 @@ watch(
 
           <AppUserButton />
         </div>
-        <div class="grid pt-10 gap-y-4 site-padding">
+        <div class="grid pt-8 gap-y-4 site-padding">
           <NuxtLink
             class="w-full text-2xl font-semibold transition-colors duration-300 text-dark-100 hover:text-dark-300"
             to="/"
