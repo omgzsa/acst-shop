@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: true,
-  // devtools: true,
+  devtools: true,
   vite: {
     server: {
       hmr: {
@@ -27,13 +27,15 @@ export default defineNuxtConfig({
     'nuxt-swiper',
     '@pinia/nuxt',
     'nuxt-directus',
-    'nuxt-lodash',
     '@formkit/nuxt',
   ],
   runtimeConfig: {
     public: {
       directusUrl: process.env.NUXT_DIRECTUS_URL,
     },
+  },
+  devServer: {
+    // port: 3001,
   },
   directus: {
     url: process.env.NUXT_DIRECTUS_URL,
