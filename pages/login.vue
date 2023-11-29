@@ -1,4 +1,7 @@
-<script setup lang="ts">
+<script setup>
+definePageMeta({
+  // middleware: ['logged-in'],
+});
 const { login, logout } = useDirectusAuth();
 const user = useDirectusUser();
 
@@ -24,8 +27,19 @@ const logOut = async () => {
       <h1>Login</h1>
       <input type="email" placeholder="Your E-Mail Address" v-model="email" />
       <input type="password" placeholder="Your Password" v-model="password" />
-      <button @click="onSubmit">Login</button>
-      <button @click="logOut">Logout</button>
+      <br />
+      <button
+        class="px-6 py-3 mr-4 rounded text-dark-100 bg-accent-200 hover:bg-accent-100"
+        @click="onSubmit"
+      >
+        Login
+      </button>
+      <button
+        class="px-6 py-3 text-white bg-gray-500 rounded hover:bg-gray-800"
+        @click="logOut"
+      >
+        Logout
+      </button>
     </div>
     <div class="site-padding" v-if="user">
       <h1>Current User</h1>
