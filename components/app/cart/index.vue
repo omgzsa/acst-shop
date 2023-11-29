@@ -1,9 +1,32 @@
 <script setup>
-const { createItems } = useDirectusItems();
-const { defaultTransition } = useTailwindConfig();
 import { useCartStore } from '@/stores/cart';
 
+const { defaultTransition } = useTailwindConfig();
+
+const { createItems } = useDirectusItems();
+
 const cartStore = useCartStore();
+
+const shoppingDetails = ref([
+  {
+    id: 1,
+    name: 'Szállítás',
+    content:
+      "Shipping Methods Once your order is confirmed, our warehouse will process and send it within 3 business days. Depending on your location and elected delivery method, delivery can take 2-7 business days. We'll email you the tracking information and an estimated delivery date when each item is sent. Shipping options may vary depending on your specific region.However, there's no need to worry, as our system will automatically select the best carrier for you during checkout. We offer free delivery on orders over £50/€50.",
+  },
+  {
+    id: 2,
+    name: 'Visszaküldés',
+    content:
+      'All our returns are free within 60 days from the day the package was delivered. Make sure you initiate the return process on our website following the given instructions and use the return labels provided by us.',
+  },
+  {
+    id: 3,
+    name: 'Fizetés',
+    content:
+      'Payment method options:\n\n- Credit Cards (we accept VISA, Mastercard, American Express, Diners and JCB); - Apple Pay.',
+  },
+]);
 
 // const checkout = async () => {
 //   try {
@@ -19,14 +42,18 @@ const cartStore = useCartStore();
 
 <template>
   <section>
-    <div class="min-h-[80vh] py-6 lg:py-10 site-padding">
-      <div class="max-w-2xl mx-auto">
+    <div
+      class="min-h-[80vh] gap-8 py-6 lg:py-16 site-padding lg:grid lg:grid-cols-8"
+    >
+      <!-- CART WIDGET -->
+      <div class="mb-8 lg:col-span-5">
         <header class="space-y-2">
           <h1 class="">Kosár</h1>
           <p class="inline-block mr-1">Valami még kimaradt?</p>
           <span class="underline">Folytasd a vásárlást itt.</span>
         </header>
 
+        <!-- LISTED ITEMS -->
         <div class="mt-8">
           <ul v-if="!cartStore.isEmpty">
             <AppCartItem
@@ -38,11 +65,6 @@ const cartStore = useCartStore();
               :quantity="item.quantity"
               @clearItem="cartStore.clearItem(item.name)"
             />
-            <!-- <AppCartItem
-              v-for="(items, name) in cartStore.grouped"
-              :item="items[0]"
-              :key="name"
-            /> -->
           </ul>
 
           <div v-else>
@@ -96,6 +118,24 @@ const cartStore = useCartStore();
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- SHIPPING / RETURN / PAYMENT DETAILS -->
+      <div class="space-y-4 lg:col-span-3">
+        <details
+          v-for="detail in shoppingDetails"
+          :key="detail.id"
+          class="border-b"
+        >
+          <summary
+            class="flex items-center justify-between pb-2 font-semibold cursor-pointer text-dark-100"
+          >
+            {{ detail.name }} <span>+</span>
+          </summary>
+          <p class="py-2">
+            {{ detail.content }}
+          </p>
+        </details>
       </div>
     </div>
   </section>
