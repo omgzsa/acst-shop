@@ -1,11 +1,8 @@
-import { defineStore } from 'pinia';
-// import { groupBy } from 'lodash-es';
-
-// State
 export const useCartStore = defineStore('cartStore', () => {
+  // State
   const items = ref([]);
-  const GLS = 1800;
-  const MPL = 2500;
+  // const GLS = 1800;
+  // const MPL = 2500;
 
   // Actions
   // push item to array, or increase quantity.value if already exists
