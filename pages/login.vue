@@ -1,7 +1,10 @@
 <script setup>
-definePageMeta({
-  // middleware: ['logged-in'],
-});
+// import { useUserStore } from '@/stores/users';
+
+// const { users, fetchUsers } = useUserStore();
+// await fetchUsers();
+// console.log(users.value);
+
 const { login, logout } = useDirectusAuth();
 const user = useDirectusUser();
 
@@ -17,7 +20,7 @@ const onSubmit = async () => {
 };
 
 const logOut = async () => {
-  logout();
+  await logout();
 };
 </script>
 
