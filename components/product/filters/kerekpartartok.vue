@@ -1,12 +1,9 @@
 <script setup>
-const availableBikeFilter = computed(() => {
-  return [2, 3, 4];
-});
-
 const props = defineProps({
   quantity: Number,
   modelValue: Array,
-  eBikeFilter: Boolean,
+  availableBikeNumbers: Array,
+  // eBikeFilter: { Boolean, default: null },
 });
 
 const selectedBikeNumbers = ref([]);
@@ -40,8 +37,8 @@ const filterByEBikeCompatible = (event) => {
 const clearAllFilters = () => {
   selectedBikeNumbers.value = [];
   eBikeChecked.value = null;
-  emit('update:model-value', []);
-  emit('update:e-bike-filter', null);
+  // emit('update:model-value', []);
+  // emit('update:e-bike-filter', null);
 };
 </script>
 
@@ -78,7 +75,7 @@ const clearAllFilters = () => {
           </summary>
           <div class="py-2 space-y-1">
             <label
-              v-for="(option, index) in availableBikeFilter"
+              v-for="(option, index) in availableBikeNumbers"
               :key="option"
               class="flex items-center pl-1"
               :for="'filterMaxBikeNumber-' + index"
@@ -116,7 +113,6 @@ const clearAllFilters = () => {
               <input
                 id="eBikeCompatible"
                 type="checkbox"
-                :value="eBikeFilter"
                 class="w-5 h-5 shadow text-dark-100 focus:ring-accent-100"
                 @change="filterByEBikeCompatible"
                 v-model="eBikeChecked"
