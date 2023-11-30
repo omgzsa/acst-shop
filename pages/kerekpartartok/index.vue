@@ -1,8 +1,9 @@
 <script setup>
 const { getItems } = useDirectusItems();
 
-const kerekpartartok = ref([]);
+// local state for filter by bike number
 const bikeFilters = ref([]);
+// local state for filter by eBike compatibility
 const eBikeCompatible = ref(null);
 
 const filter = {
@@ -43,10 +44,10 @@ const { data } = await useAsyncData('termekek', () =>
 const filteredProducts = computed(() => {
   if (bikeFilters.value.length === 0 && eBikeCompatible.value === null) {
     // No filters applied, return all products
-    return kerekpartartok.value;
+    return data.value;
   }
 
-  return kerekpartartok.value.filter((product) => {
+  return data.value.filter((product) => {
     // Filter based on bikeFilters
     const bikeFilterMatch =
       bikeFilters.value.length === 0 ||
@@ -69,7 +70,13 @@ const productQuantity = computed(() => {
   return filteredProducts.value.length;
 });
 
-kerekpartartok.value = data.value;
+const availableNumberOfBikes = computed(() => {
+  const bikeNumbers = data.value.map(
+    (product) => product.kerekpartartoTechSpec[0].szallithato_kerekparok
+  );
+
+  return [...new Set(bikeNumbers.filter((value) => value !== null))];
+});
 </script>
 
 <template>
@@ -88,6 +95,7 @@ kerekpartartok.value = data.value;
       <!-- product filters section -->
       <ProductFiltersKerekpartartok
         :quantity="productQuantity"
+        :available-bike-numbers="availableNumberOfBikes"
         v-model:model-value="bikeFilters"
         v-model:e-bike-filter="eBikeCompatible"
       />
