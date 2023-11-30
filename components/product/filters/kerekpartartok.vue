@@ -37,8 +37,8 @@ const filterByEBikeCompatible = (event) => {
 const clearAllFilters = () => {
   selectedBikeNumbers.value = [];
   eBikeChecked.value = null;
-  // emit('update:model-value', []);
-  // emit('update:e-bike-filter', null);
+  emit('update:model-value', []);
+  emit('update:e-bike-filter', null);
 };
 </script>
 
