@@ -1,25 +1,22 @@
 <script setup>
 const props = defineProps({
   quantity: Number,
-  modelValue: Array,
+  bikeNumber: Array,
   availableBikeNumbers: Array,
-  // eBikeFilter: { Boolean, default: null },
+  eBikeFilter: Boolean,
 });
 
-const selectedBikeNumbers = ref([]);
-const eBikeChecked = ref(null);
-
-const emit = defineEmits(['update:model-value', 'update:e-bike-filter']);
+const emit = defineEmits(['update:bike-number', 'update:e-bike-filter']);
 
 const filterByBikeNumber = (event) => {
   const { value } = event.target;
 
   if (event.target.checked) {
-    emit('update:model-value', [...props.modelValue, Number(value)]);
+    emit('update:bike-number', [...props.bikeNumber, Number(value)]);
   } else {
     emit(
-      'update:model-value',
-      props.modelValue.filter((item) => item !== Number(value))
+      'update:bike-number',
+      props.bikeNumber.filter((item) => item !== Number(value))
     );
   }
 };
@@ -35,9 +32,7 @@ const filterByEBikeCompatible = (event) => {
 };
 
 const clearAllFilters = () => {
-  selectedBikeNumbers.value = [];
-  eBikeChecked.value = null;
-  emit('update:model-value', []);
+  emit('update:bike-number', []);
   emit('update:e-bike-filter', null);
 };
 </script>
@@ -85,7 +80,7 @@ const clearAllFilters = () => {
                 type="checkbox"
                 :value="option"
                 @change="filterByBikeNumber"
-                v-model="selectedBikeNumbers"
+                :checked="bikeNumber.includes(option)"
                 class="w-5 h-5 mb-1 shadow text-dark-100 focus:ring-accent-100"
               />
               <span class="ml-2">{{ option }}</span>
@@ -115,7 +110,7 @@ const clearAllFilters = () => {
                 type="checkbox"
                 class="w-5 h-5 shadow text-dark-100 focus:ring-accent-100"
                 @change="filterByEBikeCompatible"
-                v-model="eBikeChecked"
+                :checked="eBikeFilter"
               />
               <span class="ml-2">Igen</span>
             </label>
