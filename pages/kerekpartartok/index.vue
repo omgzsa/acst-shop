@@ -96,7 +96,7 @@ const availableNumberOfBikes = computed(() => {
       <ProductFiltersKerekpartartok
         :quantity="productQuantity"
         :available-bike-numbers="availableNumberOfBikes"
-        v-model:model-value="bikeFilters"
+        v-model:bike-number-filter="bikeFilters"
         v-model:e-bike-filter="eBikeCompatible"
       />
 
