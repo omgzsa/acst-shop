@@ -1,25 +1,27 @@
 <script setup>
-const { token, refreshTokens, refreshToken, expires } = useDirectusToken();
-const { logout } = useDirectusAuth();
-definePageMeta({
-  middleware: ['auth', 'logged-in'],
-});
+// import { useUserStore } from '@/stores/users';
 
-const user = useDirectusUser();
+// const { users, fetchUsers } = useUserStore();
+
+// await fetchUsers();
+
+// console.log(users.value);
 </script>
 
 <template>
   <div class="bg-white">
-    <div class="site-padding">
-      <h1>Profil</h1>
+    <div class="flex justify-between gap-4 site-padding">
+      <ProfileLogin />
+      <ProfileRegister />
+      <!-- <h1>Profil</h1>
       {{ refreshToken }}
+      <button
+        class="px-6 py-3 text-white bg-gray-500 rounded hover:bg-gray-800"
+        @click="logout()"
+      >
+        logout
+      </button>
+       -->
     </div>
-    <button
-      class="px-6 py-3 text-white bg-gray-500 rounded hover:bg-gray-800"
-      @click="logout()"
-    >
-      logout
-    </button>
-    <pre>{{ user }}</pre>
   </div>
 </template>
