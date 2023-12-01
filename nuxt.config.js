@@ -35,7 +35,7 @@ export default defineNuxtConfig({
     },
   },
   devServer: {
-    // port: 3001,
+    port: 8080,
   },
   directus: {
     url: process.env.NUXT_DIRECTUS_URL,
