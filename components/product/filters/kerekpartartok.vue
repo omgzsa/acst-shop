@@ -1,22 +1,25 @@
 <script setup>
 const props = defineProps({
   quantity: Number,
-  bikeNumber: Array,
   availableBikeNumbers: Array,
+  bikeNumberFilter: Array,
   eBikeFilter: Boolean,
 });
 
-const emit = defineEmits(['update:bike-number', 'update:e-bike-filter']);
+const emit = defineEmits(['update:bike-number-filter', 'update:e-bike-filter']);
 
 const filterByBikeNumber = (event) => {
   const { value } = event.target;
 
   if (event.target.checked) {
-    emit('update:bike-number', [...props.bikeNumber, Number(value)]);
+    emit('update:bike-number-filter', [
+      ...props.bikeNumberFilter,
+      Number(value),
+    ]);
   } else {
     emit(
-      'update:bike-number',
-      props.bikeNumber.filter((item) => item !== Number(value))
+      'update:bike-number-filter',
+      props.bikeNumberFilter.filter((item) => item !== Number(value))
     );
   }
 };
@@ -32,7 +35,7 @@ const filterByEBikeCompatible = (event) => {
 };
 
 const clearAllFilters = () => {
-  emit('update:bike-number', []);
+  emit('update:bike-number-filter', []);
   emit('update:e-bike-filter', null);
 };
 </script>
@@ -80,7 +83,7 @@ const clearAllFilters = () => {
                 type="checkbox"
                 :value="option"
                 @change="filterByBikeNumber"
-                :checked="bikeNumber.includes(option)"
+                :checked="bikeNumberFilter.includes(option)"
                 class="w-5 h-5 mb-1 shadow text-dark-100 focus:ring-accent-100"
               />
               <span class="ml-2">{{ option }}</span>
