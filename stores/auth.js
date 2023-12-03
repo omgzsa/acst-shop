@@ -2,6 +2,7 @@ import { useRouter } from 'vue-router';
 
 export const useAuthStore = defineStore('authStore', () => {
   const router = useRouter();
+  const error = ref('');
   // state
 
   // actions = functions
@@ -18,8 +19,8 @@ export const useAuthStore = defineStore('authStore', () => {
       });
       alert('Registered successfully');
       router.push('/');
-    } catch (e) {
-      console.log(e);
+    } catch (err) {
+      error.value = err.message;
     }
   }
 
@@ -27,8 +28,8 @@ export const useAuthStore = defineStore('authStore', () => {
     const { login } = useDirectusAuth();
     try {
       await login({ email: email, password: password });
-    } catch (e) {
-      console.log(e);
+    } catch (err) {
+      error.value = err.message;
     }
   }
 
@@ -43,5 +44,6 @@ export const useAuthStore = defineStore('authStore', () => {
     registerUser,
     userLogin,
     userLogout,
+    error,
   };
 });
