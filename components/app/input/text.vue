@@ -19,6 +19,7 @@ const props = defineProps({
       :placeholder="placeholder"
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
+      @blur="$emit('blur', $event)"
       class="app-text-input"
       :class="{ 'ring-red-500': $attrs.error }"
     />
