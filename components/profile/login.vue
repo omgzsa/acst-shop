@@ -1,59 +1,82 @@
-<script lang="ts" setup>
+<script setup>
 import { useAuthStore } from '@/stores/auth';
+import { validateEmail, validatePassword } from '~/composables/useValidation';
+const { defaultTransition } = useTailwindConfig();
+
 const user = useDirectusUser();
 const store = useAuthStore();
 
-const email = ref('');
-const password = ref('');
+const email = inject('email');
+const password = inject('password');
 
 const handleLogin = () => {
   store.userLogin(email.value, password.value);
-  // reset for fields to empty string
+
   email.value = '';
   password.value = '';
+};
+
+const handleLogout = () => {
+  if (!user.value) return console.log('Nincs bejelentkezve!');
+  store.userLogout();
+};
+
+const handleBlur = (e) => {
+  if (!email.value) return;
+  else console.log(e);
 };
 </script>
 
 <template>
-  <div
-    class="w-full max-w-md py-16 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100"
-  >
+  <div class="w-full max-w-xl py-16 space-y-3">
     <h2 class="mb-8 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
-      Login
+      Bejelentkezés
     </h2>
-    <form novalidate="false" action="" class="space-y-6">
-      <div class="space-y-1 text-sm">
-        <label for="username" class="block dark:text-gray-400">Email</label>
-        <input
-          type="text"
-          name="email"
-          id="email"
-          placeholder="Email"
-          v-model="email"
-          class="w-full mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm"
-        />
+    <form class="space-y-8">
+      <AppInputText
+        v-model="email"
+        type="text"
+        label="E-mail"
+        name="email_login"
+        placeholder="email@pelda.hu"
+        @blur="handleBlur"
+      />
+      <AppInputText
+        v-model="password"
+        type="password"
+        label="Jelszó"
+        name="password_login"
+        placeholder="******"
+      />
+      <div class="flex flex-col pt-4 space-y-4">
+        <button
+          type="submit"
+          @click.prevent="handleLogin"
+          class="px-4 py-2 space-x-2 font-semibold text-white border shadow-md border-dark-100 duration-400 bg-dark-100 hover:bg-accent-100 hover:text-dark-100 hover:shadow-lg"
+          :class="{
+            defaultTransition,
+            'opacity-60 cursor-not-allowed hover:bg-dark-100 hover:text-white':
+              !email || !password,
+          }"
+          :disabled="!email || !password"
+        >
+          Bejelentkezés
+        </button>
+        <NuxtLink
+          rel="noopener noreferrer"
+          href="#"
+          class="self-center text-sm text-gray-400 hover:text-dark-100 hover:font-bold"
+          >Elfelejtetted a jelszavad?</NuxtLink
+        >
+        <button
+          type="submit"
+          @click.prevent="handleLogout"
+          class="px-4 py-2 space-x-2 font-semibold border shadow-md text-dark-100 border-dark-100 duration-400 bg-dark-200 hover:bg-dark-300 hover:text-white hover:shadow-lg"
+          :class="defaultTransition"
+        >
+          Kijelentkezés
+        </button>
       </div>
-      <div class="space-y-1 text-sm">
-        <label for="password" class="block dark:text-gray-400">Password</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="Password"
-          v-model="password"
-          class="w-full mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm"
-        />
-        <div class="flex justify-end text-xs dark:text-gray-400">
-          <a rel="noopener noreferrer" href="#">Forgot Password?</a>
-        </div>
-      </div>
-      <button
-        type="submit"
-        @click.prevent="handleLogin"
-        class="block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-purple-400"
-      >
-        Sign in
-      </button>
     </form>
     <!-- <div class="flex items-center pt-4 space-x-1">
       <div class="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
@@ -101,12 +124,11 @@ const handleLogin = () => {
         >Sign up</a
       >
     </p> -->
-    <pre>{{ user }}</pre>
-    <button
-      class="px-3 py-1.5 bg-accent-100 font-bold"
-      @click="store.userLogout()"
-    >
-      LOGOUT
-    </button>
+    <div v-if="user">
+      {{ user }}
+    </div>
+    <div v-if="store.error">
+      {{ store.error }}
+    </div>
   </div>
 </template>
