@@ -1,5 +1,3 @@
-const formKitTailwind = require('@formkit/themes/tailwindcss');
-
 module.exports = {
   darkMode: 'class',
   content: [
@@ -14,7 +12,6 @@ module.exports = {
     `./Error.{js,ts,vue}`,
     `./error.{js,ts,vue}`,
     `./app.config.{js,ts}`,
-    './assets/acst.js',
   ],
   theme: {
     fontFamily: {
@@ -35,5 +32,5 @@ module.exports = {
     },
   },
   variants: {},
-  plugins: [require('@tailwindcss/forms'), formKitTailwind],
+  plugins: [require('@tailwindcss/forms')],
 };
