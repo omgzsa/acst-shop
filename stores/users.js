@@ -10,10 +10,18 @@ export const useUserStore = defineStore('userStore', () => {
     users.value = data;
   }
 
+  async function fetchUserById(id) {
+    const { getUserById } = useDirectusUsers();
+    const data = await getUserById(id);
+    currentUser.value = data;
+  }
+
   // getters = computed properties
 
   return {
     users,
     fetchUsers,
+    currentUser,
+    fetchUserById,
   };
 });
