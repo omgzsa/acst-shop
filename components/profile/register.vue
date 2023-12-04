@@ -1,34 +1,50 @@
 <script setup>
 import { useAuthStore } from '@/stores/auth';
-const { defaultTransition } = useTailwindConfig();
-
-const email = inject('email');
-const password = inject('password');
-
-const firstName = ref('');
-const lastName = ref('');
-// const repeatPassword = ref('');
-// const marketingAccept = ref(false);
+import { useForm } from 'vee-validate';
+import * as yup from 'yup';
 
 const store = useAuthStore();
 
-const handleCreateAccount = () => {
-  store.registerUser(
-    firstName.value,
-    lastName.value,
-    props.email,
-    props.password
-  );
-  // reset for fields to empty string
-  firstName.value = '';
-  lastName.value = '';
-  email.value = '';
-  password.value = '';
-};
+const email = inject('email');
+const password = inject('password');
+const first_name = inject('first_name');
+const last_name = inject('last_name');
 
-const passwordValidator = computed(() => {
-  return password.value !== repeatPassword.value;
+yup.setLocale({
+  mixed: {
+    required: 'A mező kitöltése kötelező!',
+  },
+  string: {
+    email: 'Érvényes e-mail címet adjon meg!',
+    min: ({ path, min }) =>
+      `A ${(path = 'jelszó')} legalább ${min} karakter hosszú legyen.`,
+  },
 });
+
+const { handleSubmit, isSubmitting, resetForm, setTouched, meta } = useForm({
+  validationSchema: yup.object({
+    first_name: yup.string().required(),
+    last_name: yup.string().required(),
+    email: yup.string().required().email(),
+    password: yup.string().required().min(6),
+  }),
+});
+
+const onSubmit = handleSubmit((values) => {
+  const { first_name, last_name, email, password } = values;
+  store.userRegister(first_name, last_name, email, password);
+  resetForm({
+    values: {
+      first_name: '',
+      last_name: '',
+      email: '',
+      password: '',
+    },
+  });
+  setTouched({});
+});
+// const repeatPassword = ref('');
+// const marketingAccept = ref(false);
 </script>
 
 <template>
@@ -36,49 +52,28 @@ const passwordValidator = computed(() => {
     <h2 class="mb-8 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
       Regisztráció
     </h2>
+    <form class="space-y-8" @submit="onSubmit" autocomplete="off">
+      <AppInputText
+        name="first_name"
+        type="text"
+        label="Keresztnév"
+        v-model="first_name"
+      />
+      <AppInputText
+        name="last_name"
+        type="text"
+        label="Vezetéknév"
+        v-model="last_name"
+      />
+      <AppInputText name="email" type="email" label="E-mail" v-model="email" />
+      <AppInputText
+        name="password"
+        type="password"
+        label="Jelszó"
+        v-model="password"
+      />
 
-    <form class="grid grid-cols-6 mt-8 gap-y-8 gap-x-4">
-      <div class="col-span-6">
-        <AppInputText
-          v-model="lastName"
-          type="text"
-          label="Vezetéknév"
-          name="lastname"
-          placeholder="Babszem"
-        />
-      </div>
-
-      <div class="col-span-6">
-        <AppInputText
-          v-model="firstName"
-          type="text"
-          label="Keresztnév"
-          name="firstname"
-          placeholder="Jankó"
-        />
-      </div>
-
-      <div class="col-span-6">
-        <AppInputText
-          v-model="email"
-          type="text"
-          label="E-mail"
-          name="email_register"
-          placeholder="email@pelda.hu"
-        />
-      </div>
-
-      <div class="col-span-6">
-        <AppInputText
-          v-model="password"
-          type="password"
-          label="Jelszó"
-          name="password_register"
-          placeholder="******"
-        />
-      </div>
-
-      <div class="col-span-6 mt-4">
+      <!-- <div class="pt-4">
         <label for="MarketingAccept" class="flex gap-4">
           <input
             type="checkbox"
@@ -93,7 +88,7 @@ const passwordValidator = computed(() => {
         </label>
       </div>
 
-      <div class="col-span-6">
+      <div class="">
         <p class="text-sm text-gray-500">
           A fiók létrehozásával Ön elfogadja a
           <a href="#" class="text-gray-700 underline">
@@ -104,16 +99,15 @@ const passwordValidator = computed(() => {
             >adatvédelmi szabályzatot</a
           >.
         </p>
-      </div>
+      </div> -->
 
-      <div class="flex flex-col col-span-full sm:gap-4">
+      <div class="flex flex-col pt-4 space-y-4">
         <button
           type="submit"
-          @click.prevent="handleCreateAccount"
           class="px-4 py-2 space-x-2 font-semibold text-white border shadow-md border-dark-100 duration-400 bg-dark-100 hover:bg-accent-100 hover:text-dark-100 hover:shadow-lg"
-          :class="defaultTransition"
+          :disabled="isSubmitting"
         >
-          Regisztráció
+          {{ isSubmitting ? 'Regisztráció...' : 'Regisztráció' }}
         </button>
       </div>
     </form>
