@@ -1,52 +1,35 @@
 <script setup>
 const props = defineProps({
   modelValue: String,
-  type: String,
-  label: [String, Boolean],
   name: String,
-  placeholder: String,
-  errorMessage: String,
+  type: String,
+  label: String,
+});
+const { value, errorMessage } = useField(() => props.name, undefined, {
+  syncVModel: true,
 });
 </script>
 
 <template>
-  <div class="app-text-input-wrapper">
-    <label v-if="label" :for="label" class="app-input-label">{{ label }}</label>
-    <input
-      :type="type"
-      :name="name"
-      :id="name"
-      :placeholder="placeholder"
-      :value="modelValue"
-      @input="$emit('update:modelValue', $event.target.value)"
-      @blur="$emit('blur', $event)"
-      class="app-text-input"
-      :class="{ 'ring-red-500': $attrs.error }"
-    />
-    <span
-      v-motion-slide-bottom
-      v-if="$attrs.error"
-      class="app-text-input-validation"
-    >
-      {{ errorMessage }}
-    </span>
+  <div class="app-input-wrapper">
+    <label class="app-input-label" :for="name">
+      {{ label }}
+    </label>
+    <input v-model="value" :type="type || 'text'" />
+    <Transition name="pop-bottom">
+      <span v-if="errorMessage" role="alert">{{ errorMessage }}</span>
+    </Transition>
   </div>
 </template>
 
-<style scoped>
-.app-text-input-wrapper {
-  @apply relative space-y-1 text-sm;
+<style>
+.pop-bottom-enter-active,
+.pop-bottom-leave-active {
+  transition: all 0.2s ease;
 }
-
-.app-text-input-wrapper > .app-input-label {
-  @apply block;
-}
-
-.app-text-input-wrapper > .app-text-input {
-  @apply block w-full py-2 border-0 shadow-sm text-dark-100 ring-1 ring-inset ring-gray-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-accent-100 sm:text-sm sm:leading-6;
-}
-
-.app-text-input-wrapper > .app-text-input-validation {
-  @apply absolute left-0 text-xs font-medium text-red-500 bg-white -bottom-6;
+.pop-bottom-enter-from,
+.pop-bottom-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
 }
 </style>
