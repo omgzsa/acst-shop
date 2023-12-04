@@ -42,6 +42,7 @@ export const useAuthStore = defineStore('authStore', () => {
   async function userLogout() {
     const { logout } = useDirectusAuth();
     await logout();
+    router.push('/');
   }
 
   // getters = computed properties
