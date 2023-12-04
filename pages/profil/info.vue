@@ -1,12 +1,20 @@
 <script lang="ts" setup>
+// import { useAuthStore } from '@/stores/auth';
+// const router = useRouter();
 const user = useDirectusUser();
 const auth = useDirectusAuth();
 
-console.log(auth);
+// const store = useAuthStore();
 
-// definePageMeta({
-//   middleware: ['auth'],
-// });
+// const handleLogout = () => {
+//   if (!user.value) return console.log('Nincs bejelentkezve!');
+//   store.userLogout();
+// };
+
+definePageMeta({
+  middleware: ['auth'],
+});
+console.log(auth);
 </script>
 
 <template>
