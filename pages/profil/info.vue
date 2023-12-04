@@ -1,12 +1,19 @@
 <script lang="ts" setup>
 const user = useDirectusUser();
+const auth = useDirectusAuth();
+
+console.log(auth);
+
+// definePageMeta({
+//   middleware: ['auth'],
+// });
 </script>
 
 <template>
   <div class="bg-white">
     <div class="site-padding">
       <h1>Profil info</h1>
-      <!-- <div>
+      <div>
         <h2 class="text-base font-normal uppercase text-dark-300">
           first name
         </h2>
@@ -25,7 +32,7 @@ const user = useDirectusUser();
         <p>
           {{ user!.email }}
         </p>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
