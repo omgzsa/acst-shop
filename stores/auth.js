@@ -6,7 +6,7 @@ export const useAuthStore = defineStore('authStore', () => {
   // state
 
   // actions = functions
-  async function registerUser(fName, lName, email, password) {
+  async function userRegister(fName, lName, email, password) {
     const { createUser } = useDirectusAuth();
     try {
       await createUser({
@@ -20,16 +20,22 @@ export const useAuthStore = defineStore('authStore', () => {
       alert('Registered successfully');
       router.push('/');
     } catch (err) {
-      error.value = err.message;
+      error.value = err;
     }
   }
 
-  async function userLogin(email, password) {
+  async function userLogin(credentials) {
     const { login } = useDirectusAuth();
     try {
-      await login({ email: email, password: password });
+      await login(credentials);
+      alert('Logged in successfully');
+      router.push('/');
     } catch (err) {
-      error.value = err.message;
+      error.value = err;
+      error.value = createError({
+        statusCode: 401,
+        message: 'Nem megfelelő felhasználó név vagy jelszó!',
+      });
     }
   }
 
@@ -41,7 +47,7 @@ export const useAuthStore = defineStore('authStore', () => {
   // getters = computed properties
 
   return {
-    registerUser,
+    userRegister,
     userLogin,
     userLogout,
     error,
