@@ -23,8 +23,14 @@ yup.setLocale({
 
 const { handleSubmit, isSubmitting, resetForm, setTouched, meta } = useForm({
   validationSchema: yup.object({
-    first_name: yup.string().required(),
-    last_name: yup.string().required(),
+    first_name: yup
+      .string()
+      .required()
+      .matches(/^[a-zA-ZāáēöőóúüűßÄÁÖŐÓÚÜŰ]+$/),
+    last_name: yup
+      .string()
+      .required()
+      .matches(/^[a-zA-ZāáēöőóúüűßÄÁÖŐÓÚÜŰ]+$/),
     email: yup.string().required().email(),
     password: yup.string().required().min(6),
   }),
@@ -41,7 +47,13 @@ const onSubmit = handleSubmit((values) => {
       password: '',
     },
   });
-  setTouched({});
+  setTouched({
+    first_name: false,
+    last_name: false,
+    email: false,
+    password: false,
+  });
+  console.log(values);
 });
 // const repeatPassword = ref('');
 // const marketingAccept = ref(false);
@@ -73,7 +85,7 @@ const onSubmit = handleSubmit((values) => {
         v-model="password"
       />
 
-      <!-- <div class="pt-4">
+      <div class="pt-4">
         <label for="MarketingAccept" class="flex gap-4">
           <input
             type="checkbox"
@@ -99,7 +111,7 @@ const onSubmit = handleSubmit((values) => {
             >adatvédelmi szabályzatot</a
           >.
         </p>
-      </div> -->
+      </div>
 
       <div class="flex flex-col pt-4 space-y-4">
         <button
