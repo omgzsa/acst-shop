@@ -6,6 +6,6 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     setUser(user.value);
   }
   if (!user.value) {
-    return navigateTo('/profil');
+    return navigateTo('/profil/login');
   }
 });
