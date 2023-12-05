@@ -105,8 +105,5 @@ const handleLogout = () => {
         </button>
       </div>
     </form>
-    <div v-if="user">
-      {{ user }}
-    </div>
   </div>
 </template>
