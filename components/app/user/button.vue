@@ -1,5 +1,9 @@
 <script setup>
 const { defaultTransition } = useTailwindConfig();
+
+/*
+- IDEA: conditionally render :to="" value based on user state
+*/
 </script>
 
 <template>
