@@ -6,6 +6,7 @@ const store = useAuthStore();
 
 definePageMeta({
   middleware: ['auth'],
+  // layout: 'user',
 });
 
 /*
@@ -17,41 +18,39 @@ TODOS:
 </script>
 
 <template>
-  <div class="bg-white" v-if="user">
-    <div class="py-16 site-padding">
+  <div class="bg-white">
+    <div class="py-10 site-padding">
       <h1>Profil info</h1>
-      <div class="flex justify-between">
-        <div>
-          <h2 class="text-base font-normal uppercase text-dark-300">
-            first name
-          </h2>
-          <p>
-            {{ user?.first_name }}
-          </p>
+      <!-- HYDRATION MISMATCH ERROR, NESTING INVALID COMPONENTS -->
+      <div class="grid grid-cols-6">
+        <div class="col-span-1">
+          <ProfileNav />
         </div>
-        <div>
-          <h2 class="text-base font-normal uppercase text-dark-300">
-            last name
-          </h2>
-          <p>
-            {{ user?.last_name }}
-          </p>
-        </div>
-        <div>
-          <h2 class="text-base font-normal uppercase text-dark-300">email</h2>
-          <p>
-            {{ user?.email }}
-          </p>
+        <div v-if="user" class="flex justify-between col-span-5">
+          <div>
+            <h2 class="text-base font-normal uppercase text-dark-300">
+              first name
+            </h2>
+            <p>
+              {{ user?.first_name }}
+            </p>
+          </div>
+          <div>
+            <h2 class="text-base font-normal uppercase text-dark-300">
+              last name
+            </h2>
+            <p>
+              {{ user?.last_name }}
+            </p>
+          </div>
+          <div>
+            <h2 class="text-base font-normal uppercase text-dark-300">email</h2>
+            <p>
+              {{ user?.email }}
+            </p>
+          </div>
         </div>
       </div>
-      <!-- HYDRATION MISMATCH ERROR, NESTING INVALID COMPONENTS -->
-      <!-- <ProfileNav /> -->
-      <button
-        class="px-4 py-2 mt-4 font-bold text-white bg-red-500 rounded hover:bg-red-600"
-        @click="store.userLogout"
-      >
-        logout
-      </button>
     </div>
   </div>
 </template>
