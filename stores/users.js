@@ -1,6 +1,10 @@
+import { createMyUser } from '~/server/db/users';
+
 export const useUserStore = defineStore('userStore', () => {
   // state
   const users = [];
+  const user = ref({});
+  const newUser = ref({});
   const currentUser = ref(null);
 
   // actions = functions
@@ -13,7 +17,7 @@ export const useUserStore = defineStore('userStore', () => {
   async function fetchUserById(id) {
     const { getUserById } = useDirectusUsers();
     const data = await getUserById(id);
-    currentUser.value = data;
+    user.value = data;
   }
 
   // getters = computed properties
