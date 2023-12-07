@@ -24,19 +24,6 @@ export const useAuthStore = defineStore('authStore', () => {
     }
   }
 
-  // async function userInvite(email) {
-  //   const { inviteUser } = useDirectusAuth();
-  //   try {
-  //     await inviteUser({
-  //       email: email,
-  //       role: 'ef005037-964e-4b20-bd23-b60f4f38fa6e',
-  //     });
-  //     alert('Invite send successfully');
-  //   } catch (err) {
-  //     error.value = err;
-  //   }
-  // }
-
   async function userLogin(credentials) {
     const { login } = useDirectusAuth();
     try {
@@ -62,7 +49,6 @@ export const useAuthStore = defineStore('authStore', () => {
 
   return {
     userRegister,
-    // userInvite,
     userLogin,
     userLogout,
     error,
