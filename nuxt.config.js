@@ -39,11 +39,7 @@ export default defineNuxtConfig({
   },
   directus: {
     url: process.env.NUXT_DIRECTUS_URL,
-    autoFetch: true,
-    // token: {
-    //   required: true,
-    //   type: 'Bearer',
-    // },
+    // autoFetch: true,
   },
   pinia: {
     autoImports: ['defineStore', 'acceptHMRUpdate'],
