@@ -1,6 +1,6 @@
 <script setup>
 definePageMeta({
-  middleware: ['to-profile-info'],
+  // middleware: ['to-profile-info'],
   layout: 'user',
 });
 const user = useDirectusUser();
