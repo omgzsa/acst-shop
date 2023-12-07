@@ -53,7 +53,7 @@ const onSubmit = handleSubmit((values) => {
     email: false,
     password: false,
   });
-  console.log(values);
+  // console.log(values);
 });
 // const repeatPassword = ref('');
 // const marketingAccept = ref(false);

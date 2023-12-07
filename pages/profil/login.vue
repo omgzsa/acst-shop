@@ -39,6 +39,7 @@ TODOS:
         /></NuxtLink>
       </div>
       <div v-if="!user">
+        <!-- <div></div> -->
         <div>
           <h1 class="pt-4">Üdvözlünk az oldalon!</h1>
         </div>
