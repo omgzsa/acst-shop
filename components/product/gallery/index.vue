@@ -1,8 +1,5 @@
 <script setup>
-//
-
-const config = useRuntimeConfig();
-const baseUrl = config.public.directusUrl;
+const baseUrl = useDirectusUrl();
 
 const props = defineProps({
   gallery: Array,

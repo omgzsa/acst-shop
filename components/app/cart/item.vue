@@ -1,6 +1,5 @@
 <script setup>
-const config = useRuntimeConfig();
-const baseUrl = config.public.directusUrl;
+const baseUrl = useDirectusUrl();
 
 // const count = ref(0);
 

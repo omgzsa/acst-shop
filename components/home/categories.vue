@@ -1,7 +1,7 @@
 <script setup>
-const config = useRuntimeConfig();
-
-const baseUrl = config.public.directusUrl;
+// const config = useRuntimeConfig();
+// const baseUrl = config.public.directusUrl;
+const baseUrl = useDirectusUrl();
 
 const breakpoints = ref({
   320: {
