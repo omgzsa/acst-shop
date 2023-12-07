@@ -2,10 +2,8 @@
 import { useAuthStore } from '@/stores/auth';
 import { useForm } from 'vee-validate';
 import * as yup from 'yup';
+// const { defaultTransition } = useTailwindConfig();
 
-const { defaultTransition } = useTailwindConfig();
-
-const user = useDirectusUser();
 const store = useAuthStore();
 
 const email = inject('email');
@@ -26,11 +24,6 @@ const { handleSubmit, isSubmitting, resetForm, meta } = useForm({
   validationSchema: yup.object({
     email: yup.string().required().email(),
     password: yup.string().required().min(6),
-    // passwordConfirm: yup
-    //   .string()
-    //   .required()
-    //   .min(6)
-    //   .oneOf([yup.ref('password')]),
   }),
 });
 
@@ -45,10 +38,10 @@ const onSubmit = handleSubmit((values) => {
   });
 });
 
-const handleLogout = () => {
-  if (!user.value) return console.log('Nincs bejelentkezve!');
-  store.userLogout();
-};
+// const handleLogout = () => {
+//   if (!user.value) return console.log('Nincs bejelentkezve!');
+//   store.userLogout();
+// };
 </script>
 
 <template>
@@ -73,7 +66,7 @@ const handleLogout = () => {
         v-model="password"
       />
 
-      <div class="flex flex-col pt-4 space-y-4">
+      <div class="flex flex-col pt-4 space-y-10">
         <button
           type="submit"
           class="px-4 py-2 space-x-2 font-semibold text-white border shadow-md border-dark-100 duration-400 bg-dark-100 hover:bg-accent-100 hover:text-dark-100 hover:shadow-lg"
@@ -91,18 +84,18 @@ const handleLogout = () => {
           <NuxtLink
             rel="noopener noreferrer"
             href="#"
-            class="self-start text-sm tracking-wide underline underline-offset-2 text-dark-100"
+            class="self-start text-sm tracking-wide underline underline-offset-2 text-dark-300 hover:text-dark-100"
             >Kattints ide ha megváltoztatnád</NuxtLink
           >
         </div>
-        <button
+        <!-- <button
           type="submit"
           @click.prevent="handleLogout"
           class="px-4 py-2 space-x-2 font-semibold border shadow-md text-dark-100 border-dark-100 duration-400 bg-dark-200 hover:bg-dark-300 hover:text-white hover:shadow-lg"
           :class="defaultTransition"
         >
           Kijelentkezés
-        </button>
+        </button> -->
       </div>
     </form>
   </div>
