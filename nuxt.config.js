@@ -30,9 +30,7 @@ export default defineNuxtConfig({
     '@vee-validate/nuxt',
   ],
   runtimeConfig: {
-    public: {
-      directusUrl: process.env.NUXT_DIRECTUS_URL,
-    },
+    //
   },
   devServer: {
     port: 8080,
@@ -61,14 +59,6 @@ export default defineNuxtConfig({
     modules: ['pagination'],
   },
   veeValidate: {
-    // disable or enable auto imports
     autoImports: true,
-    // Use different names for components
-    // componentNames: {
-    //   Form: 'VeeForm',
-    //   Field: 'VeeField',
-    //   FieldArray: 'VeeFieldArray',
-    //   ErrorMessage: 'VeeErrorMessage',
-    // },
   },
 });
