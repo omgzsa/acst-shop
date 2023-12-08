@@ -2,7 +2,8 @@ import { useRouter } from 'vue-router';
 
 export const useAuthStore = defineStore('authStore', () => {
   const router = useRouter();
-  const error = ref('');
+  const regError = ref('');
+  const logError = ref('');
   // state
 
   // actions = functions
@@ -20,7 +21,11 @@ export const useAuthStore = defineStore('authStore', () => {
       alert('Registered successfully');
       router.push('/');
     } catch (err) {
-      error.value = err;
+      err = createError({
+        statusCode: err.statusCode,
+        message: 'Ez az email cím már foglalt!',
+      });
+      regError.value = err;
     }
   }
 
@@ -31,11 +36,11 @@ export const useAuthStore = defineStore('authStore', () => {
       alert('Logged in successfully');
       router.push('/');
     } catch (err) {
-      error.value = err;
-      error.value = createError({
-        statusCode: 401,
-        message: 'Nem megfelelő felhasználó név vagy jelszó!',
+      err = createError({
+        statusCode: err.statusCode,
+        message: 'Hibás felhasználónév vagy jelszó!',
       });
+      logError.value = err;
     }
   }
 
@@ -48,9 +53,10 @@ export const useAuthStore = defineStore('authStore', () => {
   // getters = computed properties
 
   return {
+    logError,
+    regError,
     userRegister,
     userLogin,
     userLogout,
-    error,
   };
 });
