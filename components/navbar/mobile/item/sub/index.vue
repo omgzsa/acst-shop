@@ -7,25 +7,24 @@ const props = defineProps({
 
 // console.log(props.subCategories);
 </script>
-
 <template>
-  <div class="grid px-3 gap-y-2">
+  <div class="flex flex-col gap-y-1">
     <span
       ><NuxtLink
         :to="`${props.link}`"
-        class="px-2 py-1 text-base font-semibold leading-snug tracking-wide transition-colors rounded duration-250 xl:text-lg hover:text-dark-100 hover:bg-accent-100 hover:font-bold"
+        class="block px-2 py-1 text-base font-bold rounded-md hover:bg-accent-100/70 text-dark-100"
         >{{ props.name }}</NuxtLink
       ></span
     >
-    <ul class="grid gap-y-2">
+    <ul class="flex flex-col gap-y-1">
       <li
         v-for="sub in props.subCategories"
         :key="sub.id"
-        class="text-sm rounded-md hover:font-bold"
+        class="text-base font-normal rounded-md"
       >
         <NuxtLink
           :to="`${sub.link}`"
-          class="px-2 py-1 transition-colors rounded duration-250 hover:text-dark-100 hover:bg-accent-100 hover:font-semibold"
+          class="block px-2 py-1 text-base rounded-md hover:bg-accent-100/70 text-dark-100"
         >
           {{ sub.name }}
         </NuxtLink>

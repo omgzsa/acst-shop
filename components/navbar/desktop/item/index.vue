@@ -12,7 +12,7 @@ const props = defineProps({
     <Transition name="fade">
       <div
         v-show="isVisible"
-        class="absolute left-0 hidden w-full p-2 overflow-hidden bg-white border rounded-md shadow-md top-12 group-hover:block"
+        class="absolute left-0 hidden w-full p-1 overflow-hidden bg-white border rounded-md shadow-md top-12 group-hover:block"
       >
         <div class="grid grid-cols-4 gap-x-6">
           <NavbarDesktopItemSub
