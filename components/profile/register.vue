@@ -4,6 +4,7 @@ import { useForm } from 'vee-validate';
 import * as yup from 'yup';
 
 const store = useAuthStore();
+const error = useError();
 
 const email = inject('email');
 const password = inject('password');
@@ -26,19 +27,20 @@ const { handleSubmit, isSubmitting, resetForm, setTouched, meta } = useForm({
     first_name: yup
       .string()
       .required()
-      .matches(/^[a-zA-ZāáēöőóúüűßÄÁÖŐÓÚÜŰ]+$/),
+      .matches(/^[a-zA-Z]+$/),
     last_name: yup
       .string()
       .required()
-      .matches(/^[a-zA-ZāáēöőóúüűßÄÁÖŐÓÚÜŰ]+$/),
+      .matches(/^[a-zA-Z]+$/),
     email: yup.string().required().email(),
     password: yup.string().required().min(6),
   }),
 });
 
-const onSubmit = handleSubmit((values) => {
+const onSubmit = handleSubmit((values, ctx) => {
   const { first_name, last_name, email, password } = values;
   store.userRegister(first_name, last_name, email, password);
+
   resetForm({
     values: {
       first_name: '',
@@ -53,9 +55,7 @@ const onSubmit = handleSubmit((values) => {
     email: false,
     password: false,
   });
-  // console.log(values);
 });
-// const repeatPassword = ref('');
 // const marketingAccept = ref(false);
 </script>
 
@@ -100,7 +100,7 @@ const onSubmit = handleSubmit((values) => {
         </label>
       </div>
 
-      <div class="">
+      <div>
         <p class="text-sm text-gray-500">
           A fiók létrehozásával Ön elfogadja a
           <a href="#" class="text-gray-700 underline">
@@ -113,7 +113,12 @@ const onSubmit = handleSubmit((values) => {
         </p>
       </div>
 
-      <div class="flex flex-col pt-4 space-y-4">
+      <div v-if="store.regError" class="text-red-600">
+        <!-- {{ store.regError.statusCode }}<br /> -->
+        {{ store.regError.message }}
+      </div>
+
+      <div class="flex flex-col space-y-4">
         <button
           type="submit"
           class="px-4 py-2 space-x-2 font-semibold text-white border shadow-md border-dark-100 duration-400 bg-dark-100 hover:bg-accent-100 hover:text-dark-100 hover:shadow-lg"

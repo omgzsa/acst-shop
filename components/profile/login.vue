@@ -14,13 +14,13 @@ yup.setLocale({
     required: 'A mező kitöltése kötelező!',
   },
   string: {
-    email: 'Érvényes e-mail címet adjon meg!',
+    email: 'Érvényes e-mail címet adj meg!',
     min: ({ path, min }) =>
       `A ${(path = 'jelszó')} legalább ${min} karakter hosszú legyen.`,
   },
 });
 
-const { handleSubmit, isSubmitting, resetForm, meta } = useForm({
+const { handleSubmit, isSubmitting, resetForm, setTouched, meta } = useForm({
   validationSchema: yup.object({
     email: yup.string().required().email(),
     password: yup.string().required().min(6),
@@ -30,6 +30,11 @@ const { handleSubmit, isSubmitting, resetForm, meta } = useForm({
 const onSubmit = handleSubmit((values) => {
   store.userLogin(JSON.stringify(values, null, 2));
 
+  setTouched({
+    email: false,
+    password: false,
+  });
+
   resetForm({
     values: {
       email: '',
@@ -37,11 +42,6 @@ const onSubmit = handleSubmit((values) => {
     },
   });
 });
-
-// const handleLogout = () => {
-//   if (!user.value) return console.log('Nincs bejelentkezve!');
-//   store.userLogout();
-// };
 </script>
 
 <template>
@@ -74,8 +74,9 @@ const onSubmit = handleSubmit((values) => {
         >
           {{ isSubmitting ? 'Bejelentkezés...' : 'Bejelentkezés' }}
         </button>
-        <div v-if="store.error" class="text-red-600">
-          {{ store.error }}
+        <div v-if="store.logError" class="text-red-600">
+          <!-- {{ store.logError.statusCode }}<br /> -->
+          {{ store.logError.message }}
         </div>
         <div>
           <span class="self-start text-sm tracking-wide"
@@ -88,14 +89,6 @@ const onSubmit = handleSubmit((values) => {
             >Kattints ide ha megváltoztatnád</NuxtLink
           >
         </div>
-        <!-- <button
-          type="submit"
-          @click.prevent="handleLogout"
-          class="px-4 py-2 space-x-2 font-semibold border shadow-md text-dark-100 border-dark-100 duration-400 bg-dark-200 hover:bg-dark-300 hover:text-white hover:shadow-lg"
-          :class="defaultTransition"
-        >
-          Kijelentkezés
-        </button> -->
       </div>
     </form>
   </div>
