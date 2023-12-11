@@ -29,6 +29,33 @@
             "link": "/kerekpartartok/kerekpartarto-kiegeszitok"
           }
         ]
+      },
+      {
+        "id": 2,
+        "name": "Tetőcsomagtartók",
+        "link": "/tetocsomagtartok",
+        "subCategories": [
+          {
+            "id": 1,
+            "name": "Tetőcsomagtartó rendszerek",
+            "link": "/tetocsomagtartok/tetocsomagtarto-rendszerek"
+          },
+          {
+            "id": 2,
+            "name": "Tető platformok",
+            "link": "/tetocsomagtartok/tetocsomagtarto-platformok"
+          },
+          {
+            "id": 3,
+            "name": "Professzionális kiegészítők",
+            "link": "/tetocsomagtartok/professzionalis-kiegeszitok"
+          },
+          {
+            "id": 4,
+            "name": "Tetőcsomagtartó kiegészítők",
+            "link": "/tetocsomagtartok/tetocsomagtarto-kiegeszitok"
+          }
+        ]
       }
     ]
   },
