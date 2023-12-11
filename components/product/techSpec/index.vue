@@ -1,17 +1,5 @@
 <script setup>
-const props = defineProps({
-  specKey: String,
-  specId: Number,
-});
-
-const { getItemById } = useDirectusItems();
-
-const { data: techSpec } = await useAsyncData('techSpec', () => {
-  return getItemById({
-    collection: `${props.specKey}`,
-    id: `${props.specId}`,
-  });
-});
+//
 </script>
 
 <template>
@@ -21,7 +9,8 @@ const { data: techSpec } = await useAsyncData('techSpec', () => {
     <ul
       class="gap-4 space-y-4 sm:space-y-0 sm:grid sm:grid-cols-2 lg:grid-cols-3"
     >
-      <ProductTechSpecItemNumber
+      <slot />
+      <!-- <ProductTechSpecItemNumber
         v-if="techSpec.szallithato_kerekparok !== null"
         name="Szállítható kerékpárok"
         :value="techSpec.szallithato_kerekparok"
@@ -204,7 +193,7 @@ const { data: techSpec } = await useAsyncData('techSpec', () => {
         v-if="techSpec.one_key_system_kompatibilis !== null"
         name="One Key System kompatibilis"
         :is-true="!techSpec.one_key_system_kompatibilis"
-      />
+      /> -->
     </ul>
   </div>
 </template>
