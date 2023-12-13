@@ -24,20 +24,9 @@ const { data: tetocsomagtartok } = await useAsyncData(path, () =>
   })
 );
 
-const productQuantity = computed(() => {
-  return filteredTetocsomagtartok.value.length;
-});
-
-// const availableNumberOfBikes = computed(() => {
-//   const bikeNumbers = data.value.map(
-//     (product) => product.kerekpartartoTechSpec[0].szallithato_kerekparok
-//   );
-
-//   return [...new Set(bikeNumbers.filter((value) => value !== null))];
-// });
-const filteredTetocsomagtartok = computed(() => {
-  return tetocsomagtartok.value;
-});
+const { pageQuantity, filteredItems } = usePageProperties(
+  tetocsomagtartok.value
+);
 </script>
 
 <template>
@@ -55,12 +44,12 @@ const filteredTetocsomagtartok = computed(() => {
 
       <!-- product filters section -->
       <ProductFiltersTetocsomagtartok
-        :quantity="productQuantity"
+        :quantity="pageQuantity"
         :is-disabled="true"
       />
 
       <!-- product archive -->
-      <ProductList :items="filteredTetocsomagtartok" />
+      <ProductList :items="filteredItems" />
     </div>
   </div>
 </template>

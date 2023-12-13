@@ -1,8 +1,9 @@
 <script setup>
+import usePageProperties from '@/composables/usePageProperties';
 const { path, params } = useRoute();
 const { getItems } = useDirectusItems();
 
-const { data } = await useAsyncData(path, () =>
+const { data: tetocsomagtartok } = await useAsyncData(path, () =>
   getItems({
     collection: 'termekek',
     params: {
@@ -23,17 +24,8 @@ const { data } = await useAsyncData(path, () =>
   })
 );
 
-const pageTitle = computed(() => {
-  return data?.value[0].kapcsolodoAlKategoria.termekAlKategoriaNev;
-});
-
-const pageDescription = computed(() => {
-  return data?.value[0].kapcsolodoAlKategoria.termekAlKategoriaLeiras;
-});
-
-// const productQuantity = computed(() => {
-//   return data.value[0].length;
-// });
+const { pageTitle, pageDescription, pageQuantity, filteredItems } =
+  usePageProperties(tetocsomagtartok.value);
 </script>
 
 <template>
@@ -48,10 +40,13 @@ const pageDescription = computed(() => {
       </AppHeader>
 
       <!-- product filters section -->
-      <!-- <ProductFiltersKerekpartartok :quantity="productQuantity" /> -->
+      <ProductFiltersTetocsomagtartok
+        :quantity="pageQuantity"
+        :is-disabled="true"
+      />
 
       <!-- product archive -->
-      <ProductList :items="data" />
+      <ProductList :items="filteredItems" />
     </div>
   </div>
 </template>

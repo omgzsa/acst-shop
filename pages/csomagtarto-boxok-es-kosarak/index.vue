@@ -24,13 +24,15 @@ const { data: boxokEsKosarak } = await useAsyncData(path, () =>
   })
 );
 
-const productQuantity = computed(() => {
-  return filteredBoxokEsKosarak.value.length;
-});
+// const productQuantity = computed(() => {
+//   return filteredBoxokEsKosarak.value.length;
+// });
 
-const filteredBoxokEsKosarak = computed(() => {
-  return boxokEsKosarak.value;
-});
+// const filteredBoxokEsKosarak = computed(() => {
+//   return boxokEsKosarak.value;
+// });
+
+const { pageQuantity, filteredItems } = usePageProperties(boxokEsKosarak.value);
 </script>
 
 <template>
@@ -48,12 +50,12 @@ const filteredBoxokEsKosarak = computed(() => {
 
       <!-- product filters section -->
       <ProductFiltersTetoboxokEsKosarak
-        :quantity="productQuantity"
+        :quantity="pageQuantity"
         :is-disabled="true"
       />
 
       <!-- product archive -->
-      <ProductList :items="filteredBoxokEsKosarak" />
+      <ProductList :items="filteredItems" />
     </div>
   </div>
 </template>

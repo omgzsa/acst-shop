@@ -2,7 +2,7 @@
 const { path, params } = useRoute();
 const { getItems } = useDirectusItems();
 
-const kerekpartartok = ref([]);
+// const kerekpartartok = ref([]);
 const bikeFilters = ref([]);
 const eBikeCompatible = ref(null);
 
@@ -22,7 +22,7 @@ if (eBikeCompatible.value) {
   };
 }
 
-const { data } = await useAsyncData(path, () =>
+const { data: kerekpartartok } = await useAsyncData(path, () =>
   getItems({
     collection: 'termekek',
     params: {
@@ -43,21 +43,13 @@ const { data } = await useAsyncData(path, () =>
   })
 );
 
-const pageTitle = computed(() => {
-  return data?.value[0].kapcsolodoAlKategoria.termekAlKategoriaNev;
-});
-
-const pageDescription = computed(() => {
-  return data?.value[0].kapcsolodoAlKategoria.termekAlKategoriaLeiras;
-});
-
 const filteredProducts = computed(() => {
   if (bikeFilters.value.length === 0 && eBikeCompatible.value === null) {
     // No filters applied, return all products
-    return kerekpartartok.value;
+    return filteredItems.value;
   }
 
-  return kerekpartartok.value.filter((product) => {
+  return filteredItems.value.filter((product) => {
     // Filter based on bikeFilters
     const bikeFilterMatch =
       bikeFilters.value.length === 0 ||
@@ -76,11 +68,8 @@ const filteredProducts = computed(() => {
   });
 });
 
-const productQuantity = computed(() => {
-  return filteredProducts.value.length;
-});
-
-kerekpartartok.value = data?.value;
+const { pageTitle, pageDescription, pageQuantity, filteredItems } =
+  usePageProperties(kerekpartartok.value);
 </script>
 
 <template>
@@ -96,7 +85,7 @@ kerekpartartok.value = data?.value;
 
       <!-- product filters section -->
       <ProductFiltersKerekpartartok
-        :quantity="productQuantity"
+        :quantity="pageQuantity"
         v-model:model-value="bikeFilters"
         v-model:e-bike-filter="eBikeCompatible"
       />
