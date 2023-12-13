@@ -22,7 +22,7 @@ if (eBikeCompatible.value) {
   };
 }
 
-const { data } = await useAsyncData('termekek', () =>
+const { data } = await useAsyncData(path, () =>
   getItems({
     collection: 'termekek',
     params: {
@@ -44,11 +44,11 @@ const { data } = await useAsyncData('termekek', () =>
 );
 
 const pageTitle = computed(() => {
-  return data.value[0].kapcsolodoAlKategoria.termekAlKategoriaNev;
+  return data?.value[0].kapcsolodoAlKategoria.termekAlKategoriaNev;
 });
 
 const pageDescription = computed(() => {
-  return data.value[0].kapcsolodoAlKategoria.termekAlKategoriaLeiras;
+  return data?.value[0].kapcsolodoAlKategoria.termekAlKategoriaLeiras;
 });
 
 const filteredProducts = computed(() => {
@@ -80,12 +80,12 @@ const productQuantity = computed(() => {
   return filteredProducts.value.length;
 });
 
-kerekpartartok.value = data.value;
+kerekpartartok.value = data?.value;
 </script>
 
 <template>
   <div class="bg-white">
-    <CategoryNavbar />
+    <CategoryNavbar category-slug="kerekpartartok" />
     <div class="pt-14 space-y-14 site-padding">
       <AppHeader>
         <template #title> {{ pageTitle }} </template>
