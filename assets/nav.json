@@ -42,7 +42,7 @@
           },
           {
             "id": 2,
-            "name": "Tető platformok",
+            "name": "Tetőcsomagtartó platformok",
             "link": "/tetocsomagtartok/tetocsomagtarto-platformok"
           },
           {
@@ -54,6 +54,33 @@
             "id": 4,
             "name": "Tetőcsomagtartó kiegészítők",
             "link": "/tetocsomagtartok/tetocsomagtarto-kiegeszitok"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Csomagtartó boxok és kosarak",
+        "link": "/csomagtarto-boxok-es-kosarak",
+        "subCategories": [
+          {
+            "id": 1,
+            "name": "Tetőboxok",
+            "link": "/csomagtarto-boxok-es-kosarak/tetoboxok"
+          },
+          {
+            "id": 2,
+            "name": "Vonóhorogra szerelhető boxok",
+            "link": "/csomagtarto-boxok-es-kosarak/vonohorogra-szerelheto-boxok"
+          },
+          {
+            "id": 3,
+            "name": "Tetőkosarak",
+            "link": "/csomagtarto-boxok-es-kosarak/tetokosarak"
+          },
+          {
+            "id": 4,
+            "name": "Csomagtartó kiegészítők",
+            "link": "/csomagtarto-boxok-es-kosarak/csomagtarto-kiegeszitok"
           }
         ]
       }
