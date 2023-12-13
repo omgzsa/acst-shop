@@ -20,7 +20,7 @@ const props = defineProps({
 
     <!-- <Transition name="fade" mode="out-in"> -->
     <div
-      class="grid py-4 sm:grid-cols-2 md:grid-cols-3 gap-y-6 sm:gap-x-6 md:gap-x-3"
+      class="grid p-2 rounded-md sm:grid-cols-2 md:grid-cols-3 gap-y-6 sm:gap-x-6 md:gap-x-3"
     >
       <NavbarMobileItemSub
         v-for="category in props.categories"

@@ -12,7 +12,7 @@ const props = defineProps({
     <span
       ><NuxtLink
         :to="`${props.link}`"
-        class="block px-2 py-1 text-base font-bold rounded-md hover:bg-accent-100/70 text-dark-100"
+        class="block px-2 py-1 text-base font-bold rounded-md max-w-72 hover:bg-accent-100/70 text-dark-100"
         >{{ props.name }}</NuxtLink
       ></span
     >
@@ -24,7 +24,7 @@ const props = defineProps({
       >
         <NuxtLink
           :to="`${sub.link}`"
-          class="block px-2 py-1 text-base rounded-md hover:bg-accent-100/70 text-dark-100"
+          class="block px-2 py-1 text-base rounded-md max-w-72 hover:bg-accent-100/70 text-dark-100"
         >
           {{ sub.name }}
         </NuxtLink>
