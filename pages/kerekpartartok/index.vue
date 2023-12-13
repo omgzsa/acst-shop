@@ -1,9 +1,8 @@
 <script setup>
+const { path } = useRoute();
 const { getItems } = useDirectusItems();
 
-// local state for filter by bike number
 const bikeFilters = ref([]);
-// local state for filter by eBike compatibility
 const eBikeCompatible = ref(null);
 
 const filter = {
@@ -22,7 +21,7 @@ if (eBikeCompatible.value) {
   };
 }
 
-const { data } = await useAsyncData('termekek', () =>
+const { data: kerekpartartok } = await useAsyncData(path, () =>
   getItems({
     collection: 'termekek',
     params: {
@@ -44,10 +43,10 @@ const { data } = await useAsyncData('termekek', () =>
 const filteredProducts = computed(() => {
   if (bikeFilters.value.length === 0 && eBikeCompatible.value === null) {
     // No filters applied, return all products
-    return data.value;
+    return kerekpartartok.value;
   }
 
-  return data.value.filter((product) => {
+  return kerekpartartok.value.filter((product) => {
     // Filter based on bikeFilters
     const bikeFilterMatch =
       bikeFilters.value.length === 0 ||
@@ -71,7 +70,7 @@ const productQuantity = computed(() => {
 });
 
 const availableNumberOfBikes = computed(() => {
-  const bikeNumbers = data.value.map(
+  const bikeNumbers = kerekpartartok.value.map(
     (product) => product.kerekpartartoTechSpec[0].szallithato_kerekparok
   );
 
@@ -81,7 +80,7 @@ const availableNumberOfBikes = computed(() => {
 
 <template>
   <div class="bg-white">
-    <CategoryNavbar />
+    <CategoryNavbar category-slug="kerekpartartok" />
     <div class="pt-14 space-y-14 site-padding">
       <AppHeader>
         <template #title> Kerékpártartók </template>
