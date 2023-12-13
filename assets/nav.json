@@ -83,6 +83,40 @@
             "link": "/csomagtarto-boxok-es-kosarak/csomagtarto-kiegeszitok"
           }
         ]
+      },
+      {
+        "id": 4,
+        "name": "Vízi sporteszköz szállítók",
+        "link": "/vizi-sporteszkoz-szallitok",
+        "subCategories": [
+          {
+            "id": 1,
+            "name": "Kajak és kenu tartók",
+            "link": "/vizi-sporteszkoz-szallitok/kajak-es-kenu-tartok"
+          },
+          {
+            "id": 2,
+            "name": "Szörfdeszka és SUP tartók",
+            "link": "/vizi-sporteszkoz-szallitok/szorfdeszka-es-sup-tartok"
+          },
+          {
+            "id": 3,
+            "name": "Vízi sporttároló kiegészítők",
+            "link": "/vizi-sporteszkoz-szallitok/vizi-sporttarolo-kiegeszitok"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Téli sporteszköz szállítók",
+        "link": "/teli-sporteszkoz-szallitok",
+        "subCategories": [
+          {
+            "id": 1,
+            "name": "Sí- és snowboard tartók",
+            "link": "/teli-sporteszkoz-szallitok/si-es-snowboard-tartok"
+          }
+        ]
       }
     ]
   },
