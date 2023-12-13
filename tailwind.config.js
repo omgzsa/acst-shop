@@ -29,6 +29,9 @@ module.exports = {
           300: '#717171',
         },
       },
+      screens: {
+        // xs: '575px',
+      },
     },
   },
   variants: {},
