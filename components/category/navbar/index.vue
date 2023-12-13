@@ -9,6 +9,7 @@ const { path, params } = useRoute();
 const allBikeRacksThumbnail = '59cb511b-7e6e-4263-83d8-49091f9bcb03';
 const allRoofRacksThumbnail = 'cf6c6827-6fb1-4227-903b-794fb3203d99';
 const allRoofBoxesThumbnail = '664346f5-6579-4434-a2ee-ed03585dbb37';
+const allWaterRacksThumbnail = '1c0558e8-5416-43f0-9dbf-3bc3e78affed';
 
 const { data } = await useAsyncData('alKategoriak', () =>
   getItems({
@@ -32,6 +33,10 @@ const computedThumbnail = computed(() => {
   if (props.categorySlug === 'csomagtarto-boxok-es-kosarak') {
     return allRoofBoxesThumbnail;
   }
+
+  if (props.categorySlug === 'vizi-sporteszkoz-szallitok') {
+    return allWaterRacksThumbnail;
+  }
 });
 
 const computedTitle = computed(() => {
@@ -44,7 +49,11 @@ const computedTitle = computed(() => {
   }
 
   if (props.categorySlug === 'csomagtarto-boxok-es-kosarak') {
-    return 'Összes box és kosár';
+    return 'Összes csomagtartó box és kosár';
+  }
+
+  if (props.categorySlug === 'vizi-sporteszkoz-szallitok') {
+    return 'Összes vízi sporteszköz szállító';
   }
 });
 </script>
