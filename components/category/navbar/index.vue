@@ -60,9 +60,9 @@ const computedTitle = computed(() => {
 
 <template>
   <div class="bg-gray-100">
-    <div class="flex flex-row mx-auto w-[96vw] sm:w-[97vw] md:w-[98vw] gap-x-4">
+    <div class="w-[96vw] sm:w-[97vw] md:w-[98vw]">
       <div
-        class="flex flex-row px-1 py-10 overflow-x-scroll overflow-y-hidden 2xl:site-padding 2xl:overflow-x-hidden gap-x-4"
+        class="flex flex-row px-1 py-10 overflow-x-scroll overflow-y-hidden xl:site-padding 2xl:overflow-x-hidden gap-x-4"
       >
         <CategoryNavbarItem
           :title="computedTitle"
