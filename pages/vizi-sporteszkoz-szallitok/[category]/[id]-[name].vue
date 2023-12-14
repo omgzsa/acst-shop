@@ -79,11 +79,11 @@ const noTechSpec = computed(() => {
         />
         <ProductTechSpec v-if="!noTechSpec">
           <ProductTechSpecItem
-            name="Űrtartalom"
+            name="Max. terhelhetőség"
             type="number"
-            measure="L"
-            :value="techSpec.urtartalom"
-            v-if="techSpec.urtartalom !== null"
+            measure="kg"
+            :value="techSpec.max_terhelhetoseg"
+            v-if="techSpec.max_terhelhetoseg !== null"
           />
           <ProductTechSpecItem
             name="Méretek"
@@ -112,31 +112,7 @@ const noTechSpec = computed(() => {
             v-if="techSpec.magassag !== null"
             measure="cm"
           />
-          <ProductTechSpecItem
-            name="Külső méretek"
-            type="string"
-            :value="techSpec.kulso_meretek"
-            v-if="techSpec.kulso_meretek !== null"
-          />
-          <ProductTechSpecItem
-            name="Belső méretek"
-            type="string"
-            :value="techSpec.belso_meretek"
-            v-if="techSpec.belso_meretek !== null"
-          />
-          <ProductTechSpecItem
-            name="Terhelhetőség"
-            type="number"
-            measure="kg"
-            :value="techSpec.terhelhetoseg"
-            v-if="techSpec.terhelhetoseg !== null"
-          />
-          <ProductTechSpecItem
-            name="Szerelési rendszer"
-            type="string"
-            :value="techSpec.szerelesi_rendszer"
-            v-if="techSpec.szerelesi_rendszer !== null"
-          />
+
           <ProductTechSpecItem
             name="Súly"
             type="number"
@@ -144,50 +120,26 @@ const noTechSpec = computed(() => {
             :value="techSpec.suly"
             v-if="techSpec.suly !== null"
           />
+
           <ProductTechSpecItem
-            name="Zárrendszer"
-            type="string"
-            :value="techSpec.zarrendszer"
-            v-if="techSpec.zarrendszer !== null"
-          />
-          <ProductTechSpecItem
-            name="Zárat tartalmaz"
+            name="Gumiborítás a hevedercsathoz"
             type="boolean"
-            :value="techSpec.zarat_tartalmaz"
-            :is-true="techSpec.zarat_tartalmaz"
-            v-if="techSpec.zarat_tartalmaz !== null"
+            :value="techSpec.gumi_boritas_hevedercsathoz"
+            v-if="techSpec.gumi_boritas_hevedercsathoz !== null"
           />
+
+          <ProductTechSpecItem
+            name="Pántok hossza"
+            type="string"
+            :value="techSpec.pantok_hossza"
+            v-if="techSpec.pantok_hossza !== null"
+          />
+
           <ProductTechSpecItem
             name="One Key System kompatibilis "
             type="boolean"
             :value="techSpec.one_key_system_kompatibilis"
             v-if="techSpec.one_key_system_kompatibilis !== null"
-          />
-          <ProductTechSpecItem
-            name="T-sínnel felszerelve"
-            type="boolean"
-            :value="techSpec.tsinnel_felszerelve"
-            v-if="techSpec.tsinnel_felszerelve !== null"
-          />
-
-          <ProductTechSpecItem
-            name="Szállítható sílécek (pár)"
-            type="string"
-            :value="techSpec.szallithato_silecek_par"
-            v-if="techSpec.szallithato_silecek_par !== null"
-          />
-          <ProductTechSpecItem
-            name="Szállítható snowboard"
-            type="string"
-            :value="techSpec.szallithato_snowboard"
-            v-if="techSpec.szallithato_snowboard !== null"
-          />
-          <ProductTechSpecItem
-            name="Max. síléc hossz"
-            type="number"
-            measure="cm"
-            :value="techSpec.max_silec_hossz"
-            v-if="techSpec.max_silec_hossz !== null"
           />
           <ProductTechSpecItem
             name="Szín"
@@ -214,10 +166,10 @@ const noTechSpec = computed(() => {
             v-if="techSpec.THULE_WingBar_Egde_rudra_szerelheto !== null"
           />
           <ProductTechSpecItem
-            name="Thule SquareBar kompatibilis "
+            name="Thule SquareBar EVO kompatibilis "
             type="boolean"
-            :value="techSpec.THULE_SquareBar_rudra_szerelheto"
-            v-if="techSpec.THULE_SquareBar_rudra_szerelheto !== null"
+            :value="techSpec.THULE_SquareBar_EVO_rudra_szerelheto"
+            v-if="techSpec.THULE_SquareBar_EVO_rudra_szerelheto !== null"
           />
           <ProductTechSpecItem
             name="Thule SlideBar kompatibilis "
@@ -231,12 +183,12 @@ const noTechSpec = computed(() => {
             :value="techSpec.THULE_ProBar_rudra_szerelheto"
             v-if="techSpec.THULE_ProBar_rudra_szerelheto !== null"
           />
-          <ProductTechSpecItem
+          <!-- <ProductTechSpecItem
             name="Thule ProBar Evo kompatibilis "
             type="boolean"
             :value="techSpec.THULE_ProBar_EVO_rudra_szerelheto"
             v-if="techSpec.THULE_ProBar_EVO_rudra_szerelheto !== null"
-          />
+          /> -->
           <ProductTechSpecItem
             name="Típusszám"
             type="number"

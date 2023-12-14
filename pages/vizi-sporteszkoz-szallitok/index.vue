@@ -24,14 +24,6 @@ const { data: viziSporteszkoz } = await useAsyncData(path, () =>
   })
 );
 
-// const productQuantity = computed(() => {
-//   return filteredviziSporteszkoz.value.length;
-// });
-
-// const filteredviziSporteszkoz = computed(() => {
-//   return viziSporteszkoz.value;
-// });
-
 const { pageQuantity, filteredItems } = usePageProperties(
   viziSporteszkoz.value
 );
@@ -42,19 +34,19 @@ const { pageQuantity, filteredItems } = usePageProperties(
     <CategoryNavbar category-slug="vizi-sporteszkoz-szallitok" />
     <div class="pt-14 space-y-14 site-padding">
       <AppHeader>
-        <template #title> Csomagtartó boxok és kosarak </template>
+        <template #title> Vízi sporteszköz szállítók </template>
         <template #description>
-          Rakományszállítóink és rakománydobozaink nagyszerűek, ha extra helyre
-          van szüksége. Böngésszen az alábbiakban, hogy megtalálja a tökéletes
-          tetőtéri csomagtartót, kosarat, táskát vagy hátsó csomagtartót.
+          A Thule sportállványok segítségével biztonságosan és egyszerűen
+          szállíthatja kajakját vagy szörfdeszkáját. Válassza ki a tökéletes
+          vízisport-tartót szenvedélyének.
         </template>
       </AppHeader>
 
       <!-- product filters section -->
-      <!-- <ProductFiltersViziSporteszkoz
+      <ProductFiltersViziSporteszkoz
         :quantity="pageQuantity"
         :is-disabled="true"
-      /> -->
+      />
 
       <!-- product archive -->
       <ProductList :items="filteredItems" />

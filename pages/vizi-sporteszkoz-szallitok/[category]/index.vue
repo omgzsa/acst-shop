@@ -39,10 +39,10 @@ const { pageTitle, pageDescription, pageQuantity, filteredItems } =
       </AppHeader>
 
       <!-- product filters section -->
-      <!-- <ProductFiltersViziSporteszkoz
+      <ProductFiltersViziSporteszkoz
         :quantity="pageQuantity"
         :is-disabled="true"
-      /> -->
+      />
 
       <!-- product archive -->
       <ProductList :items="filteredItems" />
