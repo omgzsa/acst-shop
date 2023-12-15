@@ -17,6 +17,7 @@ provide('last_name', last_name);
 TODOS:
 
 - Middleware routing still needs polishing
+- reCAPTCHA for registration
 */
 </script>
 
