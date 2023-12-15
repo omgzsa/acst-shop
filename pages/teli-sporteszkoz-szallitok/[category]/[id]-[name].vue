@@ -92,7 +92,7 @@ const noTechSpec = computed(() => {
           />
           <ProductTechSpecItem
             name="Méretek"
-            type="String"
+            type="string"
             :value="techSpec.meretek"
             v-if="techSpec.meretek !== null"
           />
