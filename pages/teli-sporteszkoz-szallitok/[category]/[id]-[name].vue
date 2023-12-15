@@ -79,98 +79,6 @@ const noTechSpec = computed(() => {
         />
         <ProductTechSpec v-if="!noTechSpec">
           <ProductTechSpecItem
-            name="Űrtartalom"
-            type="number"
-            measure="L"
-            :value="techSpec.urtartalom"
-            v-if="techSpec.urtartalom !== null"
-          />
-          <ProductTechSpecItem
-            name="Méretek"
-            type="string"
-            :value="techSpec.meretek"
-            v-if="techSpec.meretek !== null"
-          />
-          <ProductTechSpecItem
-            name="Hossz"
-            type="number"
-            :value="techSpec.hossz"
-            v-if="techSpec.hossz !== null"
-            measure="cm"
-          />
-          <ProductTechSpecItem
-            name="Szélesség"
-            type="number"
-            :value="techSpec.szelesseg"
-            v-if="techSpec.szelesseg !== null"
-            measure="cm"
-          />
-          <ProductTechSpecItem
-            name="Magasság"
-            type="number"
-            :value="techSpec.magassag"
-            v-if="techSpec.magassag !== null"
-            measure="cm"
-          />
-          <ProductTechSpecItem
-            name="Külső méretek"
-            type="string"
-            :value="techSpec.kulso_meretek"
-            v-if="techSpec.kulso_meretek !== null"
-          />
-          <ProductTechSpecItem
-            name="Belső méretek"
-            type="string"
-            :value="techSpec.belso_meretek"
-            v-if="techSpec.belso_meretek !== null"
-          />
-          <ProductTechSpecItem
-            name="Terhelhetőség"
-            type="number"
-            measure="kg"
-            :value="techSpec.terhelhetoseg"
-            v-if="techSpec.terhelhetoseg !== null"
-          />
-          <ProductTechSpecItem
-            name="Szerelési rendszer"
-            type="string"
-            :value="techSpec.szerelesi_rendszer"
-            v-if="techSpec.szerelesi_rendszer !== null"
-          />
-          <ProductTechSpecItem
-            name="Súly"
-            type="number"
-            measure="kg"
-            :value="techSpec.suly"
-            v-if="techSpec.suly !== null"
-          />
-          <ProductTechSpecItem
-            name="Zárrendszer"
-            type="string"
-            :value="techSpec.zarrendszer"
-            v-if="techSpec.zarrendszer !== null"
-          />
-          <ProductTechSpecItem
-            name="Zárat tartalmaz"
-            type="boolean"
-            :value="techSpec.zarat_tartalmaz"
-            :is-true="techSpec.zarat_tartalmaz"
-            v-if="techSpec.zarat_tartalmaz !== null"
-          />
-          <ProductTechSpecItem
-            name="One Key System kompatibilis "
-            type="boolean"
-            :value="techSpec.one_key_system_kompatibilis"
-            v-if="techSpec.one_key_system_kompatibilis !== null"
-          />
-          <ProductTechSpecItem
-            name="T-sínnel felszerelve"
-            type="boolean"
-            :value="techSpec.tsinnel_felszerelve"
-            v-if="techSpec.tsinnel_felszerelve !== null"
-          />
-
-          <ProductTechSpecItem
             name="Szállítható sílécek (pár)"
             type="string"
             :value="techSpec.szallithato_silecek_par"
@@ -183,17 +91,57 @@ const noTechSpec = computed(() => {
             v-if="techSpec.szallithato_snowboard !== null"
           />
           <ProductTechSpecItem
-            name="Max. síléc hossz"
-            type="number"
-            measure="cm"
-            :value="techSpec.max_silec_hossz"
-            v-if="techSpec.max_silec_hossz !== null"
+            name="Méretek"
+            type="String"
+            :value="techSpec.meretek"
+            v-if="techSpec.meretek !== null"
+          />
+          <ProductTechSpecItem
+            name="Rakodási szélesség"
+            type="string"
+            :value="techSpec.rakodasi_szelesseg"
+            v-if="techSpec.rakodasi_szelesseg !== null"
+          />
+          <ProductTechSpecItem
+            name="Extra nagy nyomógomb"
+            type="boolean"
+            :value="techSpec.extra_nagy_nyomogomb"
+            :is-true="techSpec.extra_nagy_nyomogomb"
+            v-if="techSpec.extra_nagy_nyomogomb !== null"
+          />
+          <ProductTechSpecItem
+            name="Hely a magas kötésekhez"
+            type="boolean"
+            :value="techSpec.hely_a_magas_kotesekhez"
+            :is-true="techSpec.hely_a_magas_kotesekhez"
+            v-if="techSpec.hely_a_magas_kotesekhez !== null"
+          />
+          <ProductTechSpecItem
+            name="Sílecek a tartóhoz rögzíthetők"
+            type="boolean"
+            :value="techSpec.silecek_tartohoz_rogzithetok"
+            :is-true="techSpec.silecek_tartohoz_rogzithetok"
+            v-if="techSpec.silecek_tartohoz_rogzithetok !== null"
+          />
+          <ProductTechSpecItem
+            name="Tartó a tetőcsomagtartóhoz rögzíthatő"
+            type="boolean"
+            :value="techSpec.tarto_tetocsomagtartohoz_rogzitheto"
+            :is-true="techSpec.tarto_tetocsomagtartohoz_rogzitheto"
+            v-if="techSpec.tarto_tetocsomagtartohoz_rogzitheto !== null"
           />
           <ProductTechSpecItem
             name="Szín"
             type="string"
             :value="techSpec.szin"
             v-if="techSpec.szin !== null"
+          />
+
+          <ProductTechSpecItem
+            name="24x30-as T-profilú nem THULE rúdra szerelhető"
+            type="boolean"
+            :value="techSpec['24x30_Tprofilu_nem_THULE_szerelheto']"
+            v-if="techSpec['24x30_Tprofilu_nem_THULE_szerelheto'] !== null"
           />
           <ProductTechSpecItem
             name="Thule WingBar kompatibilis "
@@ -208,35 +156,35 @@ const noTechSpec = computed(() => {
             v-if="techSpec.THULE_WingBar_EVO_rudra_szerelheto !== null"
           />
           <ProductTechSpecItem
-            name="Thule WingBar Edge kompatibilis "
+            name="Thule WingBar Edge kompatibilis"
             type="boolean"
             :value="techSpec.THULE_WingBar_Egde_rudra_szerelheto"
             v-if="techSpec.THULE_WingBar_Egde_rudra_szerelheto !== null"
           />
           <ProductTechSpecItem
-            name="Thule SquareBar kompatibilis "
+            name="Thule SquareBar kompatibilis"
             type="boolean"
             :value="techSpec.THULE_SquareBar_rudra_szerelheto"
             v-if="techSpec.THULE_SquareBar_rudra_szerelheto !== null"
           />
           <ProductTechSpecItem
-            name="Thule SlideBar kompatibilis "
+            name="Thule SlideBar kompatibilis"
             type="boolean"
             :value="techSpec.THULE_SlideBar_rudra_szerelheto"
             v-if="techSpec.THULE_SlideBar_rudra_szerelheto !== null"
           />
-          <ProductTechSpecItem
-            name="Thule ProBar kompatibilis "
+          <!-- <ProductTechSpecItem
+            name="Thule ProBar kompatibilis"
             type="boolean"
             :value="techSpec.THULE_ProBar_rudra_szerelheto"
             v-if="techSpec.THULE_ProBar_rudra_szerelheto !== null"
           />
           <ProductTechSpecItem
-            name="Thule ProBar Evo kompatibilis "
+            name="Thule ProBar Evo kompatibilis"
             type="boolean"
             :value="techSpec.THULE_ProBar_EVO_rudra_szerelheto"
             v-if="techSpec.THULE_ProBar_EVO_rudra_szerelheto !== null"
-          />
+          /> -->
           <ProductTechSpecItem
             name="Típusszám"
             type="number"
