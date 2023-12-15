@@ -14,7 +14,7 @@ const props = defineProps({
         v-show="isVisible"
         class="absolute left-0 hidden w-full p-6 overflow-hidden bg-white border rounded-md shadow-md top-12 group-hover:block"
       >
-        <div class="grid grid-cols-4 gap-x-4 gap-y-8">
+        <div class="grid grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-8">
           <NavbarDesktopItemSub
             v-for="cat in props.item.categories"
             :key="cat.id"
