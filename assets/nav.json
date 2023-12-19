@@ -123,16 +123,281 @@
   {
     "id": 2,
     "name": "Sport és utazótáskák",
-    "categories": []
+    "categories": [
+      {
+        "id": 1,
+        "name": "Bőröndök és utazótáskák",
+        "link": "/borondok-es-utazotaskak",
+        "subCategories": [
+          {
+            "id": 1,
+            "name": "Kézipoggyász",
+            "link": "/borondok-es-utazotaskak/kezipoggyasz"
+          },
+          {
+            "id": 2,
+            "name": "Feladott poggyász",
+            "link": "/borondok-es-utazotaskak/feladott-poggyasz"
+          },
+          {
+            "id": 3,
+            "name": "Sporttáskák",
+            "link": "/borondok-es-utazotaskak/sporttaskak"
+          },
+          {
+            "id": 4,
+            "name": "Utazási rendezők",
+            "link": "/borondok-es-utazotaskak/utazasi-rendezok"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Laptop táskák",
+        "link": "/laptop-taskak",
+        "subCategories": [
+          {
+            "id": 1,
+            "name": "Laptop hátizsákok",
+            "link": "/laptop-taskak/laptop-hatizsakok"
+          },
+          {
+            "id": 2,
+            "name": "Laptop tokok",
+            "link": "/laptop-taskak/laptop-tokok"
+          },
+          {
+            "id": 3,
+            "name": "Aktatáskák és irattartó táskák",
+            "link": "/laptop-taskak/aktataskak-es-irattarto-taskak"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Hátizsákok és kézitáskák",
+        "link": "/hatizsakok-es-kezitaskak",
+        "subCategories": [
+          {
+            "id": 1,
+            "name": "Utazó hátizsákok",
+            "link": "/hatizsakok-es-kezitaskak/utazo-hatizsakok"
+          },
+          {
+            "id": 2,
+            "name": "Túrázó hátizsákok",
+            "link": "/hatizsakok-es-kezitaskak/turazo-hatizsakok"
+          },
+          {
+            "id": 3,
+            "name": "Itatóval felszerelt hátizsákok",
+            "link": "/hatizsakok-es-kezitaskak/itatoval-felszerelt-hatizsakok"
+          },
+          {
+            "id": 4,
+            "name": "Kamera és objektív hátizsákok",
+            "link": "/hatizsakok-es-kezitaskak/kamera-es-objektiv-hatizsakok"
+          },
+          {
+            "id": 5,
+            "name": "Tote táskák, válltáskák",
+            "link": "/hatizsakok-es-kezitaskak/tote-taskak-valltaskak"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Kerékpáros és sporttáskák",
+        "link": "/kerekparos-es-sporttaskak",
+        "subCategories": [
+          {
+            "id": 1,
+            "name": "Kerékpár oldaltáskák és tartók",
+            "link": "/kerekparos-es-sporttaskak/kerekpar-oldaltaskak-es-tartok"
+          },
+          {
+            "id": 2,
+            "name": "Kerékpárfelszerelés táskák és utazó tokok",
+            "link": "/kerekparos-es-sporttaskak/kerekparfelszereles-taskak-es-utazo-tokok"
+          },
+          {
+            "id": 3,
+            "name": "Kerékpár hátizsákok",
+            "link": "/kerekparos-es-sporttaskak/kerekpar-hatizsakok"
+          },
+          {
+            "id": 4,
+            "name": "Sí- és snowboardtáskák",
+            "link": "/kerekparos-es-sporttaskak/si-es-snowboardtaskak"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Irat és eszközrendező táskák",
+        "link": "/irat-es-eszkozrendezo-taskak",
+        "subCategories": [
+          {
+            "id": 1,
+            "name": "Elektronikus rendezők",
+            "link": "/irat-es-eszkozrendezo-taskak/elektronikus-rendezok"
+          },
+          {
+            "id": 2,
+            "name": "Pakolótáskák és iratrendezők",
+            "link": "/irat-es-eszkozrendezo-taskak/pakolotaskak-es-iratrendezok"
+          },
+          {
+            "id": 3,
+            "name": "Neszesszerek",
+            "link": "/irat-es-eszkozrendezo-taskak/neszesszerek"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": 3,
     "name": "Tetősátrak",
-    "categories": []
+    "categories": [
+      {
+        "id": 1,
+        "name": "Autós sátrak",
+        "link": "/tetosatrak",
+        "subCategories": [
+          {
+            "id": 1,
+            "name": "Tetősátrak",
+            "link": "/tetosatrak/tetosatrak"
+          },
+          {
+            "id": 2,
+            "name": "Tetősátor kiegészítők",
+            "link": "/tetosatrak/tetosator-kiegeszitok"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": 4,
     "name": "Babakocsik és hordozók",
-    "categories": []
+    "categories": [
+      {
+        "id": 1,
+        "name": "Babakocsik",
+        "link": "/babakocsik",
+        "subCategories": [
+          {
+            "id": 1,
+            "name": "Kompakt babakocsik",
+            "link": "/babakocsik/kompakt-babakocsik"
+          },
+          {
+            "id": 2,
+            "name": "Terep- és futóbabakocsik",
+            "link": "/babakocsik/terep-es-futobabakocsik"
+          },
+          {
+            "id": 3,
+            "name": "Kombi babakocsik",
+            "link": "/babakocsik/kombi-babakocsik"
+          },
+          {
+            "id": 4,
+            "name": "Iker babakocsik",
+            "link": "/babakocsik/iker-babakocsik"
+          },
+          {
+            "id": 5,
+            "name": "Babakocsi kiegészítők",
+            "link": "/babakocsik/babakocsi-kiegeszitok"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Kerékpár utánfutók",
+        "link": "/kerekpar-utanfutok",
+        "subCategories": [
+          {
+            "id": 1,
+            "name": "Kerékpár utánfutók gyerekeknek",
+            "link": "/kerekpar-utanfutok/kerekpar-utanfutok-gyerekeknek"
+          },
+          {
+            "id": 2,
+            "name": "Kerékpár utánfutók kutyák és csomagok számára",
+            "link": "/kerekpar-utanfutok/kerekpar-utanfutok-kutyak-es-csomagok-szamara"
+          },
+          {
+            "id": 3,
+            "name": "Kerékpáros utánfutó kiegészítők",
+            "link": "/kerekpar-utanfutok/kerekparos-utanfuto-kiegeszitok"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Gyermek kerékpárülések",
+        "link": "/gyermek-kerekparulesek",
+        "subCategories": [
+          {
+            "id": 1,
+            "name": "Hátsó gyermek kerékpárülések",
+            "link": "/gyermek-kerekparulesek/hatso-gyermek-kerekparulesek"
+          },
+          {
+            "id": 2,
+            "name": "Elülső gyermek kerékpárülések",
+            "link": "/gyermek-kerekparulesek/elulso-gyermek-kerekparulesek"
+          },
+          {
+            "id": 3,
+            "name": "Gyermek kerékpárülés kiegészítők",
+            "link": "/gyermek-kerekparulesek/gyermek-kerekparules-kiegeszitok"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Kerékpáros és sporttáskák",
+        "link": "/kerekparos-es-sporttaskak",
+        "subCategories": [
+          {
+            "id": 1,
+            "name": "Kerékpár oldaltáskák és tartók",
+            "link": "/kerekparos-es-sporttaskak/kerekpar-oldaltaskak-es-tartok"
+          },
+          {
+            "id": 2,
+            "name": "Kerékpárfelszerelés táskák és utazó tokok",
+            "link": "/kerekparos-es-sporttaskak/kerekparfelszereles-taskak-es-utazo-tokok"
+          },
+          {
+            "id": 3,
+            "name": "Kerékpár hátizsákok",
+            "link": "/kerekparos-es-sporttaskak/kerekpar-hatizsakok"
+          },
+          {
+            "id": 4,
+            "name": "Sí- és snowboardtáskák",
+            "link": "/kerekparos-es-sporttaskak/si-es-snowboardtaskak"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Gyermekhordozó hátizsákok",
+        "link": "/gyermekhordozo-hatizsakok",
+        "subCategories": [
+          {
+            "id": 1,
+            "name": "Gyermekhordozó hátizsákok",
+            "link": "/gyermekhordozo-hatizsakok/gyermekhordozo-hatizsakok"
+          }
+        ]
+      }
+    ]
   }
 ]
