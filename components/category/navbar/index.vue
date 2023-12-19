@@ -10,6 +10,8 @@ const allBikeRacksThumbnail = '59cb511b-7e6e-4263-83d8-49091f9bcb03';
 const allRoofRacksThumbnail = 'cf6c6827-6fb1-4227-903b-794fb3203d99';
 const allRoofBoxesThumbnail = '664346f5-6579-4434-a2ee-ed03585dbb37';
 const allWaterRacksThumbnail = '1c0558e8-5416-43f0-9dbf-3bc3e78affed';
+const allLuggageTravelBagsThumbnail = '6d0223cb-38e6-4dba-b3e9-20ac78848055';
+const allLaptopBagsThumbnail = '2dfa4f72-6613-4c16-a946-9c4f489721d2';
 
 const { data } = await useAsyncData('alKategoriak', () =>
   getItems({
@@ -37,6 +39,14 @@ const computedThumbnail = computed(() => {
   if (props.categorySlug === 'vizi-sporteszkoz-szallitok') {
     return allWaterRacksThumbnail;
   }
+
+  if (props.categorySlug === 'borondok-es-utazotaskak') {
+    return allLuggageTravelBagsThumbnail;
+  }
+
+  if (props.categorySlug === 'laptop-taskak') {
+    return allLaptopBagsThumbnail;
+  }
 });
 
 const computedTitle = computed(() => {
@@ -54,6 +64,14 @@ const computedTitle = computed(() => {
 
   if (props.categorySlug === 'vizi-sporteszkoz-szallitok') {
     return 'Összes vízi sporteszköz szállító';
+  }
+
+  if (props.categorySlug === 'borondok-es-utazotaskak') {
+    return 'Összes bőrönd és utazótáska';
+  }
+
+  if (props.categorySlug === 'laptop-taskak') {
+    return 'Összes laptop táska';
   }
 });
 </script>
