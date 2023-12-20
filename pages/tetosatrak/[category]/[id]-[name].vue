@@ -21,7 +21,7 @@ const { data, pending, error } = await useAsyncData(path, () => {
         'eredetiThuleGarancia',
         'termekGaleria.id',
         'termekGaleria.directus_files_id',
-        'iratEsEszkozTechSpec.*',
+        'tetosatorTechSpec.*',
       ],
     },
   });
@@ -29,8 +29,8 @@ const { data, pending, error } = await useAsyncData(path, () => {
 
 const { data: techSpec } = await useAsyncData('techSpec', () => {
   return getItemById({
-    collection: `iratEsEszkozTechSpec`,
-    id: data.value.iratEsEszkozTechSpec[0].id,
+    collection: `tetosatorTechSpec`,
+    id: data.value.tetosatorTechSpec[0].id,
     filter: {
       kapcsolodoTermekek: { id: { _eq: params.id } },
     },
@@ -80,24 +80,36 @@ product.value = data.value;
         />
         <ProductTechSpec v-if="!noTechSpec">
           <ProductTechSpecItem
-            name="Méret (HxSZxM)"
-            type="string"
-            :value="techSpec.meret_HxSZxM"
-            v-if="techSpec.meret_HxSZxM !== null"
+            name="Férőhelyek száma"
+            type="number"
+            :value="techSpec.ferohelyek_szama"
+            v-if="techSpec.ferohelyek_szama !== null"
           />
           <ProductTechSpecItem
-            name="Kompressziós méret"
+            name="Méretek kinyitva"
             type="string"
-            :value="techSpec.kompresszios_meret"
-            v-if="techSpec.kompresszios_meret !== null"
+            :value="techSpec.meretek_kinyitva"
+            v-if="techSpec.meretek_kinyitva !== null"
           />
           <ProductTechSpecItem
-            name="Kibővített méret"
+            name="Méretek összehajtva"
             type="string"
-            :value="techSpec.kibovitett_meret"
-            v-if="techSpec.kibovitett_meret !== null"
+            :value="techSpec.meretek_osszehajtva"
+            v-if="techSpec.meretek_osszehajtva !== null"
           />
-
+          <ProductTechSpecItem
+            name="Fekvőhely mérete"
+            type="string"
+            :value="techSpec.fekvohely_merete"
+            v-if="techSpec.fekvohely_merete !== null"
+          />
+          <ProductTechSpecItem
+            name="Max. belső magasság"
+            type="number"
+            measure="cm"
+            :value="techSpec.max_belso_magassag"
+            v-if="techSpec.max_belso_magassag !== null"
+          />
           <ProductTechSpecItem
             name="Súly"
             type="number"
@@ -106,22 +118,54 @@ product.value = data.value;
             v-if="techSpec.suly !== null"
           />
           <ProductTechSpecItem
+            name="Statikus teherbírás"
+            type="number"
+            measure="kg"
+            :value="techSpec.statikus_teherbiras"
+            v-if="techSpec.statikus_teherbiras !== null"
+          />
+          <ProductTechSpecItem
+            name="Minimális tartórúd méret"
+            type="number"
+            measure="cm"
+            :value="techSpec.minimalis_tarto_rud_meret"
+            v-if="techSpec.minimalis_tarto_rud_meret !== null"
+          />
+          <ProductTechSpecItem
+            name="Sátor alap anyaga"
+            type="string"
+            :value="techSpec.sator_alap_anyaga"
+            v-if="techSpec.sator_alap_anyaga !== null"
+          />
+          <ProductTechSpecItem
+            name="Sátor szövet anyaga"
+            type="string"
+            :value="techSpec.sator_szovet_anyaga"
+            v-if="techSpec.sator_szovet_anyaga !== null"
+          />
+          <ProductTechSpecItem
+            name="Belső keret"
+            type="string"
+            :value="techSpec.belso_keret"
+            v-if="techSpec.belso_keret !== null"
+          />
+          <ProductTechSpecItem
+            name="Szúnyogháló"
+            type="boolean"
+            :value="techSpec.szunyoghalo"
+            v-if="techSpec.szunyoghalo !== null"
+          />
+          <ProductTechSpecItem
+            name="Használhatóság"
+            type="string"
+            :value="techSpec.hasznalhatosag"
+            v-if="techSpec.hasznalhatosag !== null"
+          />
+          <ProductTechSpecItem
             name="Szín"
             type="string"
             :value="techSpec.szin"
             v-if="techSpec.szin !== null"
-          />
-          <ProductTechSpecItem
-            name="Anyaga"
-            type="string"
-            :value="techSpec.anyaga"
-            v-if="techSpec.anyaga !== null"
-          />
-          <ProductTechSpecItem
-            name="Modell név"
-            type="string"
-            :value="techSpec.modell_nev"
-            v-if="techSpec.modell_nev !== null"
           />
           <ProductTechSpecItem
             name="Típusszám"

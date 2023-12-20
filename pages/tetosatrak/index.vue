@@ -29,7 +29,7 @@ const { pageQuantity, filteredItems } = usePageProperties(tetosatrak.value);
     <CategoryNavbar category-slug="tetosatrak" />
     <div class="pt-14 space-y-14 site-padding">
       <AppHeader>
-        <template #title> Tetősátrak </template>
+        <template #title> Autós sátrak </template>
         <template #description>
           Elindulsz terepen vagy felfedezed az új látnivalókat a családdal? Ezek
           a puha vagy kemény héjú autós sátrak megváltoztatják a kempingezésről
