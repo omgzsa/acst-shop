@@ -87,11 +87,11 @@ product.value = data.value;
             v-if="techSpec.max_gyermeksuly !== null"
           />
           <ProductTechSpecItem
-            name="Babakocsi max. terhelhetősége"
+            name="Utánfutó max. terhelhetősége"
             type="number"
             measure="kg"
-            :value="techSpec.babakocsi_max_terhelhetosege"
-            v-if="techSpec.babakocsi_max_terhelhetosege !== null"
+            :value="techSpec.utanfuto_max_terhelhetosege"
+            v-if="techSpec.utanfuto_max_terhelhetosege !== null"
           />
           <ProductTechSpecItem
             name="Méretek összecsukva"
@@ -127,13 +127,6 @@ product.value = data.value;
             v-if="techSpec.ulomagassag !== null"
           />
           <ProductTechSpecItem
-            name="Max. áthaladható ajtószélesség"
-            type="number"
-            measure="cm"
-            :value="techSpec.max_athaladhato_ajtoszelesseg"
-            v-if="techSpec.max_athaladhato_ajtoszelesseg !== null"
-          />
-          <ProductTechSpecItem
             name="Megfelel a biztonsági előírásoknak"
             type="boolean"
             :value="techSpec.megfelel_biztonsagi_eloirasoknak"
@@ -156,12 +149,6 @@ product.value = data.value;
             type="number"
             :value="techSpec.tipusszam"
             v-if="techSpec.tipusszam !== null"
-          />
-          <ProductTechSpecItem
-            name="Kompatibilitás"
-            type="string"
-            :value="techSpec.kompatibilitas"
-            v-if="techSpec.kompatibilitas !== null"
           />
         </ProductTechSpec>
       </div>
