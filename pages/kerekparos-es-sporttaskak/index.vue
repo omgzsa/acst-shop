@@ -31,11 +31,11 @@ const { pageQuantity, filteredItems } = usePageProperties(
     <CategoryNavbar category-slug="kerekparos-es-sporttaskak" />
     <div class="pt-14 space-y-14 site-padding">
       <AppHeader>
-        <template #title> Hátizsákok és kézitáskák </template>
+        <template #title> Kerékpáros és sporttáskák </template>
         <template #description>
-          Hátizsákjaink és napi táskáink okos tároló rekeszekkel rendelkeznek,
-          valamint különböző modellek és színek állnak rendelkezésedre, hogy
-          illeszkedjenek mindennapi stílusodhoz.
+          Kerékpár-, sí- és snowboard táskáink segítenek átszelni a világot
+          minden sportszerrel. Miután megérkeztél a célállomásodra, könnyű
+          magaddal vinni az összes szükséges felszerelést.
         </template>
       </AppHeader>
 
