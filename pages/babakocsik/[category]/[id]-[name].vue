@@ -80,24 +80,25 @@ product.value = data.value;
         />
         <ProductTechSpec v-if="!noTechSpec">
           <ProductTechSpecItem
-            name="Méret (HxSZxM)"
-            type="string"
-            :value="techSpec.meret_HxSZxM"
-            v-if="techSpec.meret_HxSZxM !== null"
+            name="Max. gyermeksúly"
+            type="number"
+            measure="kg"
+            :value="techSpec.max_gyermeksuly"
+            v-if="techSpec.max_gyermeksuly !== null"
           />
           <ProductTechSpecItem
-            name="Kompressziós méret"
-            type="string"
-            :value="techSpec.kompresszios_meret"
-            v-if="techSpec.kompresszios_meret !== null"
+            name="Babakocsi max. terhelhetősége"
+            type="number"
+            measure="kg"
+            :value="techSpec.babakocsi_max_terhelhetosege"
+            v-if="techSpec.babakocsi_max_terhelhetosege !== null"
           />
           <ProductTechSpecItem
-            name="Kibővített méret"
+            name="Méretek összecsukva"
             type="string"
-            :value="techSpec.kibovitett_meret"
-            v-if="techSpec.kibovitett_meret !== null"
+            :value="techSpec.meretek_osszecsukva"
+            v-if="techSpec.meretek_osszecsukva !== null"
           />
-
           <ProductTechSpecItem
             name="Súly"
             type="number"
@@ -106,28 +107,61 @@ product.value = data.value;
             v-if="techSpec.suly !== null"
           />
           <ProductTechSpecItem
+            name="Tolókar szélesség"
+            type="number"
+            measure="cm"
+            :value="techSpec.tolokar_szelesseg"
+            v-if="techSpec.tolokar_szelesseg !== null"
+          />
+          <ProductTechSpecItem
+            name="Biztonsági heveder"
+            type="string"
+            :value="techSpec.biztonsagi_heveder"
+            v-if="techSpec.biztonsagi_heveder !== null"
+          />
+          <ProductTechSpecItem
+            name="Ülőmagasság"
+            type="number"
+            measure="cm"
+            :value="techSpec.ulomagassag"
+            v-if="techSpec.ulomagassag !== null"
+          />
+          <ProductTechSpecItem
+            name="Max. áthaladható ajtószélesség"
+            type="number"
+            measure="cm"
+            :value="techSpec.max_athaladhato_ajtoszelesseg"
+            v-if="techSpec.max_athaladhato_ajtoszelesseg !== null"
+          />
+          <ProductTechSpecItem
+            name="Megfelel a biztonsági előírásoknak"
+            type="boolean"
+            :value="techSpec.megfelel_biztonsagi_eloirasoknak"
+            v-if="techSpec.megfelel_biztonsagi_eloirasoknak !== null"
+          />
+          <ProductTechSpecItem
+            name="Szállítható gyermekek száma"
+            type="number"
+            :value="techSpec.szallithato_gyermekek_szama"
+            v-if="techSpec.szallithato_gyermekek_szama !== null"
+          />
+          <ProductTechSpecItem
             name="Szín"
             type="string"
             :value="techSpec.szin"
             v-if="techSpec.szin !== null"
           />
           <ProductTechSpecItem
-            name="Anyaga"
-            type="string"
-            :value="techSpec.anyaga"
-            v-if="techSpec.anyaga !== null"
-          />
-          <ProductTechSpecItem
-            name="Modell név"
-            type="string"
-            :value="techSpec.modell_nev"
-            v-if="techSpec.modell_nev !== null"
-          />
-          <ProductTechSpecItem
             name="Típusszám"
             type="number"
             :value="techSpec.tipusszam"
             v-if="techSpec.tipusszam !== null"
+          />
+          <ProductTechSpecItem
+            name="Kompatibilitás"
+            type="string"
+            :value="techSpec.kompatibilitas"
+            v-if="techSpec.kompatibilitas !== null"
           />
         </ProductTechSpec>
       </div>
