@@ -21,7 +21,7 @@ const { data, pending, error } = await useAsyncData(path, () => {
         'eredetiThuleGarancia',
         'termekGaleria.id',
         'termekGaleria.directus_files_id',
-        'iratEsEszkozTechSpec.*',
+        'babakocsiTechSpec.*',
       ],
     },
   });
@@ -29,8 +29,8 @@ const { data, pending, error } = await useAsyncData(path, () => {
 
 const { data: techSpec } = await useAsyncData('techSpec', () => {
   return getItemById({
-    collection: `iratEsEszkozTechSpec`,
-    id: data.value.iratEsEszkozTechSpec[0].id,
+    collection: `babakocsiTechSpec`,
+    id: data.value.babakocsiTechSpec[0].id,
     filter: {
       kapcsolodoTermekek: { id: { _eq: params.id } },
     },
