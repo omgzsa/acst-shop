@@ -21,7 +21,7 @@ const { data, pending, error } = await useAsyncData(path, () => {
         'eredetiThuleGarancia',
         'termekGaleria.id',
         'termekGaleria.directus_files_id',
-        'borondokEsUtazoTechSpec.*',
+        'laptopTaskakTechSpec.*',
       ],
     },
   });
@@ -29,8 +29,8 @@ const { data, pending, error } = await useAsyncData(path, () => {
 
 const { data: techSpec } = await useAsyncData('techSpec', () => {
   return getItemById({
-    collection: `borondokEsUtazoTechSpec`,
-    id: data.value.borondokEsUtazoTechSpec[0].id,
+    collection: `laptopTaskakTechSpec`,
+    id: data.value.laptopTaskakTechSpec[0].id,
     filter: {
       kapcsolodoTermekek: { id: { _eq: params.id } },
     },
@@ -81,9 +81,15 @@ product.value = data.value;
         <ProductTechSpec v-if="!noTechSpec">
           <ProductTechSpecItem
             name="Méret (HxSZxM)"
-            type="number"
+            type="string"
             :value="techSpec.meret_HxSZxM"
             v-if="techSpec.meret_HxSZxM !== null"
+          />
+          <ProductTechSpecItem
+            name="Laptop rekesz méretei"
+            type="string"
+            :value="techSpec.laptop_rekesz_meretei"
+            v-if="techSpec.laptop_rekesz_meretei !== null"
           />
           <ProductTechSpecItem
             name="Súly"
@@ -126,13 +132,6 @@ product.value = data.value;
             type="number"
             :value="techSpec.tipusszam"
             v-if="techSpec.tipusszam !== null"
-          />
-
-          <ProductTechSpecItem
-            name="Kollekció"
-            type="string"
-            :value="techSpec.kollekcio"
-            v-if="techSpec.kollekcio !== null"
           />
         </ProductTechSpec>
       </div>

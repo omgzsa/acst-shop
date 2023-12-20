@@ -38,10 +38,10 @@ const { pageQuantity, filteredItems } = usePageProperties(laptopTaskak.value);
       </AppHeader>
 
       <!-- product filters section -->
-      <!-- <ProductFiltersLaptopTaskak
+      <ProductFiltersLaptopTaskak
         :quantity="pageQuantity"
         :is-disabled="true"
-      /> -->
+      />
 
       <!-- product archive -->
       <ProductList :items="filteredItems" />

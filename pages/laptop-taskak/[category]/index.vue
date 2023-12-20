@@ -30,7 +30,7 @@ const { pageTitle, pageDescription, pageQuantity, filteredItems } =
 
 <template>
   <div class="bg-white">
-    <CategoryNavbar category-slug="borondok-es-utazotaskak" />
+    <CategoryNavbar category-slug="laptop-taskak" />
     <div class="pt-14 space-y-14 site-padding">
       <AppHeader>
         <template #title> {{ pageTitle }} </template>
