@@ -361,33 +361,6 @@
       },
       {
         "id": 4,
-        "name": "Kerékpáros és sporttáskák",
-        "link": "/kerekparos-es-sporttaskak",
-        "subCategories": [
-          {
-            "id": 1,
-            "name": "Kerékpár oldaltáskák és tartók",
-            "link": "/kerekparos-es-sporttaskak/kerekpar-oldaltaskak-es-tartok"
-          },
-          {
-            "id": 2,
-            "name": "Kerékpárfelszerelés táskák és utazó tokok",
-            "link": "/kerekparos-es-sporttaskak/kerekparfelszereles-taskak-es-utazo-tokok"
-          },
-          {
-            "id": 3,
-            "name": "Kerékpár hátizsákok",
-            "link": "/kerekparos-es-sporttaskak/kerekpar-hatizsakok"
-          },
-          {
-            "id": 4,
-            "name": "Sí- és snowboardtáskák",
-            "link": "/kerekparos-es-sporttaskak/si-es-snowboardtaskak"
-          }
-        ]
-      },
-      {
-        "id": 5,
         "name": "Gyermekhordozó hátizsákok",
         "link": "/gyermekhordozo-hatizsakok",
         "subCategories": [
