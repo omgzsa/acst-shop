@@ -25,7 +25,7 @@ const { categoryName, categorySlug, subCategoryName, subCategorySlug } =
 </script>
 
 <template>
-  <nav aria-label="breadcrumb" class="mb-4 text-xs tracking-wide">
+  <nav aria-label="breadcrumb" class="text-xs tracking-wide">
     <ol class="items-center hidden sm:flex gap-x-2">
       <li class="flex items-center gap-x-2">
         <NuxtLink to="/" title="Vissza a kezdőlapra"
@@ -40,18 +40,18 @@ const { categoryName, categorySlug, subCategoryName, subCategorySlug } =
           class="text-xs hover:text-accent-200"
           >{{ categoryName }}</NuxtLink
         >
-        /
       </li>
       <li class="flex items-center gap-x-2" v-if="subCategorySlug">
+        /
         <NuxtLink
           :to="`/${categorySlug}/${subCategorySlug}`"
           title="Vissza az alkategóriához"
           class="text-xs hover:text-accent-200"
           >{{ subCategoryName }}</NuxtLink
         >
-        /
       </li>
       <li class="flex items-center gap-x-2" v-if="productName">
+        /
         <span class="text-xs">{{ productName }}</span>
       </li>
     </ol>
