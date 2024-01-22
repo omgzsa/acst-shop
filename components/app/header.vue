@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="max-w-3xl space-y-4">
+  <div class="max-w-3xl pb-10 space-y-4">
     <h1>
       <slot name="title" />
     </h1>
