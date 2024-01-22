@@ -31,7 +31,9 @@ const { data: kerekpartartok } = await useAsyncData(path, () =>
         'termekKep',
         'termekLeiras',
         'kapcsolodoKategoria.slug',
+        'kapcsolodoKategoria.termekKategoriaNev',
         'kapcsolodoAlKategoria.slug',
+        'kapcsolodoAlKategoria.termekAlKategoriaNev',
         'kerekpartartoTechSpec.szallithato_kerekparok',
         'kerekpartartoTechSpec.eBike_kompatibilis',
       ],
@@ -81,7 +83,11 @@ const availableNumberOfBikes = computed(() => {
 <template>
   <div class="bg-white">
     <CategoryNavbar category-slug="kerekpartartok" />
-    <div class="pt-14 space-y-14 site-padding">
+    <div class="pt-14 site-padding">
+      <TheBreadCrumbs
+        category-name="Kerékpártartók"
+        category-slug="kerekpartartok"
+      />
       <AppHeader>
         <template #title> Kerékpártartók </template>
         <template #description>
