@@ -57,7 +57,7 @@ product.value = data.value;
 
 <template>
   <div class="bg-white">
-    <div class="site-padding">
+    <div class="py-4 site-padding">
       <TheBreadCrumbs
         :category-name="product.kapcsolodoKategoria.termekKategoriaNev"
         :category-slug="product.kapcsolodoKategoria.slug"
