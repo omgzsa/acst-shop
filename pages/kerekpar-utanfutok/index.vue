@@ -15,7 +15,7 @@ const { data: kerekparUtanfutok } = await useAsyncData(path, () =>
         'kapcsolodoAlKategoria.slug',
       ],
       filter: {
-        kapcsolodoKategoria: { id: { _eq: '14' } },
+        kapcsolodoKategoria: { id: { _eq: '15' } },
       },
     },
   })
