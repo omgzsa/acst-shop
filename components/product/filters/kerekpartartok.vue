@@ -42,7 +42,7 @@ const clearAllFilters = () => {
 
 <template>
   <div
-    class="relative grid grid-cols-6 py-4 border-t-2 border-b-2 border-dark-200"
+    class="relative grid grid-cols-6 py-4 border-t-2 border-b-2 border-dark-200 mb-14"
   >
     <details
       class="col-span-6 overflow-hidden rounded [&_summary::-webkit-details-marker]:hidden"
