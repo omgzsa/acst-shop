@@ -12,6 +12,7 @@ const { data: viziSporteszkoz } = await useAsyncData(path, () =>
         'termekKep',
         'termekLeiras',
         'kapcsolodoKategoria.slug',
+        'kapcsolodoKategoria.termekKategoriaNev',
         'kapcsolodoAlKategoria.slug',
         'kapcsolodoAlKategoria.termekAlKategoriaNev',
         'kapcsolodoAlKategoria.termekAlKategoriaLeiras',
@@ -30,7 +31,17 @@ const { pageTitle, pageDescription, pageQuantity, filteredItems } =
 <template>
   <div class="bg-white">
     <CategoryNavbar category-slug="vizi-sporteszkoz-szallitok" />
-    <div class="pt-14 space-y-14 site-padding">
+    <div class="pt-14 site-padding">
+      <TheBreadCrumbs
+        :category-name="
+          viziSporteszkoz[0].kapcsolodoKategoria.termekKategoriaNev
+        "
+        :category-slug="viziSporteszkoz[0].kapcsolodoKategoria.slug"
+        :sub-category-name="
+          viziSporteszkoz[0].kapcsolodoAlKategoria.termekAlKategoriaNev
+        "
+        :sub-category-slug="viziSporteszkoz[0].kapcsolodoAlKategoria.slug"
+      />
       <AppHeader>
         <template #title> {{ pageTitle }} </template>
         <template #description>

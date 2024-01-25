@@ -27,7 +27,8 @@ const { pageQuantity, filteredItems } = usePageProperties(tetosatrak.value);
 <template>
   <div class="bg-white">
     <CategoryNavbar category-slug="tetosatrak" />
-    <div class="pt-14 space-y-14 site-padding">
+    <div class="pt-14 site-padding">
+      <TheBreadCrumbs category-name="Tetősátrak" category-slug="tetosatrak" />
       <AppHeader>
         <template #title> Autós sátrak </template>
         <template #description>

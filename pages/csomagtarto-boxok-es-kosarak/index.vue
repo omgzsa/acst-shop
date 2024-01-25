@@ -24,21 +24,17 @@ const { data: boxokEsKosarak } = await useAsyncData(path, () =>
   })
 );
 
-// const productQuantity = computed(() => {
-//   return filteredBoxokEsKosarak.value.length;
-// });
-
-// const filteredBoxokEsKosarak = computed(() => {
-//   return boxokEsKosarak.value;
-// });
-
 const { pageQuantity, filteredItems } = usePageProperties(boxokEsKosarak.value);
 </script>
 
 <template>
   <div class="bg-white">
     <CategoryNavbar category-slug="csomagtarto-boxok-es-kosarak" />
-    <div class="pt-14 space-y-14 site-padding">
+    <div class="pt-14 site-padding">
+      <TheBreadCrumbs
+        category-name="Csomagtartó boxok és kosarak"
+        category-slug="csomagtarto-boxok-es-kosarak"
+      />
       <AppHeader>
         <template #title> Csomagtartó boxok és kosarak </template>
         <template #description>

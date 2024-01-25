@@ -27,7 +27,8 @@ const { pageQuantity, filteredItems } = usePageProperties(babakocsik.value);
 <template>
   <div class="bg-white">
     <CategoryNavbar category-slug="babakocsik" />
-    <div class="pt-14 space-y-14 site-padding">
+    <div class="pt-14 site-padding">
+      <TheBreadCrumbs category-name="Babakocsik" category-slug="babakocsik" />
       <AppHeader>
         <template #title> Babakocsik </template>
         <template #description>

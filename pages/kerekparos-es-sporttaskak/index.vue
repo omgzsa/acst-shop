@@ -29,7 +29,11 @@ const { pageQuantity, filteredItems } = usePageProperties(
 <template>
   <div class="bg-white">
     <CategoryNavbar category-slug="kerekparos-es-sporttaskak" />
-    <div class="pt-14 space-y-14 site-padding">
+    <div class="pt-14 site-padding">
+      <TheBreadCrumbs
+        category-name="Kerékpáros és sporttáskák"
+        category-slug="kerekparos-es-sporttaskak"
+      />
       <AppHeader>
         <template #title> Kerékpáros és sporttáskák </template>
         <template #description>

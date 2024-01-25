@@ -11,7 +11,9 @@ const { data: teliSporteszkoz } = await useAsyncData(path, () =>
         'termekNev',
         'termekKep',
         'termekLeiras',
+        'kapcsolodoKategoria.termekKategoriaNev',
         'kapcsolodoKategoria.slug',
+        'kapcsolodoAlKategoria.termekAlKategoriaNev',
         'kapcsolodoAlKategoria.slug',
       ],
       filter: {
@@ -32,7 +34,17 @@ const { pageQuantity, filteredItems } = usePageProperties(
 <template>
   <div class="bg-white">
     <!-- <CategoryNavbar category-slug="vizi-sporteszkoz-szallitok" /> -->
-    <div class="pt-14 space-y-14 site-padding">
+    <div class="pt-14 site-padding">
+      <TheBreadCrumbs
+        :category-name="
+          teliSporteszkoz[0].kapcsolodoKategoria.termekKategoriaNev
+        "
+        :category-slug="teliSporteszkoz[0].kapcsolodoKategoria.slug"
+        :sub-category-name="
+          teliSporteszkoz[0].kapcsolodoAlKategoria.termekAlKategoriaNev
+        "
+        :sub-category-slug="teliSporteszkoz[0].kapcsolodoAlKategoria.slug"
+      />
       <AppHeader>
         <template #title> Téli sporteszköz szállítók </template>
         <template #description>

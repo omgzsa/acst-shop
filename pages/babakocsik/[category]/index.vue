@@ -13,6 +13,7 @@ const { data: babakocsik } = await useAsyncData(path, () =>
         'termekKep',
         'termekLeiras',
         'kapcsolodoKategoria.slug',
+        'kapcsolodoKategoria.termekKategoriaNev',
         'kapcsolodoAlKategoria.slug',
         'kapcsolodoAlKategoria.termekAlKategoriaNev',
         'kapcsolodoAlKategoria.termekAlKategoriaLeiras',
@@ -31,7 +32,15 @@ const { pageTitle, pageDescription, pageQuantity, filteredItems } =
 <template>
   <div class="bg-white">
     <CategoryNavbar category-slug="babakocsik" />
-    <div class="pt-14 space-y-14 site-padding">
+    <div class="pt-14 site-padding">
+      <TheBreadCrumbs
+        :category-name="babakocsik[0].kapcsolodoKategoria.termekKategoriaNev"
+        :category-slug="babakocsik[0].kapcsolodoKategoria.slug"
+        :sub-category-name="
+          babakocsik[0].kapcsolodoAlKategoria.termekAlKategoriaNev
+        "
+        :sub-category-slug="babakocsik[0].kapcsolodoAlKategoria.slug"
+      />
       <AppHeader>
         <template #title> {{ pageTitle }} </template>
         <template #description>

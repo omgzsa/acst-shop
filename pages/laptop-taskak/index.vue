@@ -27,7 +27,11 @@ const { pageQuantity, filteredItems } = usePageProperties(laptopTaskak.value);
 <template>
   <div class="bg-white">
     <CategoryNavbar category-slug="laptop-taskak" />
-    <div class="pt-14 space-y-14 site-padding">
+    <div class="pt-14 site-padding">
+      <TheBreadCrumbs
+        category-name="Laptop táskák"
+        category-slug="laptop-taskak"
+      />
       <AppHeader>
         <template #title> Laptop táskák </template>
         <template #description>

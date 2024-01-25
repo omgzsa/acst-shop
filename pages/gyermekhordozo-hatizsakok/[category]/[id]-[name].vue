@@ -19,6 +19,10 @@ const { data: product } = await useAsyncData(path, () => {
         'termekReszletek',
         'termekAr',
         'eredetiThuleGarancia',
+        'kapcsolodoKategoria.termekKategoriaNev',
+        'kapcsolodoKategoria.slug',
+        'kapcsolodoAlKategoria.termekAlKategoriaNev',
+        'kapcsolodoAlKategoria.slug',
         'termekGaleria.id',
         'termekGaleria.directus_files_id',
         'gyermekhordozoHatizsakTechSpec.*',
@@ -52,8 +56,14 @@ const noTechSpec = computed(() => {
 
 <template>
   <div class="bg-white">
-    <div class="site-padding">
-      <TheBreadCrumbs />
+    <div class="py-4 site-padding">
+      <TheBreadCrumbs
+        :category-name="product.kapcsolodoKategoria.termekKategoriaNev"
+        :category-slug="product.kapcsolodoKategoria.slug"
+        :sub-category-name="product.kapcsolodoAlKategoria.termekAlKategoriaNev"
+        :sub-category-slug="product.kapcsolodoAlKategoria.slug"
+        :product-name="product.termekNev"
+      />
       <!-- <div
         v-if="pending"
         class="flex items-center justify-center h-12 text-xl font-bold text-white bg-red-500"

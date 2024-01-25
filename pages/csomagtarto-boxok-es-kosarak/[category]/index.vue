@@ -11,7 +11,9 @@ const { data: boxokEsKosarak } = await useAsyncData(path, () =>
         'termekNev',
         'termekKep',
         'termekLeiras',
+        'kapcsolodoKategoria.termekKategoriaNev',
         'kapcsolodoKategoria.slug',
+        'kapcsolodoAlKategoria.termekAlKategoriaNev',
         'kapcsolodoAlKategoria.slug',
         'kapcsolodoAlKategoria.termekAlKategoriaNev',
         'kapcsolodoAlKategoria.termekAlKategoriaLeiras',
@@ -30,7 +32,17 @@ const { pageTitle, pageDescription, pageQuantity, filteredItems } =
 <template>
   <div class="bg-white">
     <CategoryNavbar category-slug="csomagtarto-boxok-es-kosarak" />
-    <div class="pt-14 space-y-14 site-padding">
+    <div class="pt-14 site-padding">
+      <TheBreadCrumbs
+        :category-name="
+          boxokEsKosarak[0].kapcsolodoKategoria.termekKategoriaNev
+        "
+        :category-slug="boxokEsKosarak[0].kapcsolodoKategoria.slug"
+        :sub-category-name="
+          boxokEsKosarak[0].kapcsolodoAlKategoria.termekAlKategoriaNev
+        "
+        :sub-category-slug="boxokEsKosarak[0].kapcsolodoAlKategoria.slug"
+      />
       <AppHeader>
         <template #title> {{ pageTitle }} </template>
         <template #description>
