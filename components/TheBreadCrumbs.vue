@@ -1,27 +1,17 @@
 <script setup>
-const { categoryName, categorySlug, subCategoryName, subCategorySlug } =
-  defineProps({
-    categoryName: {
-      type: String,
-      required: true,
-    },
-    categorySlug: {
-      type: String,
-      required: true,
-    },
-    subCategoryName: {
-      type: String,
-      required: false,
-    },
-    subCategorySlug: {
-      type: String,
-      required: false,
-    },
-    productName: {
-      type: String,
-      required: false,
-    },
-  });
+const {
+  categoryName,
+  categorySlug,
+  subCategoryName,
+  subCategorySlug,
+  productName,
+} = defineProps({
+  categoryName: String,
+  categorySlug: String,
+  subCategoryName: String,
+  subCategorySlug: String,
+  productName: String,
+});
 </script>
 
 <template>
