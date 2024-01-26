@@ -15,7 +15,7 @@ const {
 </script>
 
 <template>
-  <nav aria-label="breadcrumb" class="text-xs tracking-wide">
+  <nav aria-label="breadcrumb" class="pb-4 text-xs tracking-wide">
     <ol class="items-center hidden sm:flex gap-x-2">
       <li class="flex items-center gap-x-2">
         <NuxtLink to="/" title="Vissza a kezdőlapra"
