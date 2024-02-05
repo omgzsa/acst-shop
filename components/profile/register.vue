@@ -22,7 +22,7 @@ yup.setLocale({
   },
 });
 
-const { handleSubmit, isSubmitting, resetForm, setTouched, meta } = useForm({
+const { handleSubmit, isSubmitting, resetForm, setTouched } = useForm({
   validationSchema: yup.object({
     first_name: yup
       .string()
@@ -37,9 +37,10 @@ const { handleSubmit, isSubmitting, resetForm, setTouched, meta } = useForm({
   }),
 });
 
-const onSubmit = handleSubmit((values, ctx) => {
+// async-ra csereltem
+const onSubmit = handleSubmit(async (values, ctx) => {
   const { first_name, last_name, email, password } = values;
-  store.userRegister(first_name, last_name, email, password);
+  await store.userRegister(first_name, last_name, email, password);
 
   resetForm({
     values: {
@@ -50,10 +51,12 @@ const onSubmit = handleSubmit((values, ctx) => {
     },
   });
   setTouched({
-    first_name: false,
-    last_name: false,
-    email: false,
-    password: false,
+    values: {
+      first_name: false,
+      last_name: false,
+      email: false,
+      password: false,
+    },
   });
 });
 // const marketingAccept = ref(false);
