@@ -5,7 +5,7 @@ const props = defineProps({
   type: String,
   label: String,
 });
-const { value, errorMessage } = useField(() => props.name, undefined, {
+const { value, errorMessage, meta } = useField(() => props.name, undefined, {
   syncVModel: true,
 });
 </script>
@@ -17,7 +17,9 @@ const { value, errorMessage } = useField(() => props.name, undefined, {
     </label>
     <input v-model="value" :type="type || 'text'" />
     <Transition name="pop-bottom">
-      <span v-if="errorMessage" role="alert">{{ errorMessage }}</span>
+      <span v-if="errorMessage && meta.touched" role="alert">{{
+        errorMessage
+      }}</span>
     </Transition>
   </div>
 </template>
