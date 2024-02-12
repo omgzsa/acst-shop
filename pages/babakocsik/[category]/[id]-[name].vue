@@ -31,7 +31,7 @@ const { data, pending, error } = await useAsyncData(path, () => {
   });
 });
 
-const { data: techSpec } = await useAsyncData('techSpec', () => {
+const { data: techSpec } = await useAsyncData(`${path}-techSpec`, () => {
   return getItemById({
     collection: `babakocsiTechSpec`,
     id: data.value.babakocsiTechSpec[0].id,

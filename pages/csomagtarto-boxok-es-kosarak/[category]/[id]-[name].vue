@@ -31,7 +31,7 @@ const { data: product } = await useAsyncData(path, () => {
   });
 });
 
-const { data: techSpec } = await useAsyncData('techSpec', () => {
+const { data: techSpec } = await useAsyncData(`${path}-techSpec`, () => {
   return getItemById({
     collection: `boxokEsKosarakTechSpec`,
     id: product.value.boxokEsKosarakTechSpec[0].id,

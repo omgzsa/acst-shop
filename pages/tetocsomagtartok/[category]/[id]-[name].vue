@@ -6,7 +6,7 @@ const { params, path } = useRoute();
 const product = ref({});
 const cartStore = useCartStore();
 
-const { data } = await useAsyncData(path, () => {
+const { data, pending, error } = await useAsyncData(path, () => {
   return getItemById({
     collection: 'termekek',
     id: params.id,
@@ -31,7 +31,7 @@ const { data } = await useAsyncData(path, () => {
   });
 });
 
-const { data: techSpec } = await useAsyncData('techSpec', () => {
+const { data: techSpec } = await useAsyncData(`${path}-techSpec`, () => {
   return getItemById({
     collection: `tetocsomagtartoTechSpec`,
     id: data.value.tetocsomagtartoTechSpec[0].id,
@@ -39,6 +39,9 @@ const { data: techSpec } = await useAsyncData('techSpec', () => {
       kapcsolodoTermekek: { id: { _eq: params.id } },
     },
   });
+});
+const noTechSpec = computed(() => {
+  return techSpec.value === null;
 });
 
 if (!data.value) {
@@ -48,10 +51,6 @@ if (!data.value) {
     fatal: true,
   });
 }
-
-const noTechSpec = computed(() => {
-  return techSpec.value === null;
-});
 
 product.value = data.value;
 </script>
@@ -198,6 +197,11 @@ product.value = data.value;
             v-if="techSpec.tipusszam !== null"
           />
         </ProductTechSpec>
+        <div v-else>
+          <p class="pb-10 text-xl font-base">
+            Nincs technikai adatlap a termékhez
+          </p>
+        </div>
       </div>
     </div>
   </div>

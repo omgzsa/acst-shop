@@ -6,7 +6,7 @@ const { params, path } = useRoute();
 // const product = ref({});
 const cartStore = useCartStore();
 
-const { data: product } = await useAsyncData(path, () => {
+const { data: product } = await useAsyncData(`${path}-techSpec`, () => {
   return getItemById({
     collection: 'termekek',
     id: params.id,

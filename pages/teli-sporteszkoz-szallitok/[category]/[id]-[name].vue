@@ -31,7 +31,7 @@ const { data: product } = await useAsyncData(path, () => {
   });
 });
 
-const { data: techSpec } = await useAsyncData('techSpec', () => {
+const { data: techSpec } = await useAsyncData(`${path}-techSpec`, () => {
   return getItemById({
     collection: `teliSporteszkozTechSpec`,
     id: product.value.teliSporteszkozTechSpec[0].id,
