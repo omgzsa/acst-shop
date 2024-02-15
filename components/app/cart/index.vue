@@ -3,7 +3,7 @@ import { useCartStore } from '@/stores/cart';
 
 const { defaultTransition } = useTailwindConfig();
 
-const { createItems } = useDirectusItems();
+// const { createItems } = useDirectusItems();
 
 const cartStore = useCartStore();
 
@@ -82,7 +82,13 @@ const shoppingDetails = ref([
 
                 <div class="flex justify-between">
                   <dt>Házhozszállítás:</dt>
-                  <dd class="text-dark-300">A következő lépésben számítva</dd>
+                  <dd class="text-dark-300">
+                    {{
+                      cartStore.deliveryCost
+                        ? `${cartStore.deliveryCost} Ft`
+                        : 'A következő lépésben számítva'
+                    }}
+                  </dd>
                 </div>
 
                 <div class="flex justify-between text-2xl font-bold">
