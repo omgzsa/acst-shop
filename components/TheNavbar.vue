@@ -20,7 +20,7 @@ watch(
 </script>
 
 <template>
-  <header class="fixed top-0 left-0 z-50 w-full bg-white shadow text-dark-100">
+  <header class="fixed top-0 left-0 z-20 w-full bg-white shadow text-dark-100">
     <nav class="site-padding h-14">
       <div class="relative flex items-center justify-between h-full space-x-6">
         <!-- LOGO -->
