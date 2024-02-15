@@ -15,7 +15,7 @@ const cartStore = useCartStore();
       />
       <span
         v-if="cartStore.itemCount"
-        class="absolute flex items-center justify-center w-5 h-5 pt-0.5 text-xs font-semibold text-white bg-red-600 border rounded-full -top-2 -right-2"
+        class="absolute z-50 flex items-center justify-center w-5 h-5 pt-0.5 text-xs font-semibold text-white bg-red-600 border rounded-full -bottom-2 lg:-top-2 -right-2"
         >{{ cartStore.itemCount }}</span
       >
     </div>
