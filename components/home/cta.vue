@@ -10,7 +10,10 @@ defineProps({
 </script>
 <template>
   <div class="space-y-10">
-    <NuxtImg src="thule-bg.webp" />
+    <NuxtImg
+      src="thule-bg.webp"
+      class="object-cover object-left sm:object-right h-72 lg:h-full"
+    />
     <div class="site-padding">
       <div class="max-w-3xl mx-auto space-y-6 text-center">
         <h2>
