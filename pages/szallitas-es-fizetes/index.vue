@@ -4,9 +4,26 @@ import { schemas } from './schemas.js';
 import { Form, Field, ErrorMessage } from 'vee-validate';
 
 const cartStore = useCartStore();
+const user = useDirectusUser();
+let isSubmitting = ref(false);
 
 const currentStep = ref(0);
 const formSteps = ['Info', 'Számlázás', 'Szállítás', 'Fizetés'];
+
+const stepValues = {
+  name: '',
+  phone: '',
+  streetAndNumber: '',
+  city: '',
+  postCode: '',
+  addressMatch: false,
+  receiptName: '',
+  receiptStreetAndNumber: '',
+  receiptCity: '',
+  receiptPostCode: '',
+  deliveryMode: '',
+  paymentMode: '',
+};
 
 const shoppingDetails = ref([
   {
@@ -34,9 +51,12 @@ const paymentSchema = computed(() => {
   return schemas[currentStep.value];
 });
 
-function nextStep(values) {
+function nextStep(values, { resetForm }) {
   if (currentStep.value === 3) {
     onSubmit(values);
+    resetForm({
+      values: stepValues,
+    });
     return;
   }
 
@@ -52,28 +72,54 @@ function prevStep() {
 }
 
 async function onSubmit(values) {
-  console.log('Done: ', JSON.stringify(values, null, 2));
+  if (isSubmitting.value) return;
+
+  try {
+    isSubmitting.value = true;
+    // Map cart items to the desired format
+    const termekek = cartStore.items.map((item) => ({
+      termekek_id: item.id,
+    }));
+
+    values = {
+      ...values,
+      vasarlo: user.value.id,
+      termekek: termekek,
+    };
+
+    const { createItems } = useDirectusItems();
+    await createItems({
+      collection: 'vasarlasok',
+      items: values,
+    });
+    console.log(values);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    cartStore.$reset();
+    isSubmitting.value = false;
+  }
 }
 
 function handleChange(value) {
   cartStore.setDeliveryMode(value.target.value);
 }
+
+// watch isSubmitting and log it's value to console
+watch(isSubmitting, (value) => {
+  console.log('isSubmitting', value);
+});
 </script>
 
 <template>
   <div class="bg-white">
     <div class="py-8 space-y-8 site-padding">
       <h1>Szállítás és fizetés</h1>
-      <p class="max-w-xl">
-        For this use-case you should pass `keepValues` to the form to let
-        vee-validate keep the values across steps.
-      </p>
-      <p class="font-bold">cartTotal: {{ cartStore.cartTotal }} ft</p>
 
       <!-- 
           STEPPER 
         -->
-      <div class="flex justify-between py-4">
+      <div class="flex justify-between pb-4">
         <div
           v-for="(step, index) in formSteps"
           :key="index"
@@ -94,9 +140,9 @@ function handleChange(value) {
       <Form
         @submit="nextStep"
         :validation-schema="paymentSchema"
+        :initial-values="stepValues"
         keep-values
         v-slot="{ values }"
-        class=""
       >
         <!-- <div class="pb-6 mx-auto border-t border-gray-300 w-80" /> -->
 
@@ -428,7 +474,6 @@ function handleChange(value) {
             type="button"
             @click="prevStep"
           >
-            <span></span>
             Előző
           </button>
 
@@ -438,20 +483,32 @@ function handleChange(value) {
             type="submit"
           >
             Következő
-            <span></span>
           </button>
 
           <button
             class="text-xl font-medium transition-all hover:underline text-dark-300 hover:text-orange-600 underline-offset-4"
             v-if="currentStep === 3"
             type="submit"
-            @click="handleSubmit"
+            :disabled="isSubmitting"
+            :class="{
+              'cursor-not-allowed opacity-50': isSubmitting,
+            }"
           >
-            Fizetés
-            <span></span>
+            <span v-if="isSubmitting">
+              <Icon
+                name="svg-spinners:bars-fade"
+                class="inline-block w-6 h-6"
+              />
+            </span>
+            <span v-else> Fizetés</span>
           </button>
         </div>
       </Form>
+
+      <div class="p-4 border">
+        <h2 class="text-lg">Összegzés:</h2>
+        <p class="">cartTotal: {{ cartStore.cartTotal }} ft</p>
+      </div>
     </div>
   </div>
 </template>
