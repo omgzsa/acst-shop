@@ -25,9 +25,9 @@ const bgImage = computed(() => {
 
 <template>
   <section
-    class="relative z-10 min-h-[630px] bg-center bg-no-repeat bg-cover hero"
+    class="relative z-10 min-h-[600px] bg-center bg-no-repeat bg-cover hero"
   >
-    <div class="absolute min-h-[630px] inset-0 z-0 bg-gray-900 bg-opacity-50">
+    <div class="absolute min-h-[600px] inset-0 z-0 bg-gray-900 bg-opacity-50">
       <img
         class="object-cover w-full h-full"
         :src="useAsset(`images/homepage/${bgImage}`)"
@@ -43,7 +43,7 @@ const bgImage = computed(() => {
       class="relative z-20 flex items-center min-h-full px-4 mx-auto max-w-screen-2xl sm:px-6 md:px-8 xl:px-12"
     >
       <div
-        class="max-w-xs ml-auto mr-auto space-y-20 text-center text-white sm:ml-0 sm:space-y-6 sm:text-left sm:max-w-lg xl:max-w-3xl"
+        class="max-w-xs ml-auto mr-auto space-y-12 text-center text-white sm:ml-0 sm:space-y-6 sm:text-left sm:max-w-lg xl:max-w-3xl"
       >
         <h1>
           {{ title }}
