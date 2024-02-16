@@ -3,8 +3,6 @@ import { useCartStore } from '@/stores/cart';
 
 const { defaultTransition } = useTailwindConfig();
 
-// const { createItems } = useDirectusItems();
-
 const cartStore = useCartStore();
 
 const shoppingDetails = ref([
@@ -27,17 +25,6 @@ const shoppingDetails = ref([
       'Payment method options:\n\n- Credit Cards (we accept VISA, Mastercard, American Express, Diners and JCB); - Apple Pay.',
   },
 ]);
-
-// const checkout = async () => {
-//   try {
-//     const items = cartStore.items;
-
-//     await createItems({ collection: 'session', items });
-//   } catch (e) {
-//     // Handle errors if needed
-//     console.error('Error creating orders:', e);
-//   }
-// };
 </script>
 
 <template>
@@ -71,7 +58,7 @@ const shoppingDetails = ref([
             <em>A kosár üres.</em>
           </div>
 
-          <!-- SUMMERY  -->
+          <!-- SUMMERY + buttons (empty cart / checkout)  -->
           <div class="flex justify-end pt-8">
             <div class="w-full max-w-sm space-y-4">
               <dl class="space-y-0.5 text-sm text-gray-700">
@@ -110,16 +97,8 @@ const shoppingDetails = ref([
                 <AppButton
                   label="Szállítás & Fizetés"
                   to="/szallitas-es-fizetes"
+                  :disabled="cartStore.isEmpty"
                 />
-                <!-- <button
-                  class="px-4 py-2 space-x-2 font-semibold border rounded-md shadow-md border-accent-100 duration-400 bg-accent-100 text-dark-100 hover:bg-dark-100 hover:text-white hover:shadow-lg"
-                  :class="defaultTransition"
-                  @click="checkout"
-                >
-                  <span class="text-base leading-snug tracking-wide xl:text-lg">
-                    Fizetés
-                  </span>
-                </button> -->
               </div>
             </div>
           </div>
