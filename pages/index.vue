@@ -18,12 +18,5 @@
     <section>
       <HomeFeatured />
     </section>
-    <section class="grid">
-      ... MORE CONTENT TO COME
-
-      <!-- <div v-for="item in productStore.products" :key="item.id">
-        {{ item }}
-      </div> -->
-    </section>
   </section>
 </template>
