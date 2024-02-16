@@ -3,7 +3,7 @@ const baseUrl = useDirectusUrl();
 
 const breakpoints = ref({
   320: {
-    slidesPerView: 1.125,
+    slidesPerView: 1.35,
     spaceBetween: 10,
   },
   420: {
