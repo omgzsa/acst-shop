@@ -8,11 +8,11 @@ const props = defineProps({
 <template>
   <li class="group">
     <span class="cursor-pointer"> {{ props.item.name }} </span>
-    <div class="absolute w-44">&nbsp;</div>
+    <div class="absolute w-52">&nbsp;</div>
     <Transition name="fade">
       <div
         v-show="isVisible"
-        class="absolute left-0 hidden w-full p-6 overflow-hidden bg-white border rounded-md shadow-md top-12 group-hover:block"
+        class="absolute left-0 z-50 hidden w-full p-6 overflow-hidden bg-white border rounded-md shadow-md top-12 group-hover:block"
       >
         <div
           class="grid grid-cols-3 xl:grid-flow-col xl:auto-cols-fr gap-x-4 gap-y-8"
