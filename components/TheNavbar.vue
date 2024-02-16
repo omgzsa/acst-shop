@@ -20,7 +20,7 @@ watch(
 </script>
 
 <template>
-  <header class="fixed top-0 left-0 z-20 w-full bg-white shadow text-dark-100">
+  <header class="fixed top-0 left-0 z-50 w-full bg-white shadow text-dark-100">
     <nav class="site-padding h-14">
       <div class="relative flex items-center justify-between h-full space-x-6">
         <!-- LOGO -->
@@ -38,7 +38,7 @@ watch(
 
         <!-- NAVIGATION TOGGLE -->
         <div
-          class="relative z-30 w-5 h-5 p-3 hover:scale-110 lg:hidden"
+          class="relative w-5 h-5 p-3 hover:scale-110 lg:hidden"
           @click="toggleMenu"
         >
           <Icon
@@ -58,7 +58,7 @@ watch(
 
       <!-- MOBILE NAVIGATION MENU -->
       <div
-        class="absolute left-0 w-full h-[calc(100vh-3.5rem)] lg:hidden overflow-auto transition-all duration-300 opacity-0 pointer-events-none bg-white top-14"
+        class="absolute z-20 left-0 w-full h-[calc(100vh-3.5rem)] lg:hidden overflow-auto transition-all duration-300 opacity-0 pointer-events-none bg-white top-14"
         :class="{ 'opacity-100 pointer-events-auto': showMenu }"
       >
         <div class="flex justify-end gap-4 site-padding">
