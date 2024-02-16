@@ -1,6 +1,4 @@
 <script setup>
-// const config = useRuntimeConfig();
-// const baseUrl = config.public.directusUrl;
 const baseUrl = useDirectusUrl();
 
 const breakpoints = ref({
@@ -51,12 +49,6 @@ const { data: nepszeruKategoriak } = await useAsyncData('termekKategoria', () =>
     },
   })
 );
-
-// const nepszeruKategoriak = computed(() => {
-//   return kategoriak.value.filter((item) => item.nepszeruKategoria === true);
-// });
-
-// console.log(nepszeruKategoriak.value);
 </script>
 
 <template>
@@ -76,6 +68,7 @@ const { data: nepszeruKategoriak } = await useAsyncData('termekKategoria', () =>
           :title="slide.termekKategoriaNev"
           :alt="slide.termekKategoriaNev"
           :img="`${baseUrl}/assets/${slide.termekKategoriaKep}`"
+          :to="`/${slide.slug}`"
         />
       </SwiperSlide>
     </Swiper>

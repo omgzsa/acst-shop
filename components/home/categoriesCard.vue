@@ -1,22 +1,14 @@
 <script setup>
 const props = defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
-  alt: {
-    type: String,
-    required: true,
-  },
-  img: {
-    type: String,
-    required: true,
-  },
+  title: String,
+  alt: String,
+  img: String,
+  to: String,
 });
 </script>
 
 <template>
-  <NuxtLink to="/">
+  <NuxtLink :to="to">
     <div class="relative">
       <div class="absolute bottom-0 h-[72px] xl:h-20 inset-x-6">
         <span class="text-lg font-semibold text-white sm:text-xl xl:text-2xl">
