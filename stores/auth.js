@@ -1,4 +1,5 @@
 import { useRouter } from 'vue-router';
+import { useCartStore } from '@/stores/cart';
 
 export const useAuthStore = defineStore('authStore', () => {
   const router = useRouter();
@@ -44,9 +45,20 @@ export const useAuthStore = defineStore('authStore', () => {
     }
   }
 
+  const isLoggedIn = computed(() => {
+    const user = useDirectusUser();
+    if (user.value) {
+      return true;
+    }
+    return false;
+  });
+
   async function userLogout() {
+    const { cartReset } = useCartStore();
     const { logout } = useDirectusAuth();
+    //
     await logout();
+    cartReset();
     router.push('/');
   }
 
@@ -58,5 +70,6 @@ export const useAuthStore = defineStore('authStore', () => {
     userRegister,
     userLogin,
     userLogout,
+    isLoggedIn,
   };
 });
