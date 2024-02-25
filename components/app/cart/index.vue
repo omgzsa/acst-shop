@@ -86,7 +86,7 @@ const shoppingDetails = ref([
 
               <div class="flex justify-end space-x-2">
                 <button
-                  class="px-4 py-2 space-x-2 font-semibold border rounded-md shadow-md hover:shadow-lg hover:bg-dark-300 hover:text-dark-200"
+                  class="px-4 py-2 space-x-2 font-semibold border shadow-md hover:shadow-lg hover:bg-dark-300 hover:text-dark-200"
                   :class="defaultTransition"
                   @click="cartStore.cartReset()"
                 >
