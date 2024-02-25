@@ -25,7 +25,7 @@ export const useCartStore = defineStore('cartStore', () => {
     }
   }
 
-  function $reset() {
+  function cartReset() {
     items.value = [];
     deliveryMethod.value = ''; // Reset delivery method as well
   }
@@ -70,7 +70,7 @@ export const useCartStore = defineStore('cartStore', () => {
     isEmpty,
     cartTotal,
     clearItem,
-    $reset,
+    cartReset,
     addItems,
     deliveryMethod,
     deliveryCost,
