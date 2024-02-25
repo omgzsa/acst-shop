@@ -15,7 +15,7 @@ const userNav = ref([
       <ProfileNavItem :user-nav="userNav" />
       <button
         class="text-base leading-snug tracking-wide xl:text-lg hover:text-red-700 hover:font-semibold"
-        @click="store.userLogout"
+        @click="store.userLogout()"
       >
         Kijelentkezés
       </button>
