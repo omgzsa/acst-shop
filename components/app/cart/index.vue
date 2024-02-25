@@ -88,7 +88,7 @@ const shoppingDetails = ref([
                 <button
                   class="px-4 py-2 space-x-2 font-semibold border rounded-md shadow-md hover:shadow-lg hover:bg-dark-300 hover:text-dark-200"
                   :class="defaultTransition"
-                  @click="cartStore.$reset()"
+                  @click="cartStore.cartReset()"
                 >
                   <span class="text-base leading-snug tracking-wide xl:text-lg">
                     Kosár kiürítése
