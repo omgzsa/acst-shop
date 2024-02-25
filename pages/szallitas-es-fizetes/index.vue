@@ -1,10 +1,13 @@
 <script setup>
 import { useCartStore } from '@/stores/cart';
+import { useAuthStore } from '@/stores/auth';
 import { schemas } from './schemas.js';
 import { Form, Field, ErrorMessage } from 'vee-validate';
 
 const cartStore = useCartStore();
+const { isLoggedIn } = useAuthStore();
 const user = useDirectusUser();
+
 let isSubmitting = ref(false);
 
 const currentStep = ref(0);
@@ -76,28 +79,71 @@ async function onSubmit(values) {
 
   try {
     isSubmitting.value = true;
-    // Map cart items to the desired format
-    const termekek = cartStore.items.map((item) => ({
-      termekek_id: item.id,
-    }));
 
-    values = {
-      ...values,
-      vasarlo: user.value.id,
-      termekek: termekek,
+    if (!isLoggedIn) {
+      throw createError({
+        message: 'Nem vagy bejelentkezve.',
+      });
+    }
+
+    const {
+      postCode,
+      city,
+      streetAndNumber,
+      receiptPostCode,
+      receiptCity,
+      receiptStreetAndNumber,
+    } = values;
+
+    const userData = {
+      szallitasiIranyitoszam: postCode || null,
+      szallitasiVaros: city || null,
+      szallitasiCim: streetAndNumber || null,
+      szallitasiCimReszletek: '' || null,
+      szamlazasiIranyitoszam: receiptPostCode || null,
+      szamlazasiVaros: receiptCity || null,
+      szamlazasiCim: receiptStreetAndNumber || null,
+      szamlazasiCegnev: '' || null,
+      szamlazasiAdoszam: '' || null,
     };
 
+    await updateUserData(userData);
+
+    const orderData = {
+      vasarlo: user.value.id,
+      termekek: cartStore.items.map((item) => ({ termekek_id: item.id })),
+    };
+
+    await createOrder(orderData);
+  } catch (error) {
+    console.error('Error in onSubmit:', error);
+    // Handle specific errors here
+  } finally {
+    isSubmitting.value = false;
+  }
+}
+
+async function updateUserData(userData) {
+  try {
+    const { updateUser } = useDirectusUsers();
+    await updateUser({
+      id: user.value.id,
+      user: userData,
+    });
+  } catch (error) {
+    console.error('Error updating user data:', error);
+  }
+}
+
+async function createOrder(orderData) {
+  try {
     const { createItems } = useDirectusItems();
     await createItems({
       collection: 'vasarlasok',
-      items: values,
+      items: orderData,
     });
-    console.log(values);
   } catch (error) {
-    console.log(error);
-  } finally {
-    cartStore.$reset();
-    isSubmitting.value = false;
+    console.error('Error creating order:', error);
   }
 }
 
@@ -469,7 +515,7 @@ watch(isSubmitting, (value) => {
         <!-- BUTTONS: NEXT, PREV, PAY -->
         <div class="flex justify-between pt-16">
           <button
-            class="block text-xl font-medium transition-all text-dark-300 hover:text-dark-100"
+            class="flex items-center text-base font-medium transition-all text-dark-300 hover:text-dark-100 hover:ring-0 ring-1 ring-gray-300 px-3 pt-1.5 pb-1 hover:bg-accent-100"
             v-if="currentStep !== 0"
             type="button"
             @click="prevStep"
@@ -478,7 +524,7 @@ watch(isSubmitting, (value) => {
           </button>
 
           <button
-            class="ml-auto text-xl font-medium transition-all text-dark-300 hover:text-dark-100"
+            class="flex items-center ml-auto text-base font-medium transition-all text-dark-300 hover:text-dark-100 hover:ring-0 ring-1 ring-gray-300 px-3 pt-1.5 pb-1 hover:bg-accent-100"
             v-if="currentStep !== 3"
             type="submit"
           >
@@ -489,9 +535,9 @@ watch(isSubmitting, (value) => {
             class="text-xl font-medium transition-all hover:underline text-dark-300 hover:text-orange-600 underline-offset-4"
             v-if="currentStep === 3"
             type="submit"
-            :disabled="isSubmitting"
+            :disabled="isSubmitting || !isLoggedIn"
             :class="{
-              'cursor-not-allowed opacity-50': isSubmitting,
+              'cursor-not-allowed opacity-50': isSubmitting || !isLoggedIn,
             }"
           >
             <span v-if="isSubmitting">
@@ -502,6 +548,18 @@ watch(isSubmitting, (value) => {
             </span>
             <span v-else> Fizetés</span>
           </button>
+        </div>
+
+        <div v-if="!isLoggedIn" class="pt-4 text-right">
+          <span class="text-lg font-bold text-red-500"
+            >Nem indíthatsz fizetést ha nem vagy bejelentkezve.</span
+          >
+          <NuxtLink
+            to="/profil/info"
+            class="block pt-2 text-sm tracking-wide uppercase text-dark-300 hover:text-dark-100 hover:underline underline-offset-4"
+          >
+            Bejelentkezem!
+          </NuxtLink>
         </div>
       </Form>
 
