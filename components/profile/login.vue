@@ -8,6 +8,7 @@ const store = useAuthStore();
 
 const email = inject('email');
 const password = inject('password');
+let isSubmitting = ref(false);
 
 yup.setLocale({
   mixed: {
@@ -20,27 +21,34 @@ yup.setLocale({
   },
 });
 
-const { handleSubmit, isSubmitting, resetForm, setTouched, meta } = useForm({
+const { handleSubmit, resetForm, setTouched, meta } = useForm({
   validationSchema: yup.object({
     email: yup.string().required().email(),
     password: yup.string().required().min(6),
   }),
 });
 
-const onSubmit = handleSubmit((values) => {
-  store.userLogin(JSON.stringify(values, null, 2));
+const onSubmit = handleSubmit(async (values) => {
+  isSubmitting.value = true;
+  try {
+    await store.userLogin(JSON.stringify(values, null, 2));
 
-  setTouched({
-    email: false,
-    password: false,
-  });
+    setTouched({
+      email: false,
+      password: false,
+    });
 
-  resetForm({
-    values: {
-      email: '',
-      password: '',
-    },
-  });
+    resetForm({
+      values: {
+        email: '',
+        password: '',
+      },
+    });
+  } catch (error) {
+    console.error('login-form\n', error);
+  } finally {
+    isSubmitting.value = false;
+  }
 });
 </script>
 
