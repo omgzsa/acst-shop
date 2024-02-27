@@ -77,7 +77,13 @@ const { data: nepszeruKategoriak } = await useAsyncData('termekKategoria', () =>
 
 <style>
 .swiper-cards {
-  @apply max-w-full overflow-hidden pl-4 sm:pl-6 md:pl-8 xl:pl-12;
+  @apply overflow-hidden pl-4 sm:pl-6 md:pl-8 xl:pl-12;
+}
+
+@media (min-width: 1920px) {
+  .swiper-cards {
+    @apply site-padding;
+  }
 }
 
 .swiper-wrapper {
