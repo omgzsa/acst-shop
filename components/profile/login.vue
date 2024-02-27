@@ -53,8 +53,10 @@ const onSubmit = handleSubmit(async (values) => {
 </script>
 
 <template>
-  <div class="w-full max-w-xl py-16 space-y-3">
-    <h2 class="mb-8 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
+  <div class="w-full max-w-xl pt-8 pb-16 mx-auto space-y-3 lg:pt-16 lg:m-0">
+    <h2
+      class="hidden mb-8 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl lg:block"
+    >
       Bejelentkezés
     </h2>
     <div class="pb-4">
