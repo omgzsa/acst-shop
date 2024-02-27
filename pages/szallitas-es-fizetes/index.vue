@@ -113,6 +113,7 @@ async function onSubmit(values) {
     const orderData = {
       vasarlo: user.value.id,
       termekek: cartStore.items.map((item) => ({ termekek_id: item.id })),
+      teljesOsszeg: cartStore.cartTotal,
     };
 
     await createOrder(orderData);
