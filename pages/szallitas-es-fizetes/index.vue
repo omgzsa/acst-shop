@@ -100,9 +100,10 @@ async function onSubmit(values) {
       szallitasiVaros: city || null,
       szallitasiCim: streetAndNumber || null,
       szallitasiCimReszletek: '' || null,
-      szamlazasiIranyitoszam: receiptPostCode || null,
-      szamlazasiVaros: receiptCity || null,
-      szamlazasiCim: receiptStreetAndNumber || null,
+      szamlazasiIranyitoszam: receiptPostCode === '' ? postCode : postCode,
+      szamlazasiVaros: receiptCity === '' ? city : city,
+      szamlazasiCim:
+        receiptStreetAndNumber === '' ? streetAndNumber : streetAndNumber,
       szamlazasiCegnev: '' || null,
       szamlazasiAdoszam: '' || null,
     };
@@ -117,7 +118,6 @@ async function onSubmit(values) {
     await createOrder(orderData);
   } catch (error) {
     console.error('Error in onSubmit:', error);
-    // Handle specific errors here
   } finally {
     isSubmitting.value = false;
   }
