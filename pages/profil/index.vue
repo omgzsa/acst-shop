@@ -5,6 +5,8 @@ definePageMeta({
 });
 const user = useDirectusUser();
 
+const activeTab = ref('login');
+
 const email = ref('');
 const password = ref('');
 const first_name = ref('');
@@ -24,6 +26,9 @@ TODOS:
 <template>
   <div class="bg-white">
     <div class="py-8 site-padding">
+      <!-- 
+        greetings if logged in
+       -->
       <div
         v-if="user"
         class="flex flex-col items-center justify-center w-full h-96"
@@ -39,16 +44,76 @@ TODOS:
           ><Icon name="mdi:chevron-double-left" size="20" class="ml-2"
         /></NuxtLink>
       </div>
-      <div v-if="!user">
-        <!-- <div></div> -->
-        <div>
-          <h1 class="pt-4">Üdvözlünk az oldalon!</h1>
+
+      <!-- 
+        Mobile view with tab-switching 
+      -->
+      <div>
+        <div class="block lg:hidden">
+          <div class="flex justify-evenly">
+            <button
+              :class="{
+                'underline underline-offset-8 font-bold': activeTab === 'login',
+              }"
+              @click="activeTab = 'login'"
+              class="px-4 py-2 text-xl cursor-pointer"
+            >
+              Bejelentkezés
+            </button>
+            <button
+              :class="{
+                'underline underline-offset-8 font-bold':
+                  activeTab === 'register',
+              }"
+              @click="activeTab = 'register'"
+              class="px-4 py-2 text-xl cursor-pointer"
+            >
+              Regisztráció
+            </button>
+          </div>
+          <div>
+            <Transition name="fade">
+              <div v-if="activeTab === 'login'">
+                <!-- Content for login -->
+                <ProfileLogin />
+              </div>
+              <div v-else>
+                <!-- Content for register -->
+                <ProfileRegister />
+              </div>
+            </Transition>
+          </div>
         </div>
-        <div class="flex justify-between gap-16">
-          <ProfileLogin />
-          <ProfileRegister />
+
+        <!-- Desktop view -->
+        <div class="hidden lg:block">
+          <h1 class="pt-4">Üdvözlünk az oldalon!</h1>
+          <div class="flex justify-between gap-10">
+            <ProfileLogin />
+            <ProfileRegister />
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<style>
+.fade-move,
+.fade-enter-active,
+.fade-leave-active {
+  opacity: 1;
+  transition: all 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.fade-leave-active {
+  position: absolute;
+  z-index: -10;
+}
+</style>
