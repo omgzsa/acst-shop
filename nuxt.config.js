@@ -18,7 +18,7 @@ export default defineNuxtConfig({
             scriptElement.async = true;
             scriptElement.src = 'https://pixel.barion.com/bp.js';
             firstScript.parentNode.insertBefore(scriptElement, firstScript);
-            window['barion_pixel_id'] = 'BPT-BqKN6o769n-05';            
+            window['barion_pixel_id'] = 'BPT-5f4ezRYJJ5-22';            
 
             // Send init event
             bp('init', 'addBarionPixelId', window['barion_pixel_id']);
@@ -33,7 +33,7 @@ export default defineNuxtConfig({
             width: '1',
             style: 'display:none',
             alt: 'Barion Pixel',
-            src: "https://pixel.barion.com/a.gif?ba_pixel_id='BPT-BqKN6o769n-05'&ev=contentView&noscript=1",
+            src: "https://pixel.barion.com/a.gif?ba_pixel_id='BPT-5f4ezRYJJ5-22'&ev=contentView&noscript=1",
           },
         },
       ],
