@@ -23,8 +23,8 @@ console.log(vasarlas.value);
     <div class="py-16 site-padding">
       <h1>Fizetés</h1>
       <div class="py-4">
-        route.query.paymentId: {{ route.query.paymentId }} route.params.id:
-        {{ route.params.id }}
+        <p>paymentId: {{ route.query.paymentId }}</p>
+        <p>id: {{ route.params.id }}</p>
       </div>
       <div v-if="vasarlas">{{ vasarlas }}</div>
       <div v-else>Nincs.</div>
