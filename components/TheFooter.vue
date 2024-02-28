@@ -23,6 +23,9 @@ const openingHours = {
           :opening-hours="openingHours"
         />
 
+        <!-- barion -->
+        <TheBarionStrip width="300" height="28" />
+
         <div class="pt-8 border-t border-dark-300">
           Copyright 2023 - Minden jog fenntartva
         </div>
