@@ -7,6 +7,7 @@ import { Form, Field, ErrorMessage } from 'vee-validate';
 const cartStore = useCartStore();
 const { isLoggedIn } = useAuthStore();
 const user = useDirectusUser();
+const router = useRouter();
 
 let isSubmitting = ref(false);
 
@@ -116,7 +117,23 @@ async function onSubmit(values) {
       teljesOsszeg: cartStore.cartTotal,
     };
 
-    await createOrder(orderData);
+    const createdOrder = await createOrder(orderData);
+
+    const orderId = createdOrder.id;
+
+    // Delay for 1 second
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    const paymentId = await getPaymentId(orderId);
+    console.log('onSubmit - paymentId', paymentId);
+
+    // redirect to payment service's site
+    if (!paymentId) {
+      throw createError({
+        message: 'Nem sikerült létrehozni a fizetési azonosítót.',
+      });
+    }
+    await redirectToPaymentService(paymentId, orderId);
   } catch (error) {
     console.error('Error in onSubmit:', error);
   } finally {
@@ -139,13 +156,41 @@ async function updateUserData(userData) {
 async function createOrder(orderData) {
   try {
     const { createItems } = useDirectusItems();
-    await createItems({
+    const rendeles = await createItems({
       collection: 'vasarlasok',
       items: orderData,
     });
+    console.log('createOrder - rendeles', rendeles);
+    return rendeles;
   } catch (error) {
     console.error('Error creating order:', error);
+    throw error;
   }
+}
+
+async function getPaymentId(orderId) {
+  try {
+    const { getItemById } = useDirectusItems();
+    const myPaymentId = await getItemById({
+      collection: 'vasarlasok',
+      id: orderId,
+      fields: ['PaymentId'],
+    });
+    return myPaymentId.PaymentId;
+  } catch (error) {
+    console.error('Error getting paymentId:', error);
+    throw error;
+  }
+}
+
+async function redirectToPaymentService(paymentId, orderId) {
+  await navigateTo(`https://secure.test.barion.com/Pay?Id=${paymentId}`, {
+    external: true,
+  });
+
+  router.push(`/vasarlas/${orderId}?paymentId=${paymentId}`, {
+    replace: true,
+  });
 }
 
 function handleChange(value) {
