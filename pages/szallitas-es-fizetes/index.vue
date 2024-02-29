@@ -7,7 +7,7 @@ import { Form, Field, ErrorMessage } from 'vee-validate';
 const cartStore = useCartStore();
 const { isLoggedIn } = useAuthStore();
 const user = useDirectusUser();
-const router = useRouter();
+// const router = useRouter();
 
 let isSubmitting = ref(false);
 
@@ -125,14 +125,15 @@ async function onSubmit(values) {
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     const paymentId = await getPaymentId(orderId);
-    console.log('onSubmit - paymentId', paymentId);
 
-    // redirect to payment service's site
+    console.log('onSubmit - paymentId', paymentId);
     if (!paymentId) {
       throw createError({
         message: 'Nem sikerült létrehozni a fizetési azonosítót.',
       });
     }
+
+    // redirect to payment service's site
     await redirectToPaymentService(paymentId, orderId);
   } catch (error) {
     console.error('Error in onSubmit:', error);
@@ -188,9 +189,9 @@ async function redirectToPaymentService(paymentId, orderId) {
     external: true,
   });
 
-  router.push(`/vasarlas/${orderId}?paymentId=${paymentId}`, {
-    replace: true,
-  });
+  // router.push(`/vasarlas/${orderId}?paymentId=${paymentId}`, {
+  //   replace: true,
+  // });
 }
 
 function handleChange(value) {
