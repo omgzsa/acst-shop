@@ -27,11 +27,15 @@ const { handleSubmit, isSubmitting, resetForm, setTouched } = useForm({
     first_name: yup
       .string()
       .required()
-      .matches(/^[a-zA-Z]+$/),
+      .matches(
+        /^[a-zA-ZáéíóöőúüűÁÉÍÓÖŐÚÜŰßäÄöÖüÜßčďěéĺľňŕřšťůúýžČĎĚĹĽŇŔŘŠŤŮÚÝŽ]+$/u
+      ),
     last_name: yup
       .string()
       .required()
-      .matches(/^[a-zA-Z]+$/),
+      .matches(
+        /^[a-zA-ZáéíóöőúüűÁÉÍÓÖŐÚÜŰßäÄöÖüÜßčďěéĺľňŕřšťůúýžČĎĚĹĽŇŔŘŠŤŮÚÝŽ]+$/u
+      ),
     email: yup.string().required().email(),
     password: yup.string().required().min(6),
   }),
@@ -40,24 +44,29 @@ const { handleSubmit, isSubmitting, resetForm, setTouched } = useForm({
 // async-ra csereltem
 const onSubmit = handleSubmit(async (values, ctx) => {
   const { first_name, last_name, email, password } = values;
-  await store.userRegister(first_name, last_name, email, password);
-
-  resetForm({
-    values: {
-      first_name: '',
-      last_name: '',
-      email: '',
-      password: '',
-    },
-  });
-  setTouched({
-    values: {
-      first_name: false,
-      last_name: false,
-      email: false,
-      password: false,
-    },
-  });
+  try {
+    await store.userRegister(first_name, last_name, email, password);
+  } catch (error) {
+    console.log('#41 onSubmit', error);
+  } finally {
+    resetForm({
+      values: {
+        first_name: '',
+        last_name: '',
+        email: '',
+        password: '',
+      },
+    });
+    setTouched({
+      values: {
+        first_name: false,
+        last_name: false,
+        email: false,
+        password: false,
+      },
+    });
+    await store.userLogin({ email, password });
+  }
 });
 // const marketingAccept = ref(false);
 </script>
