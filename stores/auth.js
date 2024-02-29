@@ -20,7 +20,6 @@ export const useAuthStore = defineStore('authStore', () => {
         status: 'active',
       });
       alert('Registered successfully');
-      router.push('/');
     } catch (err) {
       err = createError({
         statusCode: err.statusCode,
@@ -35,13 +34,14 @@ export const useAuthStore = defineStore('authStore', () => {
     try {
       await login(credentials);
       alert('Logged in successfully');
-      router.push('/');
     } catch (err) {
       err = createError({
         statusCode: err.statusCode,
         message: 'Hibás felhasználónév vagy jelszó!',
       });
       logError.value = err;
+    } finally {
+      router.push('/profil/info');
     }
   }
 
