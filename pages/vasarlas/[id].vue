@@ -3,30 +3,32 @@ const route = useRoute();
 const id = route.params.id;
 const paymentId = route.query.paymentId;
 
-const { vasarlas } = await useGetPurchase(id, paymentId);
+// const { vasarlas } = await useGetPurchase(id, paymentId);
 
-async function useGetPurchase(id, paymentId) {
-  const vasarlas = ref({});
+// async function useGetPurchase(id, paymentId) {
+//   const vasarlas = ref({});
 
-  const { getItems } = useDirectusItems();
-  const data = await getItems({
-    collection: 'vasarlasok',
-    params: {
-      filter: {
-        id: id,
-        PaymentId: { _eq: paymentId },
-      },
-    },
-  });
+//   const { getItems } = useDirectusItems();
+//   const data = await getItems({
+//     collection: 'vasarlasok',
+//     params: {
+//       filter: {
+//         id: id,
+//         PaymentId: { _eq: paymentId },
+//       },
+//     },
+//   });
 
-  vasarlas.value = data;
+//   vasarlas.value = data;
 
-  return {
-    vasarlas,
-  };
-}
+//   return {
+//     vasarlas,
+//   };
+// }
 
-const { data } = await useFetch('/api/paymentState');
+const { data, error, pending } = await useFetch(`/api/payment/${paymentId}`);
+
+console.log('from api/payment/:paymentId/', data.value);
 
 const paymentStatusMessage = computed(() => {
   switch (data.value.Status) {
@@ -37,27 +39,25 @@ const paymentStatusMessage = computed(() => {
     case 'Canceled':
     case 'Failed':
       return 'A fizetés sikertelen volt.';
-    default:
-      return '';
   }
 });
 
-const backLink = computed(() => {
-  switch (data.value.Status) {
-    case 'Succeeded':
-      return '/';
-    case 'Expired' || 'Canceled' || 'Failed':
-      return '/kosar';
-  }
-});
-
-const backLabel = computed(() => {
-  switch (data.value.Status) {
-    case 'Succeeded':
-      return 'Vissza a főoldalra';
-    case 'Expired' || 'Canceled' || 'Failed':
-      return 'Vissza a kosárhoz';
-  }
+const backInfo = computed(() => {
+  const status = data.value.Status;
+  return {
+    link: {
+      Succeeded: '/',
+      Canceled: '/kosar',
+      Failed: '/kosar',
+      Expired: '/kosar',
+    }[status],
+    label: {
+      Succeeded: 'Vissza a főoldalra',
+      Canceled: 'Vissza a kosárhoz',
+      Failed: 'Vissza a kosárhoz',
+      Expired: 'Vissza a kosárhoz',
+    }[status],
+  };
 });
 
 if (data.value) {
@@ -77,7 +77,7 @@ if (data.value) {
 <template>
   <div class="bg-white">
     <div class="grid h-screen py-16 place-content-center site-padding gap-y-16">
-      <!-- <h1>Tranzakció folyamatban...</h1> -->
+      <h1>Tranzakció folyamatban...</h1>
       <!-- <div class="py-4">
         <p>paymentId: {{ route.query.paymentId }}</p>
         <p>id: {{ route.params.id }}</p>
@@ -85,14 +85,14 @@ if (data.value) {
       <!-- 
         if Status = 'Success'
        -->
-      <div v-if="data.Status !== null" class="space-y-8">
+      <div v-if="data !== null" class="space-y-8">
         <div>
-          Payment status: {{ data.Status }}
-          <h2>{{ paymentStatusMessage }}</h2>
+          Payment status: {{ data.Status || 'N/A' }}
+          <h2>{{ paymentStatusMessage || 'N/A' }}</h2>
         </div>
 
         <div>
-          <AppButton :to="`${backLink}`" :label="backLabel" />
+          <AppButton :to="`${backInfo.link}`" :label="backInfo.label" />
         </div>
       </div>
 
