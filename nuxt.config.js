@@ -70,9 +70,7 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     barion: {
-      posKey: '' || process.env.NUXT_BARION_POS_KEY,
-      testUrl: '' || process.env.NUXT_BARION_TEST_URL,
-      url: '',
+      posKey: '',
     },
   },
   devServer: {
