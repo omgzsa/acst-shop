@@ -50,6 +50,8 @@ export const useCartStore = defineStore('cartStore', () => {
         return MPL.value;
       case 'GLS':
         return GLS.value;
+      default:
+        return 0;
     }
   });
 
