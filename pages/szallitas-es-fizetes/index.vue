@@ -3,6 +3,7 @@ import { useCartStore } from '@/stores/cart';
 import { useAuthStore } from '@/stores/auth';
 import { schemas } from './schemas.js';
 import { Form, Field, ErrorMessage } from 'vee-validate';
+import router from '~/plugins/router';
 
 const cartStore = useCartStore();
 const { isLoggedIn } = useAuthStore();
@@ -78,6 +79,37 @@ function prevStep() {
 async function onSubmit(values) {
   if (isSubmitting.value) return;
 
+  console.log(values);
+
+  const {
+    postCode,
+    city,
+    streetAndNumber,
+    receiptPostCode,
+    receiptCity,
+    receiptStreetAndNumber,
+    paymentMode,
+  } = values;
+
+  const userData = {
+    szallitasiIranyitoszam: postCode || null,
+    szallitasiVaros: city || null,
+    szallitasiCim: streetAndNumber || null,
+    szallitasiCimReszletek: '',
+    szamlazasiIranyitoszam: receiptPostCode === '' ? postCode : postCode,
+    szamlazasiVaros: receiptCity === '' ? city : city,
+    szamlazasiCim:
+      receiptStreetAndNumber === '' ? streetAndNumber : streetAndNumber,
+    szamlazasiCegnev: '',
+    szamlazasiAdoszam: '',
+  };
+
+  const orderData = {
+    vasarlo: user.value.id,
+    termekek: cartStore.items.map((item) => ({ termekek_id: item.id })),
+    teljesOsszeg: cartStore.cartTotal,
+  };
+
   try {
     isSubmitting.value = true;
 
@@ -87,54 +119,41 @@ async function onSubmit(values) {
       });
     }
 
-    const {
-      postCode,
-      city,
-      streetAndNumber,
-      receiptPostCode,
-      receiptCity,
-      receiptStreetAndNumber,
-    } = values;
+    if (paymentMode === 'transfer') {
+      // simplified order process - no need for paymentId/redirect to payment service
+      orderData.PaymentStatus = 'Banki átutalás';
+      await updateUserData(userData);
+      await createOrder(orderData);
 
-    const userData = {
-      szallitasiIranyitoszam: postCode || null,
-      szallitasiVaros: city || null,
-      szallitasiCim: streetAndNumber || null,
-      szallitasiCimReszletek: '' || null,
-      szamlazasiIranyitoszam: receiptPostCode === '' ? postCode : postCode,
-      szamlazasiVaros: receiptCity === '' ? city : city,
-      szamlazasiCim:
-        receiptStreetAndNumber === '' ? streetAndNumber : streetAndNumber,
-      szamlazasiCegnev: '' || null,
-      szamlazasiAdoszam: '' || null,
-    };
-
-    await updateUserData(userData);
-
-    const orderData = {
-      vasarlo: user.value.id,
-      termekek: cartStore.items.map((item) => ({ termekek_id: item.id })),
-      teljesOsszeg: cartStore.cartTotal,
-    };
-
-    const createdOrder = await createOrder(orderData);
-
-    const orderId = createdOrder.id;
-
-    // Delay for 1 second
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    const paymentId = await getPaymentId(orderId);
-
-    console.log('onSubmit - paymentId', paymentId);
-    if (!paymentId) {
-      throw createError({
-        message: 'Nem sikerült létrehozni a fizetési azonosítót.',
+      // reset cart and redirect to home
+      cartStore.cartReset();
+      router.push('/', {
+        replace: true,
       });
     }
 
-    // redirect to payment service's site
-    await redirectToPaymentService(paymentId, orderId);
+    if (paymentMode === 'creditCard') {
+      // update buyer/user's data with the new delivery and billing address
+      await updateUserData(userData);
+      // create order with the products and the total amount
+      const createdOrder = await createOrder(orderData);
+      // getting order id for the newly created order
+      const orderId = createdOrder.id;
+
+      // Delay for 1 second
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // get paymentId for the order so it can redirect to BARION w/ query params
+      const paymentId = await getPaymentId(orderId);
+
+      if (!paymentId) {
+        throw createError({
+          message: 'Nem sikerült létrehozni a fizetési azonosítót.',
+        });
+      }
+
+      // redirect to payment service's site
+      await redirectToPaymentService(paymentId, orderId);
+    }
   } catch (error) {
     console.error('Error in onSubmit:', error);
   } finally {
@@ -496,7 +515,7 @@ watch(isSubmitting, (value) => {
               <h4 class="mb-4 sm:mb-0">Fizetés módja:</h4>
 
               <div class="flex flex-col py-2 space-y-2">
-                <Field
+                <!-- <Field
                   v-slot="{ field }"
                   name="paymentMode"
                   type="radio"
@@ -511,6 +530,24 @@ watch(isSubmitting, (value) => {
                       value="utanvet"
                     />
                     Útánvét
+                  </label>
+                </Field> -->
+
+                <Field
+                  v-slot="{ field }"
+                  name="paymentMode"
+                  type="radio"
+                  value="transfer"
+                >
+                  <label>
+                    <input
+                      class="mb-1 w-5 h-5 mr-1.5 shadow text-dark-100 focus:ring-accent-100"
+                      type="radio"
+                      name="paymentMode"
+                      v-bind="field"
+                      value="transfer"
+                    />
+                    Banki átutalás
                   </label>
                 </Field>
 
@@ -531,24 +568,6 @@ watch(isSubmitting, (value) => {
                     Bankártyás fizetés BARION-nal
                   </label>
                 </Field>
-
-                <Field
-                  v-slot="{ field }"
-                  name="paymentMode"
-                  type="radio"
-                  value="transfer"
-                >
-                  <label>
-                    <input
-                      class="mb-1 w-5 h-5 mr-1.5 shadow text-dark-100 focus:ring-accent-100"
-                      type="radio"
-                      name="paymentMode"
-                      v-bind="field"
-                      value="transfer"
-                    />
-                    Banki átutalás
-                  </label>
-                </Field>
               </div>
               <p class="pt-1 text-sm text-red-500 sm:text-base">
                 <ErrorMessage name="paymentMode" />
@@ -559,7 +578,9 @@ watch(isSubmitting, (value) => {
           </template>
         </TransitionGroup>
 
-        <!-- BUTTONS: NEXT, PREV, PAY -->
+        <!-- 
+          BUTTONS: NEXT, PREV, PAY 
+        -->
         <div class="flex justify-between pt-16">
           <button
             class="flex items-center text-base font-medium transition-all text-dark-300 hover:text-dark-100 hover:ring-0 ring-1 ring-gray-300 px-3 pt-1.5 pb-1 hover:bg-accent-100"
@@ -597,13 +618,16 @@ watch(isSubmitting, (value) => {
           </button>
         </div>
 
-        <div v-if="!isLoggedIn" class="pt-4 text-right">
+        <!-- 
+          LOGIN if not
+         -->
+        <div v-if="!isLoggedIn" class="flex flex-col pt-4 text-right">
           <span class="text-lg font-bold text-red-500"
             >Nem indíthatsz fizetést ha nem vagy bejelentkezve.</span
           >
           <NuxtLink
             to="/profil/info"
-            class="block pt-2 text-sm tracking-wide uppercase text-dark-300 hover:text-dark-100 hover:underline underline-offset-4"
+            class="inline-flex self-end pt-2 text-sm tracking-wide uppercase text-dark-300 hover:text-dark-100 hover:underline underline-offset-4"
           >
             Bejelentkezem!
           </NuxtLink>
