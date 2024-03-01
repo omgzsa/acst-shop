@@ -17,7 +17,6 @@ TODOS:
 <template>
   <div class="bg-white">
     <div class="py-10 site-padding">
-      <h1>Profil info</h1>
       <!-- HYDRATION MISMATCH ERROR, NESTING INVALID COMPONENTS -->
       <div class="grid grid-cols-6">
         <div class="col-span-1">

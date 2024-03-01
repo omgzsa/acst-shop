@@ -48,7 +48,7 @@ TODOS:
       <!-- 
         Mobile view with tab-switching 
       -->
-      <div>
+      <div v-if="!user">
         <div class="block lg:hidden">
           <div class="flex justify-evenly">
             <button
