@@ -45,14 +45,11 @@ export const useCartStore = defineStore('cartStore', () => {
   const deliveryCost = computed(() => {
     switch (deliveryMethod.value) {
       case 'personal':
-        return 0; // free delivery
+        return 0;
       case 'POSTA':
-        // Implement calculated MPL cost here (consider postal code, etc.)
         return MPL.value;
       case 'GLS':
         return GLS.value;
-      default:
-        return 0; // no delivery cost if none selected
     }
   });
 
