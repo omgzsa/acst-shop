@@ -46,7 +46,7 @@ const openingHours = {
       /> -->
     <div class="lg:grid lg:grid-cols-5 site-padding">
       <FooterLogo />
-      <TheBarionStrip width="300" height="28" />
+      <TheBarionStrip class="items-center" width="300" height="28" />
       <!-- </div> -->
 
       <div class="px-4 pb-4 pt-14 sm:px-6 lg:col-span-full lg:px-8">
