@@ -21,7 +21,8 @@ module.exports = {
       colors: {
         accent: {
           100: '#D2FF52',
-          200: '#B6DD47',
+          200: '#a2db00',
+          300: '#B6DD47',
         },
         dark: {
           100: '#181818',
@@ -30,7 +31,7 @@ module.exports = {
         },
       },
       screens: {
-        // xs: '575px',
+        xs: '575px',
       },
     },
   },
