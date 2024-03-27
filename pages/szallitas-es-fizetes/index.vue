@@ -3,32 +3,48 @@ import { useCartStore } from '@/stores/cart';
 import { useAuthStore } from '@/stores/auth';
 import { schemas } from './schemas.js';
 import { Form, Field, ErrorMessage } from 'vee-validate';
-import router from '~/plugins/router';
 
 const cartStore = useCartStore();
 const { isLoggedIn } = useAuthStore();
 const user = useDirectusUser();
-// const router = useRouter();
+const router = useRouter();
 
 let isSubmitting = ref(false);
 
 const currentStep = ref(0);
 const formSteps = ['Info', 'Számlázás', 'Szállítás', 'Fizetés'];
 
-const stepValues = {
+const stepValues = ref({
   name: '',
   phone: '',
   streetAndNumber: '',
   city: '',
   postCode: '',
-  addressMatch: false,
+  addressMatch: null,
   receiptName: '',
   receiptStreetAndNumber: '',
   receiptCity: '',
   receiptPostCode: '',
   deliveryMode: '',
   paymentMode: '',
-};
+});
+
+const receiptName = computed(() =>
+  stepValues.value.addressMatch ? 'megegyezik.' : stepValues.value.receiptName
+);
+const receiptStreetAndNumber = computed(() =>
+  stepValues.value.addressMatch
+    ? 'megegyezik.'
+    : stepValues.value.receiptStreetAndNumber
+);
+const receiptCity = computed(() =>
+  stepValues.value.addressMatch ? 'megegyezik.' : stepValues.value.receiptCity
+);
+const receiptPostCode = computed(() =>
+  stepValues.value.addressMatch
+    ? 'megegyezik.'
+    : stepValues.value.receiptPostCode
+);
 
 const shoppingDetails = ref([
   {
@@ -60,7 +76,7 @@ function nextStep(values, { resetForm }) {
   if (currentStep.value === 3) {
     onSubmit(values);
     resetForm({
-      values: stepValues,
+      values: stepValues.value,
     });
     return;
   }
@@ -207,14 +223,16 @@ async function redirectToPaymentService(paymentId, orderId) {
   await navigateTo(`https://secure.test.barion.com/Pay?Id=${paymentId}`, {
     external: true,
   });
-
-  // router.push(`/vasarlas/${orderId}?paymentId=${paymentId}`, {
-  //   replace: true,
-  // });
 }
 
 function handleChange(value) {
   cartStore.setDeliveryMode(value.target.value);
+}
+
+function updateStepValues(e) {
+  // map the form values to the stepValues object
+  stepValues.value[e.target.name] = e.target.value;
+  stepValues.value['addressMatch'] = e.target.checked;
 }
 
 // watch isSubmitting and log it's value to console
@@ -225,13 +243,13 @@ watch(isSubmitting, (value) => {
 
 <template>
   <div class="bg-white">
-    <div class="py-8 space-y-8 site-padding">
-      <h1>Szállítás és fizetés</h1>
+    <div class="grid py-8 space-y-6 lg:grid-cols-8 lg:gap-x-8 site-padding">
+      <h1 class="lg:col-span-full">Szállítás és fizetés</h1>
 
       <!-- 
           STEPPER 
         -->
-      <div class="flex justify-between pb-4">
+      <div class="flex justify-between pb-4 lg:col-span-5">
         <div
           v-for="(step, index) in formSteps"
           :key="index"
@@ -249,16 +267,20 @@ watch(isSubmitting, (value) => {
         </div>
       </div>
 
+      <!-- 
+        FORM
+       -->
       <Form
         @submit="nextStep"
         :validation-schema="paymentSchema"
         :initial-values="stepValues"
         keep-values
         v-slot="{ values }"
+        @change="updateStepValues"
+        class="lg:col-span-5"
       >
         <!-- <div class="pb-6 mx-auto border-t border-gray-300 w-80" /> -->
 
-        <!-- {{ values }} -->
         <TransitionGroup name="slide-fade">
           <!-- 
             STEP 1 - INFO
@@ -634,9 +656,77 @@ watch(isSubmitting, (value) => {
         </div>
       </Form>
 
-      <div class="p-4 border">
-        <h2 class="text-lg">Összegzés:</h2>
-        <p class="">cartTotal: {{ cartStore.cartTotal }} ft</p>
+      <!-- 
+        SUMMARY
+       -->
+      <div class="lg:col-span-3">
+        <div class="grid p-4 border gap-y-4 sm:grid-cols-2">
+          <h2 class="text-base uppercase col-span-full">Összegzés</h2>
+
+          <div class="col-span-full sm:col-span-1 lg:col-span-full">
+            <h3
+              class="mb-1 text-sm font-normal underline uppercase underline-offset-2"
+            >
+              Szállítás
+            </h3>
+            <p class="text-sm">
+              Név: <span class="font-medium">{{ stepValues.name }}</span>
+            </p>
+            <p class="text-sm">
+              Telefonszám:
+              <span class="font-medium">{{ stepValues.phone }}</span>
+            </p>
+            <p class="text-sm">
+              Utca, házszám:
+              <span class="font-medium">{{ stepValues.streetAndNumber }}</span>
+            </p>
+            <p class="text-sm">
+              Város: <span class="font-medium">{{ stepValues.city }}</span>
+            </p>
+            <p class="text-sm">
+              Irányítószám:
+              <span class="font-medium">{{ stepValues.postCode }}</span>
+            </p>
+          </div>
+
+          <!-- if adressMatch ... else -->
+          <div class="col-span-full sm:col-span-1 lg:col-span-full">
+            <h3
+              class="mb-1 text-sm font-normal underline uppercase underline-offset-2"
+            >
+              Számlázás
+            </h3>
+            <p class="text-sm">
+              Számlázási név:
+              <span class="font-medium">{{ receiptName }}</span>
+            </p>
+            <p class="text-sm">
+              Számlázási utca, házszám:
+              <span class="font-medium">{{ receiptStreetAndNumber }}</span>
+            </p>
+            <p class="text-sm">
+              Számlázási város:
+              <span class="font-medium">{{ receiptCity }}</span>
+            </p>
+            <p class="text-sm">
+              Számlázási irányítószám:
+              <span class="font-medium">{{ receiptPostCode }}</span>
+            </p>
+          </div>
+
+          <p class="text-sm col-span-full">
+            Szállítás módja:
+            <span class="font-medium">{{ stepValues.deliveryMode }}</span>
+          </p>
+
+          <p class="ml-auto text-base sm:col-start-2 col-span-full">
+            Teljes összeg:
+            <span class="font-medium underline underline-offset-8">{{
+              cartStore.cartTotal
+            }}</span>
+            Ft
+          </p>
+        </div>
       </div>
     </div>
   </div>
