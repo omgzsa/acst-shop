@@ -26,6 +26,10 @@ const breakpoints = ref({
     slidesPerView: 5.5,
     spaceBetween: 10,
   },
+  1540: {
+    slidesPerView: 6.5,
+    spaceBetween: 10,
+  },
 });
 
 const { getItems } = useDirectusItems();
@@ -52,16 +56,13 @@ const { data: nepszeruKategoriak } = await useAsyncData('termekKategoria', () =>
 </script>
 
 <template>
-  <div class="space-y-12">
-    <div class="site-padding">
-      <h2>Népszerű kategóriák</h2>
-    </div>
+  <div class="space-y-8">
+    <h2 class="site-padding">Népszerű kategóriák</h2>
     <Swiper
       :breakpoints="breakpoints"
       :modules="[SwiperPagination]"
       :pagination="{ clickable: true }"
       :space-between="5"
-      class="swiper-cards"
     >
       <SwiperSlide v-for="slide in nepszeruKategoriak" :key="slide.id">
         <HomeCategoriesCard
@@ -76,26 +77,30 @@ const { data: nepszeruKategoriak } = await useAsyncData('termekKategoria', () =>
 </template>
 
 <style>
-.swiper-cards {
-  @apply overflow-hidden pl-4 sm:pl-6 md:pl-8 xl:pl-12;
+/* SWIPER STYLINGS */
+.swiper {
+  --contentWidth: 1800px;
+
+  padding-left: max(1rem, 57vw - var(--contentWidth) / 2);
 }
 
+/* 
 @media (min-width: 1920px) {
   .swiper-cards {
     @apply site-padding;
   }
-}
+} */
 
 .swiper-wrapper {
   max-width: 310px;
   overflow: visible;
 }
 
-.swiper-slide {
+/* .swiper-slide {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .swiper-pagination,
 .swiper-pagination-clickable,
@@ -115,6 +120,11 @@ const { data: nepszeruKategoriak } = await useAsyncData('termekKategoria', () =>
   background: #d1d1d1;
   opacity: 10.75;
   cursor: pointer;
+}
+
+.swiper-pagination-bullet:hover {
+  background: #bbff00;
+  transform: scaleY(1.5);
 }
 
 .swiper-pagination-bullet-active {

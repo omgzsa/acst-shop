@@ -9,7 +9,7 @@ const props = defineProps({
 
 <template>
   <NuxtLink :to="to">
-    <div class="relative">
+    <div class="relative max-w-xs">
       <div class="absolute bottom-0 h-[72px] xl:h-20 inset-x-6">
         <span class="text-lg font-semibold text-white sm:text-xl xl:text-2xl">
           {{ props.title }}
