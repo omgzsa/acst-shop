@@ -55,6 +55,7 @@ export default defineNuxtConfig({
       lang: 'hu',
     },
   },
+  css: ['vue-final-modal/style.css'],
   modules: [
     '@nuxtjs/tailwindcss',
     '@tailwindcss/forms',
