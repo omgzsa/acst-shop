@@ -28,6 +28,10 @@ const breakpoints = ref({
     slidesPerView: 6.5,
     spaceBetween: 10,
   },
+  1920: {
+    slidesPerView: 7.5,
+    spaceBetween: 10,
+  },
 });
 
 const { getItems } = useDirectusItems();

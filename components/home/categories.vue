@@ -30,6 +30,10 @@ const breakpoints = ref({
     slidesPerView: 6.5,
     spaceBetween: 10,
   },
+  1920: {
+    slidesPerView: 7.5,
+    spaceBetween: 10,
+  },
 });
 
 const { getItems } = useDirectusItems();
@@ -79,9 +83,9 @@ const { data: nepszeruKategoriak } = await useAsyncData('termekKategoria', () =>
 <style>
 /* SWIPER STYLINGS */
 .swiper {
-  --contentWidth: 1800px;
+  --contentWidth: 1900px;
 
-  padding-left: max(1rem, 57vw - var(--contentWidth) / 2);
+  padding-left: max(1.125rem, 57vw - var(--contentWidth) / 2);
 }
 
 /* 
