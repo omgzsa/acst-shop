@@ -3,11 +3,13 @@
 </script>
 
 <template>
-  <div class="flex flex-col items-center">
+  <div class="flex flex-col items-center pt-10 col-span-full">
     <NuxtImg
       src="/thule-logo-black-footer.png"
-      class="object-cover object-left h-full w-60"
+      class="object-contain object-left h-20 w-60"
     />
-    <p class="font-semibold uppercase">Hivatalos márka partner</p>
+    <p class="pb-2 font-semibold text-white uppercase">
+      Hivatalos márka partner
+    </p>
   </div>
 </template>
