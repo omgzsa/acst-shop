@@ -6,7 +6,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="flex flex-col items-center col-span-full">
+  <div class="flex flex-col col-span-full">
     <svg
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
