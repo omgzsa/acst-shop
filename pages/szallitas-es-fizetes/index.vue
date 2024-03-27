@@ -243,7 +243,9 @@ watch(isSubmitting, (value) => {
 
 <template>
   <div class="bg-white">
-    <div class="grid py-8 space-y-6 lg:grid-cols-8 lg:gap-x-8 site-padding">
+    <div
+      class="relative grid py-8 space-y-6 lg:grid-cols-8 lg:gap-x-8 site-padding"
+    >
       <h1 class="lg:col-span-full">Szállítás és fizetés</h1>
 
       <!-- 
@@ -659,81 +661,22 @@ watch(isSubmitting, (value) => {
       <!-- 
         SUMMARY
        -->
-      <div class="lg:col-span-3">
-        <div class="grid p-4 border gap-y-4 sm:grid-cols-2">
-          <h2 class="text-base uppercase col-span-full">Összegzés</h2>
-
-          <div class="col-span-full sm:col-span-1 lg:col-span-full">
-            <h3
-              class="mb-1 text-sm font-normal underline uppercase underline-offset-2"
-            >
-              Szállítás
-            </h3>
-            <p class="text-sm">
-              Név: <span class="font-medium">{{ stepValues.name }}</span>
-            </p>
-            <p class="text-sm">
-              Telefonszám:
-              <span class="font-medium">{{ stepValues.phone }}</span>
-            </p>
-            <p class="text-sm">
-              Utca, házszám:
-              <span class="font-medium">{{ stepValues.streetAndNumber }}</span>
-            </p>
-            <p class="text-sm">
-              Város: <span class="font-medium">{{ stepValues.city }}</span>
-            </p>
-            <p class="text-sm">
-              Irányítószám:
-              <span class="font-medium">{{ stepValues.postCode }}</span>
-            </p>
-          </div>
-
-          <!-- if adressMatch ... else -->
-          <div class="col-span-full sm:col-span-1 lg:col-span-full">
-            <h3
-              class="mb-1 text-sm font-normal underline uppercase underline-offset-2"
-            >
-              Számlázás
-            </h3>
-            <p class="text-sm">
-              Számlázási név:
-              <span class="font-medium">{{ receiptName }}</span>
-            </p>
-            <p class="text-sm">
-              Számlázási utca, házszám:
-              <span class="font-medium">{{ receiptStreetAndNumber }}</span>
-            </p>
-            <p class="text-sm">
-              Számlázási város:
-              <span class="font-medium">{{ receiptCity }}</span>
-            </p>
-            <p class="text-sm">
-              Számlázási irányítószám:
-              <span class="font-medium">{{ receiptPostCode }}</span>
-            </p>
-          </div>
-
-          <p class="text-sm col-span-full">
-            Szállítás módja:
-            <span class="font-medium">{{ stepValues.deliveryMode }}</span>
-          </p>
-
-          <p class="ml-auto text-base sm:col-start-2 col-span-full">
-            Teljes összeg:
-            <span class="font-medium underline underline-offset-8">{{
-              cartStore.cartTotal
-            }}</span>
-            Ft
-          </p>
-        </div>
+      <div class="lg:absolute lg:right-4 xl:right-20 lg:top-5 lg:col-span-3">
+        <CheckoutSummary
+          :step-values="stepValues"
+          :receipt-name="receiptName"
+          :receipt-street-and-number="receiptStreetAndNumber"
+          :receipt-city="receiptCity"
+          :receipt-post-code="receiptPostCode"
+          :total="cartStore.cartTotal"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <style>
-.slide-fade-move, /* apply transition to moving elements */
+.slide-fade-move,
 .slide-fade-enter-active,
 .slide-fade-leave-active {
   transition: all 0.25s ease;
@@ -745,8 +688,6 @@ watch(isSubmitting, (value) => {
   transform: translateX(20px);
 }
 
-/* ensure leaving items are taken out of layout flow so that moving
-   animations can be calculated correctly. */
 .slide-fade-leave-active {
   position: absolute;
 }
