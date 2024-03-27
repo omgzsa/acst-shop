@@ -19,7 +19,7 @@ export const useAuthStore = defineStore('authStore', () => {
         role: 'ef005037-964e-4b20-bd23-b60f4f38fa6e',
         status: 'active',
       });
-      alert('Registered successfully');
+      console.log('Registered successfully');
     } catch (err) {
       err = createError({
         statusCode: err.statusCode,
@@ -33,7 +33,7 @@ export const useAuthStore = defineStore('authStore', () => {
     const { login } = useDirectusAuth();
     try {
       await login(credentials);
-      alert('Logged in successfully');
+      console.log('Logged in successfully');
     } catch (err) {
       err = createError({
         statusCode: err.statusCode,
