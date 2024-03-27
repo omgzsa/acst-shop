@@ -17,12 +17,16 @@ TODOS:
 <template>
   <div class="bg-white">
     <div class="py-10 site-padding">
+      <h1 class="pb-8">Információ</h1>
       <!-- HYDRATION MISMATCH ERROR, NESTING INVALID COMPONENTS -->
       <div class="grid grid-cols-6">
-        <div class="col-span-1">
+        <div class="pb-8 md:m-0 col-span-full md:col-span-1">
           <ProfileNav />
         </div>
-        <div v-if="user" class="flex justify-between col-span-5">
+        <div
+          v-if="user"
+          class="flex justify-between col-span-full md:col-span-5"
+        >
           <div>
             <h2 class="text-base font-normal uppercase text-dark-300">
               first name
