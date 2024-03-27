@@ -11,10 +11,10 @@ const userNav = ref([
 
 <template>
   <div class="bg-white">
-    <ul class="space-x-2 space-y-2 text-xl sm:space-x-0 text-dark-300">
+    <ul class="flex items-start gap-4 md:flex-col text-dark-300">
       <ProfileNavItem :user-nav="userNav" />
       <button
-        class="text-base leading-snug tracking-wide xl:text-lg hover:text-red-500 hover:font-semibold"
+        class="ml-auto text-sm leading-snug tracking-wide md:m-0 md:text-base xl:text-lg hover:text-red-500 hover:font-semibold"
         @click="store.userLogout()"
       >
         Kijelentkezés
