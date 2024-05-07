@@ -27,6 +27,7 @@ const stepValues = ref({
   receiptPostCode: '',
   deliveryMode: '',
   paymentMode: '',
+  termsAccepted: null,
 });
 
 const receiptName = computed(() =>
@@ -598,6 +599,31 @@ watch(isSubmitting, (value) => {
               </p>
 
               <TheBarionStrip width="300" height="28" />
+
+              <div class="flex items-start gap-x-3">
+                <label class="order-2 block text-xs" for="addressMatch"
+                  >Elolvastam és elfogadom az
+                  <NuxtLink
+                    class="text-sm text-blue-700 hover:text-blue-500 hover:underline underline-offset-4"
+                    to="/dokumentumok/aszf.vue"
+                    >adatvédelmi szabályzatot</NuxtLink
+                  >.</label
+                >
+                <Field
+                  name="termsAccepted"
+                  type="checkbox"
+                  id="termsAccepted"
+                  :value="true"
+                  class="mt-0.5 shadow text-dark-100 focus:ring-accent-100"
+                />
+                <!-- <ErrorMessage name="addressMatch" /> -->
+              </div>
+              <p
+                v-if="!values.termsAccepted"
+                class="text-sm text-red-500 sm:text-base"
+              >
+                El kell fogadnod az adatvédelmi szabályzatot a továbblépéshez.
+              </p>
             </div>
           </template>
         </TransitionGroup>
@@ -627,9 +653,10 @@ watch(isSubmitting, (value) => {
             class="text-xl font-medium transition-all hover:underline text-dark-300 hover:text-orange-600 underline-offset-4"
             v-if="currentStep === 3"
             type="submit"
-            :disabled="isSubmitting || !isLoggedIn"
+            :disabled="isSubmitting || !isLoggedIn || !values.termsAccepted"
             :class="{
-              'cursor-not-allowed opacity-50': isSubmitting || !isLoggedIn,
+              'cursor-not-allowed opacity-50 line-through':
+                isSubmitting || !isLoggedIn || !values.termsAccepted,
             }"
           >
             <span v-if="isSubmitting">

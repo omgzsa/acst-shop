@@ -44,6 +44,9 @@ const stepThree = yup.object({
 
 const stepFour = yup.object({
   paymentMode: yup.string().required('Válasszon fizetési módot!'),
+  termsAccepted: yup
+    .string()
+    .required('El kell fogadnia az adatvédelmi szabályzatot a továbblépéshez.'),
 });
 
 export const schemas = [stepOne, stepTwo, stepThree, stepFour];
