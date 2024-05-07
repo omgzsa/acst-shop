@@ -13,6 +13,7 @@ const openingHours = {
  * needs more styling
  */
 </script>
+
 <template>
   <!-- <div class="pt-10 text-white bg-black">
     <div class="site-padding">
@@ -58,7 +59,7 @@ const openingHours = {
             :opening-hours="openingHours"
           />
 
-          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <!-- <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
               <p class="font-medium text-zinc-500">Services</p>
 
@@ -118,42 +119,43 @@ const openingHours = {
                 </li>
               </ul>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <div class="pt-4 mt-10 border-t border-gray-100">
           <div class="sm:flex sm:items-center sm:justify-between">
-            <ul class="flex flex-wrap gap-4">
+            <ul class="sm:flex sm:flex-wrap gap-4">
               <li>
-                <a
-                  href="#"
+                <NuxtLink
+                  to="/dokumentumok/aszf"
                   class="text-xs text-white transition hover:opacity-75"
                 >
-                  Terms & Conditions
-                </a>
+                  Általános szerződési feltételek
+                </NuxtLink>
               </li>
 
               <li>
-                <a
-                  href="#"
+                <NuxtLink
+                  to="/dokumentumok/gdpr"
                   class="text-xs text-white transition hover:opacity-75"
                 >
-                  Privacy Policy
-                </a>
+                  Adatvédelmi tájékoztató
+                </NuxtLink>
               </li>
 
-              <li>
+              <!-- <li>
                 <a
                   href="#"
                   class="text-xs text-white transition hover:opacity-75"
                 >
                   Cookies
                 </a>
-              </li>
+              </li> -->
             </ul>
 
             <p class="mt-8 text-xs text-white sm:mt-0">
-              &copy; 2022. Company Name. All rights reserved.
+              &copy; {{ new Date().getFullYear() }} UTAZZ VELÜNK AUTÓ Kft.
+              Minden jog fenntartva.
             </p>
           </div>
         </div>
