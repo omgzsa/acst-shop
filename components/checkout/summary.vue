@@ -10,7 +10,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="grid border shadow-sm lg:p-6 xl:p-8 gap-y-4 sm:grid-cols-2">
+  <div class="grid p-4 border shadow-sm lg:p-6 xl:p-8 gap-y-4 sm:grid-cols-2">
     <h2 class="text-base uppercase col-span-full">Összegzés</h2>
 
     <div class="col-span-full sm:col-span-1 lg:col-span-full">
