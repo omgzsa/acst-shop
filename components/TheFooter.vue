@@ -7,157 +7,54 @@ const openingHours = {
   saturday: 'Szombat: 9:00 - 12:00',
   sunday: 'Vasárnap: ZÁRVA',
 };
-/**
- * footer spacing issues
- * needs more data (aszf, adatvédelem, stb)
- * needs more styling
- */
 </script>
 
 <template>
-  <!-- <div class="pt-10 text-white bg-black">
-    <div class="site-padding">
-      <div class="grid gap-4 sm:grid-cols-2">
-        
-        <FooterLogo />
+  <footer class="bg-black">
+    <div class="items-center sm:grid sm:grid-cols-6 site-padding">
+      <div class="flex flex-col items-center pb-8 lg:pb-10 sm:col-span-3">
+        <FooterLogo class="items-center" />
+        <TheBarionStrip class="items-center" width="280" height="25" />
+      </div>
 
-        
+      <div class="grid grid-cols-1 py-6 sm:place-items-center sm:col-span-3">
         <FooterContact
           :address="address"
           :phone="phone"
           :email="email"
           :opening-hours="openingHours"
         />
-
-        
-        <TheBarionStrip width="300" height="28" />
-
-        <div class="border-t border-dark-300 col-span-full" />
-
-        <div class="col-span-full">Copyright 2023 - Minden jog fenntartva</div>
       </div>
-    </div>
-  </div> -->
-  <footer class="bg-black">
-    <!-- <div class="relative block h-32 lg:col-span-2 lg:h-full"> -->
-    <!-- <img
-        src="https://images.unsplash.com/photo-1642370324100-324b21fab3a9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80"
-        alt=""
-        class="absolute inset-0 object-cover w-full h-full"
-      /> -->
-    <div class="lg:grid lg:grid-cols-5 site-padding">
-      <FooterLogo />
-      <TheBarionStrip class="items-center" width="300" height="28" />
-      <!-- </div> -->
 
-      <div class="px-4 pb-4 pt-14 sm:px-6 lg:col-span-full lg:px-8">
-        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
-          <FooterContact
-            :address="address"
-            :phone="phone"
-            :email="email"
-            :opening-hours="openingHours"
-          />
+      <!-- 
+        footer docs
+       -->
+      <div class="py-4 border-t border-gray-500 col-span-full">
+        <div class="sm:flex sm:items-center sm:justify-between">
+          <ul class="gap-4 sm:flex sm:flex-wrap">
+            <li>
+              <NuxtLink
+                to="/dokumentumok/aszf"
+                class="text-xs transition-colors text-neutral-200 hover:underline underline-offset-2 hover:text-white"
+              >
+                Általános szerződési feltételek
+              </NuxtLink>
+            </li>
 
-          <!-- <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div>
-              <p class="font-medium text-zinc-500">Services</p>
+            <li>
+              <NuxtLink
+                to="/dokumentumok/gdpr"
+                class="text-xs transition-colors text-neutral-200 hover:underline underline-offset-2 hover:text-white"
+              >
+                Adatvédelmi tájékoztató
+              </NuxtLink>
+            </li>
+          </ul>
 
-              <ul class="mt-6 space-y-4 text-sm">
-                <li>
-                  <a href="#" class="transition text-zinc-200 hover:opacity-75">
-                    1on1 Coaching
-                  </a>
-                </li>
-
-                <li>
-                  <a href="#" class="transition text-zinc-200 hover:opacity-75">
-                    Company Review
-                  </a>
-                </li>
-
-                <li>
-                  <a href="#" class="transition text-zinc-200 hover:opacity-75">
-                    Accounts Review
-                  </a>
-                </li>
-
-                <li>
-                  <a href="#" class="transition text-zinc-200 hover:opacity-75">
-                    HR Consulting
-                  </a>
-                </li>
-
-                <li>
-                  <a href="#" class="transition text-zinc-200 hover:opacity-75">
-                    SEO Optimisation
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <p class="font-medium text-zinc-500">Company</p>
-
-              <ul class="mt-6 space-y-4 text-sm">
-                <li>
-                  <a href="#" class="transition text-zinc-200 hover:opacity-75">
-                    About
-                  </a>
-                </li>
-
-                <li>
-                  <a href="#" class="transition text-zinc-200 hover:opacity-75">
-                    Meet the Team
-                  </a>
-                </li>
-
-                <li>
-                  <a href="#" class="transition text-zinc-200 hover:opacity-75">
-                    Accounts Review
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div> -->
-        </div>
-
-        <div class="pt-4 mt-10 border-t border-gray-100">
-          <div class="sm:flex sm:items-center sm:justify-between">
-            <ul class="sm:flex sm:flex-wrap gap-4">
-              <li>
-                <NuxtLink
-                  to="/dokumentumok/aszf"
-                  class="text-xs text-white transition hover:opacity-75"
-                >
-                  Általános szerződési feltételek
-                </NuxtLink>
-              </li>
-
-              <li>
-                <NuxtLink
-                  to="/dokumentumok/gdpr"
-                  class="text-xs text-white transition hover:opacity-75"
-                >
-                  Adatvédelmi tájékoztató
-                </NuxtLink>
-              </li>
-
-              <!-- <li>
-                <a
-                  href="#"
-                  class="text-xs text-white transition hover:opacity-75"
-                >
-                  Cookies
-                </a>
-              </li> -->
-            </ul>
-
-            <p class="mt-8 text-xs text-white sm:mt-0">
-              &copy; {{ new Date().getFullYear() }} UTAZZ VELÜNK AUTÓ Kft.
-              Minden jog fenntartva.
-            </p>
-          </div>
+          <p class="mt-8 text-xs text-white sm:mt-0">
+            &copy; {{ new Date().getFullYear() }} UTAZZ VELÜNK AUTÓ Kft. Minden
+            jog fenntartva.
+          </p>
         </div>
       </div>
     </div>
