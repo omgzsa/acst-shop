@@ -600,12 +600,21 @@ watch(isSubmitting, (value) => {
 
               <TheBarionStrip width="300" height="28" />
 
+              <!-- 
+                TERMS ACCEPTED
+               -->
               <div class="flex items-start gap-x-3">
                 <label class="order-2 block text-xs" for="addressMatch"
                   >Elolvastam és elfogadom az
                   <NuxtLink
                     class="text-sm text-blue-700 hover:text-blue-500 hover:underline underline-offset-4"
                     to="/dokumentumok/aszf.vue"
+                    >felhasználási feltételeket</NuxtLink
+                  >
+                  és az
+                  <NuxtLink
+                    class="text-sm text-blue-700 hover:text-blue-500 hover:underline underline-offset-4"
+                    to="/dokumentumok/gdpr.vue"
                     >adatvédelmi szabályzatot</NuxtLink
                   >.</label
                 >
@@ -656,7 +665,10 @@ watch(isSubmitting, (value) => {
             :disabled="isSubmitting || !isLoggedIn || !values.termsAccepted"
             :class="{
               'cursor-not-allowed opacity-50 line-through':
-                isSubmitting || !isLoggedIn || !values.termsAccepted,
+                isSubmitting ||
+                !isLoggedIn ||
+                !values.termsAccepted ||
+                !values.paymentMode,
             }"
           >
             <span v-if="isSubmitting">
