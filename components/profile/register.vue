@@ -99,7 +99,7 @@ const onSubmit = handleSubmit(async (values, ctx) => {
         v-model="password"
       />
 
-      <div class="pt-4">
+      <!-- <div class="pt-4">
         <label for="MarketingAccept" class="flex gap-4">
           <input
             type="checkbox"
@@ -108,11 +108,10 @@ const onSubmit = handleSubmit(async (values, ctx) => {
           />
 
           <span class="text-sm text-gray-700">
-            I want to receive emails about events, product updates and company
-            announcements.
+            Szeretnék hírlevelet kapni a legújabb termékekről és akciókról.
           </span>
         </label>
-      </div>
+      </div> -->
 
       <div>
         <p class="text-sm text-gray-500">
