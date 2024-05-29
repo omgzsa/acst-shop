@@ -50,7 +50,7 @@ export default defineNuxtConfig({
     },
   },
   head: {
-    title: 'Autocsomagtarto | THULE retailer',
+    title: 'Autócsomagtartó | Hivatalos THULE kiskereskedés',
     htmlAttrs: {
       lang: 'hu',
     },
@@ -80,7 +80,6 @@ export default defineNuxtConfig({
   },
   directus: {
     url: process.env.NUXT_DIRECTUS_URL,
-    // autoFetch: true,
   },
   pinia: {
     autoImports: ['defineStore', 'acceptHMRUpdate'],
