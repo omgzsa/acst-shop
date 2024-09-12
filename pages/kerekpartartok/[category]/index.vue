@@ -40,6 +40,7 @@ const { data: kerekpartartok } = await useAsyncData(path, () =>
         'kerekpartartoTechSpec.eBike_kompatibilis',
       ],
       filter, // Use the predefined filter
+      sort: '-termekNev',
     },
   })
 );
