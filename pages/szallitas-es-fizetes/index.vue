@@ -157,10 +157,10 @@ async function onSubmit(values) {
       // getting order id for the newly created order
       const orderId = createdOrder.id;
 
-      // Delay for 1 second
-      await new Promise((resolve) => setTimeout(resolve, 1000));
       // get paymentId for the order so it can redirect to BARION w/ query params
       const paymentId = await getPaymentId(orderId);
+      // Delay for 1 second
+      await new Promise((resolve) => setTimeout(resolve, 2000));
 
       if (!paymentId) {
         throw createError({
