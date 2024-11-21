@@ -30,11 +30,11 @@ watch(
         <NavbarDesktop :nav-items="nav" />
 
         <!-- CART & USER-->
-        <div class="hidden space-x-4 lg:flex">
+        <!-- <div class="hidden space-x-4 lg:flex">
           <AppCartButton />
 
           <AppUserButton />
-        </div>
+        </div> -->
 
         <!-- NAVIGATION TOGGLE -->
         <div
@@ -61,11 +61,12 @@ watch(
         class="absolute z-20 left-0 w-full h-[calc(100vh-3.5rem)] lg:hidden overflow-auto transition-all duration-300 opacity-0 pointer-events-none bg-white top-14"
         :class="{ 'opacity-100 pointer-events-auto': showMenu }"
       >
-        <div class="flex justify-end gap-4 site-padding">
+        <!-- <div class="flex justify-end gap-4 site-padding">
           <AppCartButton />
 
           <AppUserButton />
-        </div>
+        </div> -->
+
         <div class="grid pt-8 gap-y-4 site-padding">
           <NuxtLink
             class="w-full text-2xl font-semibold transition-colors duration-300 text-dark-100 hover:text-dark-300"
@@ -74,6 +75,12 @@ watch(
           >
 
           <NavbarMobile :nav-items="nav" />
+
+          <NuxtLink
+            class="w-full text-2xl font-semibold transition-colors duration-300 text-dark-100 hover:text-dark-300"
+            to="/kolcsonzes"
+            >Kölcsönzés</NuxtLink
+          >
         </div>
       </div>
     </nav>
