@@ -49,7 +49,7 @@
   html,
   body,
   #__nuxt {
-    @apply min-h-screen bg-accent-100 mt-7;
+    @apply min-h-screen mt-7;
   }
 
   img {
