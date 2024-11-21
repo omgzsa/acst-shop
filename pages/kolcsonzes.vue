@@ -2,75 +2,19 @@
 //
 </script>
 
-<!-- <template>
-  <ClientOnly>
-    <div class="py-10 bg-white">
-      <section class="site-padding">
-        <h1 class="mb-12">Kölcsönzés</h1>
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border border-collapse border-gray-300">
-            <thead>
-              <tr class="bg-gray-100">
-                <th class="px-4 py-2 border border-gray-300">Termék</th>
-                <th class="px-4 py-2 border border-gray-300">Ára</th>
-                <th class="px-4 py-2 border border-gray-300">Kaució</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="flex flex-col px-4 py-2 space-y-2 text-xs border border-gray-300 xs:text-sm sm:text-base sm:space-y-0 sm:flex-row sm:items-center sm:space-x-4">
-                  <span>Csomagtartók</span>
-                </td>
-                <td class="px-4 py-2 text-xs border border-gray-300 xs:text-sm sm:text-base">1 300 Ft/nap</td>
-                <td class="px-4 py-2 text-xs border border-gray-300 xs:text-sm sm:text-base">10 000 Ft/alkalom</td>
-              </tr>
-              <tr class="bg-gray-50">
-                <td class="flex flex-col px-4 py-2 space-y-2 text-xs border border-gray-300 xs:text-sm sm:text-base sm:space-y-0 sm:flex-row sm:items-center sm:space-x-4">
-                  <span>Tetőboxok</span>
-                </td>
-                <td class="px-4 py-2 text-xs border border-gray-300 xs:text-sm sm:text-base">1 300 Ft/nap</td>
-                <td class="px-4 py-2 text-xs border border-gray-300 xs:text-sm sm:text-base">30 000 Ft/alkalom</td>
-              </tr>
-              <tr>
-                <td class="flex flex-col px-4 py-2 space-y-2 text-xs border border-gray-300 xs:text-sm sm:text-base sm:space-y-0 sm:flex-row sm:items-center sm:space-x-4">
-                  <span>Csomagtartó + Box</span>
-                </td>
-                <td class="px-4 py-2 text-xs border border-gray-300 xs:text-sm sm:text-base">2 500 Ft/nap</td>
-                <td class="px-4 py-2 text-xs border border-gray-300 xs:text-sm sm:text-base">30 000 Ft/alkalom</td>
-              </tr>
-              <tr class="bg-gray-50">
-                <td class="flex flex-col px-4 py-2 space-y-2 text-xs border border-gray-300 xs:text-sm sm:text-base sm:space-y-0 sm:flex-row sm:items-center sm:space-x-4">
-                  <span>Síléctartó</span>
-                </td>
-                <td class="px-4 py-2 text-xs border border-gray-300 xs:text-sm sm:text-base">800 Ft/nap</td>
-                <td class="px-4 py-2 text-xs border border-gray-300 xs:text-sm sm:text-base">5 000 Ft/alkalom</td>
-              </tr>
-              <tr>
-                <td class="flex flex-col px-4 py-2 space-y-2 text-xs border border-gray-300 xs:text-sm sm:text-base sm:space-y-0 sm:flex-row sm:items-center sm:space-x-4">
-                  <span>Kerékpártartó tetőcsomagtartóra</span>
-                </td>
-                <td class="px-4 py-2 text-xs border border-gray-300 xs:text-sm sm:text-base">800 Ft/nap</td>
-                <td class="px-4 py-2 text-xs border border-gray-300 xs:text-sm sm:text-base">5 000 Ft/alkalom</td>
-              </tr>
-              <tr class="bg-gray-50">
-                <td class="flex flex-col px-4 py-2 space-y-2 text-xs border border-gray-300 xs:text-sm sm:text-base sm:space-y-0 sm:flex-row sm:items-center sm:space-x-4">
-                  <span>Kerékpártartó vonóhorogra</span>
-                </td>
-                <td class="px-4 py-2 text-xs border border-gray-300 xs:text-sm sm:text-base">3 300 Ft, 3 700 Ft, 4 200 Ft/nap (típus és kerékpár száma függő)</td>
-                <td class="px-4 py-2 text-xs border border-gray-300 xs:text-sm sm:text-base">30 000 Ft/alkalom</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-    </div>
-  </ClientOnly>
-</template> -->
-
 <template>
-  <div class="min-h-screen p-4 bg-gray-50 md:p-8">
-    <div class="mx-auto max-w-7xl">
-      <h1 class="mb-12">Kölcsönzés</h1>
+  <div class="py-10 md:py-16 bg-gray-50">
+    <div class="mx-auto space-y-4 site-padding">
+      <h1 class="mb-8">Kölcsönzés</h1>
+      <p class="max-w-4xl">
+        Nem szükséges megvásárolnia, amit egyszerűen bérelhet is! Legyen szó tetőboxról, csomagtartóról vagy kerékpártartóról, nálunk a legjobb megoldásokat találja az utazáshoz. Kölcsönzési szolgáltatásaink rugalmasak, gyorsak és kényelmesek, hogy Ön csak az élményekre koncentrálhasson.
+      </p>
+      <p class="max-w-4xl">
+        Kérdése van? Forduljon hozzánk bizalommal! Segítünk megtalálni az igényeihez legjobban illő eszközöket, és gondoskodunk róla, hogy minden gördülékenyen menjen.
+      </p>
+      <p class="max-w-4xl mb-8">
+        📞 Hívjon minket, vagy látogasson el boltunkba még ma!
+      </p>
       <ClientOnly>
         <TheRentPriceTable />
       </ClientOnly>
