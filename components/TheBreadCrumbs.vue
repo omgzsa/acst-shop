@@ -19,7 +19,7 @@ const {
     <ol class="items-center hidden sm:flex gap-x-2">
       <li class="flex items-center gap-x-2">
         <NuxtLink to="/" title="Vissza a kezdőlapra"
-          ><Icon class="mb-1.5 hover:text-accent-200" name="heroicons:home"
+          ><Icon class="-mb-0.5 hover:text-accent-200" name="heroicons:home"
         /></NuxtLink>
         /
       </li>

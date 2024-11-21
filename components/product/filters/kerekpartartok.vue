@@ -68,7 +68,7 @@ const clearAllFilters = () => {
             </span>
 
             <span class="transition group-open:-rotate-180">
-              <Icon name="mdi:chevron-down" class="mb-1" size="20" />
+              <Icon name="mdi:chevron-down" size="20" />
             </span>
           </summary>
           <div class="py-2 space-y-1">
@@ -103,7 +103,7 @@ const clearAllFilters = () => {
             </span>
 
             <span class="transition group-open:-rotate-180">
-              <Icon name="mdi:chevron-down" class="mb-1" size="20" />
+              <Icon name="mdi:chevron-down" size="20" />
             </span>
           </summary>
           <div class="py-2 space-y-1">

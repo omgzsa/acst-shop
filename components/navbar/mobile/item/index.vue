@@ -14,7 +14,7 @@ const props = defineProps({
         class="text-2xl font-semibold uppercase transition-colors duration-300 cursor-pointer text-dark-100 hover:text-dark-300"
       >
         {{ props.name }}
-        <Icon name="mdi:chevron-down" class="mb-1" />
+        <Icon name="mdi:chevron-down" class="" />
       </div>
     </summary>
 
