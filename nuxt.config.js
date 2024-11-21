@@ -39,8 +39,10 @@ export default defineNuxtConfig({
       ],
     },
   },
+
   ssr: true,
   devtools: true,
+
   vite: {
     server: {
       hmr: {
@@ -49,13 +51,16 @@ export default defineNuxtConfig({
       },
     },
   },
+
   head: {
     title: 'Autócsomagtartó | Hivatalos THULE kiskereskedés',
     htmlAttrs: {
       lang: 'hu',
     },
   },
+
   css: ['vue-final-modal/style.css'],
+
   modules: [
     '@nuxtjs/tailwindcss',
     '@tailwindcss/forms',
@@ -69,25 +74,31 @@ export default defineNuxtConfig({
     'nuxt-directus',
     '@vee-validate/nuxt',
   ],
+
   runtimeConfig: {
     barion: {
       posKey: '',
       testUrl: '',
     },
   },
+
   devServer: {
     port: 8080,
   },
+
   directus: {
     url: process.env.NUXT_DIRECTUS_URL,
   },
+
   pinia: {
     autoImports: ['defineStore', 'acceptHMRUpdate'],
   },
+
   tailwindcss: {
     cssPath: '~/assets/css/tailwind.css',
     configPath: '~/tailwind.config.js',
   },
+
   googleFonts: {
     families: {
       Poppins: [300, 400, 500, 600],
@@ -97,10 +108,14 @@ export default defineNuxtConfig({
     preload: false,
     download: true,
   },
+
   swiper: {
     modules: ['pagination'],
   },
+
   veeValidate: {
     autoImports: true,
   },
+
+  compatibilityDate: '2024-11-21',
 });
