@@ -24,5 +24,10 @@ const menuLeave = () => {
       @mouseover="menuHover"
       @mouseleave="menuLeave"
     />
+    <NuxtLink
+      class="text-dark-100 hover:text-dark-300"
+      to="/kolcsonzes"
+      >Kölcsönzés</NuxtLink
+    >
   </ul>
 </template>
