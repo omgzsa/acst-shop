@@ -44,9 +44,9 @@
         <button
           class="px-4 py-2 space-x-2 font-semibold border shadow-md border-accent-100 duration-400 bg-accent-100 text-dark-100 hover:bg-dark-100 hover:text-white hover:shadow-lg"
         >
-          <NuxtLink to="/">
+          <NuxtLink to="/tetocsomagtartok">
             <span class="text-base leading-snug tracking-wide xl:text-lg">
-              Nézd meg termékeink!
+              Nézd meg a tartókat és boxokat!
             </span></NuxtLink
           >
         </button>

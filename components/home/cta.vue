@@ -28,9 +28,9 @@ defineProps({
           class="px-4 py-2 font-semibold border shadow-md hover:shadow-lg duration-400 bg-accent-100 text-dark-100 hover:bg-dark-100 hover:text-white border-accent-100"
           :class="defaultTransition"
         >
-          <NuxtLink to="/">
+          <NuxtLink to="/kerekpartartok">
             <span class="text-base leading-snug tracking-wide xl:text-lg">
-              Nézd meg termékeink!
+              Nézd meg kerékpártartóinkat!
             </span></NuxtLink
           >
         </button>

@@ -28,16 +28,11 @@ const bgImage = computed(() => {
     class="relative z-10 min-h-[600px] bg-center bg-no-repeat bg-cover hero"
   >
     <div class="absolute min-h-[600px] inset-0 z-0 bg-gray-900 bg-opacity-50">
-      <img
+      <NuxtImg
         class="object-cover w-full h-full"
-        :src="useAsset(`images/homepage/${bgImage}`)"
+        :src="`/img/${bgImage}`"
         alt="hero-bg"
       />
-      <!-- <NuxtImg
-        class="object-cover w-full h-full"
-        src="hero-bg.webp"
-        alt="hero-bg"
-      /> -->
     </div>
     <div
       class="relative z-20 flex items-center min-h-full px-4 mx-auto max-w-screen-2xl sm:px-6 md:px-8 xl:px-12"
@@ -49,17 +44,15 @@ const bgImage = computed(() => {
           {{ title }}
         </h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur. Vitae sollicitudin nascetur
-          quis aenean enim arcu sagittis pellentesque. Eget rhoncus morbi vitae
-          tellus id ac leo velit arcu.
+          Növeld a járműved kapacitását stílusos és biztonságos kiegészítőinkkel, amelyek könnyen szerelhetők és tartósak. Tekintsd meg termékkínálatunkat, és élvezd a szabadban töltött időt kompromisszumok nélkül!
         </p>
         <button
           class="px-4 py-2 space-x-2 font-semibold border shadow-md border-accent-100 duration-400 bg-accent-100 text-dark-100 hover:bg-dark-100 hover:text-white hover:shadow-lg"
           :class="defaultTransition"
         >
-          <NuxtLink to="/">
+          <NuxtLink to="/csomagtarto-boxok-es-kosarak">
             <span class="text-base leading-snug tracking-wide xl:text-lg">
-              Nézd meg termékeink!
+              Nézd meg csomagtartóinkat!
             </span></NuxtLink
           >
         </button>
