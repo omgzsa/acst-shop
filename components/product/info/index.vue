@@ -30,7 +30,7 @@ const addProductToCart = () => {
       <h1>{{ props.name }}</h1>
       <p>{{ props.description }}</p>
       <div class="tracking-wide">
-        <span class="block text-xs sm:text-sm">Online ár:</span>
+        <span class="block text-xs sm:text-sm">Ár:</span>
         <div class="space-x-1">
           <p class="inline text-3xl font-bold lg:text-4xl">
             {{ props.price }} Ft
@@ -38,14 +38,14 @@ const addProductToCart = () => {
           <span>(ÁFA-val)</span>
         </div>
       </div>
-      <button
+      <!-- <button
         class="flex items-center justify-center px-4 py-2 space-x-2 font-semibold border shadow-md border-accent-100 duration-400 bg-accent-100 text-dark-100 hover:bg-dark-100 hover:text-white hover:shadow-lg"
         :class="defaultTransition"
         @click="addProductToCart"
       >
         <Icon name="mdi:cart-outline" class="mb-1 text-lg" />
         <span class="text-base tracking-wide">Kosárba rakom</span>
-      </button>
+      </button> -->
     </div>
 
     <!-- PRODUCT HASVARRANTY BOOL -->
