@@ -15,9 +15,9 @@
     "@nuxt/devtools": "latest",
     "@nuxtjs/google-fonts": "^3.0.2",
     "@nuxtjs/tailwindcss": "^6.8.0",
-    "@types/node": "^18.17.3",
-    "@vueuse/core": "^10.3.0",
-    "@vueuse/nuxt": "^10.3.0",
+    "@types/node": "^22.9.1",
+    "@vueuse/core": "^11.3.0",
+    "@vueuse/nuxt": "^11.3.0",
     "nuxt": "^3.14.1592",
     "nuxt-directus": "^5.5.0"
   },
@@ -27,7 +27,7 @@
   "dependencies": {
     "@nuxt/icon": "^1.8.2",
     "@nuxt/image": "^1.0.0-rc.2",
-    "@pinia/nuxt": "^0.4.11",
+    "@pinia/nuxt": "^0.7.0",
     "@tailwindcss/forms": "^0.5.6",
     "@vee-validate/nuxt": "^4.12.2",
     "@vee-validate/yup": "^4.12.2",
