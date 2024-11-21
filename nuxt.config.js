@@ -68,7 +68,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@vueuse/motion/nuxt',
     '@nuxt/image',
-    'nuxt-icon',
+    '@nuxt/icon',
     'nuxt-swiper',
     '@pinia/nuxt',
     'nuxt-directus',
